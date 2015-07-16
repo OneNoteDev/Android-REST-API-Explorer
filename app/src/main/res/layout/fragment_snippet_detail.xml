@@ -1,0 +1,160 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/snippet_detail"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".SnippetDetailFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/txt_hyperlink"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:text="@string/docs"
+                android:textColor="#FF0000FF" />
+
+            <Button
+                android:id="@+id/btn_run"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:enabled="false"
+                android:text="@string/run" />
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/progressbar"
+            style="@android:style/Widget.ProgressBar.Large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:indeterminateOnly="true"
+            android:visibility="gone" />
+
+        <!-- Spinner with Page, Notebook, or Section chooser-->
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:visibility="gone" />
+
+        <EditText
+            android:id="@+id/txt_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/txt_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:freezesText="true"
+            android:text="Description of the Snippet here" />
+
+        <TextView
+            style="@style/detail_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:freezesText="true"
+            android:text="@string/req_url" />
+
+        <TextView
+            android:id="@+id/txt_request_url"
+            style="@style/detail_rect"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:freezesText="true" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:freezesText="true"
+            android:gravity="center"
+            android:text="@string/response" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:text="@string/status_code"
+                android:textStyle="bold" />
+
+            <!-- The HTTP status code -->
+            <TextView
+                android:id="@+id/txt_status_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
+                android:gravity="center_vertical" />
+
+            <!-- The HTTP status color -->
+            <TextView
+                android:id="@+id/txt_status_color"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="3dp"
+                android:layout_marginStart="3dp"
+                android:gravity="center_vertical" />
+
+        </LinearLayout>
+
+        <TextView
+            style="@style/detail_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:freezesText="true"
+            android:text="@string/response_headers" />
+
+        <TextView
+            android:id="@+id/txt_response_headers"
+            style="@style/detail_rect"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:freezesText="true" />
+
+        <TextView
+            style="@style/detail_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:freezesText="true"
+            android:text="@string/response_body" />
+
+        <TextView
+            android:id="@+id/txt_response_body"
+            style="@style/detail_rect"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autoLink="web"
+            android:freezesText="true"
+            android:linksClickable="true" />
+
+    </LinearLayout>
+</ScrollView>

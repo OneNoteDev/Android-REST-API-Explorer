@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- The name of this section-->
+    <string name="section_sectiongroups">/sectiongroups</string>
+
+    <string-array name="list_sectiongroups">
+        <item>GET: List of all SectionGroups</item>
+        <item>Queries for all sectionGroups under all notebooks in OneNote and returns a list. SectionGroups are not very common, so you may see 0 results</item>
+        <item>http://dev.onenote.com/docs#/reference/get-sectiongroups</item>
+        <item>beta</item>
+        <item>v1.0</item>
+    </string-array>
+    <string-array name="list_sectiongroups_in_a_notebook">
+        <item>GET: List of all SectionGroups in a notebook</item>
+        <item>Queries for all sectionGroups under a notebook in OneNote and returns a list. SectionGroups are not very common, so you may see 0 results</item>
+        <item>http://dev.onenote.com/docs#/reference/get-sectiongroups</item>
+        <item>beta</item>
+        <item>v1.0</item>
+    </string-array>
+</resources>

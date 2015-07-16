@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">OneNote REST Demo</string>
+    <string name="title_snippet_detail">Snippet Detail</string>
+    <string name="beta">BETA</string>
+    <string name="run">Run</string>
+    <string name="req_url">Request URL</string>
+    <string name="req_headers">Request Headers</string>
+    <string name="req_body">Request Body</string>
+    <string name="response">Response</string>
+    <string name="response_headers">Response Headers</string>
+    <string name="response_body">Response Body</string>
+    <string name="docs"><u>Documentation</u></string>
+    <string name="status_code">HTTP Status Code</string>
+    <string name="msa_hint">Sign in with the account you use for OneDrive, Xbox Live, Outlook.com, or other Microsoft services</string>
+    <string name="o365_hint">Sign in with the account provided by your work or school to use with Office 365 or other Microsoft services</string>
+    <string name="org_acct">Organizational Account</string>
+    <string name="microsoft_acct">Microsoft Account</string>
+    <string name="launch_onenote">Open in OneNote</string>
+    <string name="launch_browser">Open in browser</string>
+    <string name="quick_links">Quick Links</string>
+    <string name="quick_link_unavailable">Quick Link Unavailable</string>
+    <string name="quick_link_error">Either no network call has been made or the request doesn\'t support this action.</string>
+    <string name="dismiss">Dismiss</string>
+    <string name="clippy">copied to clipboard</string>
+</resources>
