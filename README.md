@@ -90,5 +90,14 @@ To use the Android REST API explorer, you need the following:
 ##Azure client application registration
 Each client application that you register with Azure can have its own unique set of permissions, application title, and redirect URL. Unless you have an existing application registration that uses the same combination of permissions, title, and URL, you should create a new registration for each app.
 
+* [Register a native client application in Azure Active Directory](https://msdn.microsoft.com/library/azure/dn132599.aspx#) and [assign the required prmissions](https://github.com/OfficeDev/O365-Android-Snippets/wiki/Grant-permission-for-the-snippet-application-in-Azure) to the sample application in Azure.
+
+> Note: Be sure to select the **native client application** on step 5 of the Azure Management Portal azure application procedure. 
+
+##Open the project using Android Studio
+Open the project by importing the settings.gradle file.
+
+1. Install [Android Studio](http://developer.android.com/tools/studio/index.html#install-updates) and add the Android SDK packages according to the [instructions](http://developer.android.com/sdk/installing/adding-packages.html) on developer.android.com
+
 
 
