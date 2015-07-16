@@ -1,1 +1,1 @@
-include ':app', ':O365-auth', ':onenoteapi', ':onenotevos'
+include ':app', ':O365-auth', ':onenoteapi', ':onenotevos', ':msa-auth'
