@@ -20,6 +20,7 @@ public class PatchCommandSerializer implements JsonSerializer<PatchCommand> {
         result.add("Target", new JsonPrimitive(patchCommand.getTarget()));
         result.add("Action", new JsonPrimitive(patchCommand.getAction()));
         result.add("Content", new JsonPrimitive(patchCommand.getContent()));
+        result.add("Position", new JsonPrimitive(patchCommand.getPosition()));
 
         JsonArray jsonArray = new JsonArray();
         jsonArray.add(result);
@@ -29,7 +30,7 @@ public class PatchCommandSerializer implements JsonSerializer<PatchCommand> {
 }
 // *********************************************************
 //
-// O365-Android-OneNote-Rest, https://github.com/OfficeDev/O365-Android-OneNote-Rest
+// Android-REST-API-Explorer, https://github.com/OneNoteDev/Android-REST-API-Explorer
 //
 // Copyright (c) Microsoft Corporation
 // All rights reserved.
