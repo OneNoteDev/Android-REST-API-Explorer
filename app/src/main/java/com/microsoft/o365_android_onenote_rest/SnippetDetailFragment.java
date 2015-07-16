@@ -178,7 +178,7 @@ public class SnippetDetailFragment<T, Result>
 
     @OnClick(txt_hyperlink)
     public void onDocsLinkClicked(TextView textView) {
-        launchUrl(Uri.parse(mItem.mUrl));
+        launchUrl(Uri.parse(mItem.getUrl()));
     }
 
     private void launchUrl(Uri uri) {
@@ -200,7 +200,7 @@ public class SnippetDetailFragment<T, Result>
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_snippet_detail, container, false);
         ButterKnife.inject(this, rootView);
-        mSnippetDescription.setText(mItem.mDesc);
+        mSnippetDescription.setText(mItem.getDescription());
         if (Input.Spinner == mItem.mInputArgs) {
             mSpinner.setVisibility(VISIBLE);
         } else if (Input.Text == mItem.mInputArgs) {
@@ -218,7 +218,7 @@ public class SnippetDetailFragment<T, Result>
         if (null != getActivity() && getActivity() instanceof AppCompatActivity) {
             AppCompatActivity activity = (AppCompatActivity) getActivity();
             if (null != activity.getSupportActionBar()) {
-                activity.getSupportActionBar().setTitle(mItem.mName);
+                activity.getSupportActionBar().setTitle(mItem.getName());
             }
         }
     }

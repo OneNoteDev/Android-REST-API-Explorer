@@ -354,7 +354,7 @@ public abstract class PagesSnippet<Result> extends AbstractSnippet<PagesService,
                         command.setAction("append");
                         command.setTarget("body");
                         command.setPosition("after");
-                        command.setContent("<p>New trailing content </p>");
+                        command.setContent("New trailing content");
                         com.google.gson.Gson gson = new GsonBuilder()
                                 .registerTypeAdapter(
                                         PatchCommand.class,
@@ -964,7 +964,7 @@ public abstract class PagesSnippet<Result> extends AbstractSnippet<PagesService,
 }
 // *********************************************************
 //
-// O365-Android-Snippets, https://github.com/OfficeDev/O365-Android-OneNote-Rest
+// Android-REST-API-Explorer, https://github.com/OneNoteDev/Android-REST-API-Explorer
 //
 // Copyright (c) Microsoft Corporation
 // All rights reserved.

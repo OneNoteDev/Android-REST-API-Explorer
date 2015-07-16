@@ -297,7 +297,7 @@ public abstract class NotebookSnippet<Result> extends AbstractSnippet<NotebooksS
 }
 // *********************************************************
 //
-// O365-Android-Snippets, https://github.com/OfficeDev/O365-Android-OneNote-Rest
+// Android-REST-API-Explorer, https://github.com/OneNoteDev/Android-REST-API-Explorer
 //
 // Copyright (c) Microsoft Corporation
 // All rights reserved.

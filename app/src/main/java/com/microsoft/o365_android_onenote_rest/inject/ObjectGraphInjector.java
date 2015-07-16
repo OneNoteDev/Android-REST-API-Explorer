@@ -1,3 +1,7 @@
+/*
+*  Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See full license at the bottom of this file.
+*/
+
 package com.microsoft.o365_android_onenote_rest.inject;
 
 /*
@@ -11,7 +15,7 @@ public interface ObjectGraphInjector {
 }
 // *********************************************************
 //
-// O365-Android-Art Curator
+// Android-REST-API-Explorer, https://github.com/OneNoteDev/Android-REST-API-Explorer
 //
 // Copyright (c) Microsoft Corporation
 // All rights reserved.

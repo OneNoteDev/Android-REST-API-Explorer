@@ -98,6 +98,27 @@ Each client application that you register with Azure can have its own unique set
 Open the project by importing the settings.gradle file.
 
 1. Install [Android Studio](http://developer.android.com/tools/studio/index.html#install-updates) and add the Android SDK packages according to the [instructions](http://developer.android.com/sdk/installing/adding-packages.html) on developer.android.com
+2. Download or clone the [Android REST API Explorer](https://github.com/OneNoteDev/Android-REST-API-Explorer).
+3. Start Android Studio.
+4. From the **Welcome to Android Studio** dialog box, choose **Import project (Eclipse ADT, Gradle, etc)**.
+5. Respond to the dialog ("Gradle Sync: Gradle settings for this project are not configured yet. Would you like the project to use the Gradle wrapper? ") by clicking the OK button to use the Gradle wrapper
+5. Select the **settings.gradle** file in the **Android-REST-API-Explorer** folder and click **OK**.
+6. Open the BaseActivity.java file in the com.microsoft.o365_android_onenote_rest package.
+7. Find the CLIENT_ID string argument in the builder.clientId() method and set its String value equal to the client id you registered in step&nbsp;1.
+8. Find the REDIRECT_URI string argument in the builder.redirectUri() method and set its String value equal to the redirect URI you registered in step&nbsp;1.
+
+    ![Office 365 Snippet sample](/readme-images/clientid_redirect.tiff "Client ID and Redirect URI values in Constants file")
+
+> Note: The REST API Explorer project declares the required dependencies using Gradle. The dependencies are:
+> * The [Azure Active Directory Authentication Library for Android](https://github.com/AzureAD/azure-activedirectory-library-for-android).
+> * The [Office 365 SDK for Android](https://github.com/OfficeDev/Office-365-SDK-for-Android).
+> * The [Google Core Libraries for Java 18.0 API](https://code.google.com/p/guava-libraries/).
+> * [Jake Wharton - butterknife](https://github.com/JakeWharton/butterknife)
+> * [Jake Wharton - timber](https://github.com/JakeWharton/timber) 
+> * [Square - Dagger](https://github.com/square/dagger)
+> * [Square -retrofit](https://github.com/square/retrofit)
+> * [Square - Okhttp](https://github.com/square/okhttp)
+
 
 
 
