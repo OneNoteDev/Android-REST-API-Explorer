@@ -119,6 +119,34 @@ Open the project by importing the settings.gradle file.
 > * [Square -retrofit](https://github.com/square/retrofit)
 > * [Square - Okhttp](https://github.com/square/okhttp)
 
+##Run the project
+Once you've built the REST explorer project you can run it on an emulator or device.
 
+1. Run the project
+2. Click the authentication account that you want to sign in to
+3. Enter your credentials
+4. Click a REST operation in the main activity to show operation details
+5. Choose a notebook, section, or page from the spinner below the run button if the spinner is shown on the page
+6. Enter a text value in the text box below the run button if the text box is shown on the page.
+7. Click the run button to start the REST operation and wait for the operation to finish.
+8. Click the mouse in the Response Headers or Response Body text boxes to copy the box contents to the emulator/device clipboard.
+9. Press the Back button on the REST Explorer toolbar to return to the REST operation list.
+10. (Optional) Click the overflow menu to get the Disconnect menu option.
 
+##Understand the code
+The REST API Explorer project uses these classes to manage interactions with OneNote for Enterprise and consumer OneNote:
+#Snippet classes
 
+* [NotebookSnippet](https://github.com/OneNoteDev/Android-REST-API-Explorer/blob/master/app/src/main/java/com/microsoft/o365_android_onenote_rest/snippet/NotebookSnippet.java)
+* [SectionGroupSnippet](https://github.com/OneNoteDev/Android-REST-API-Explorer/blob/master/app/src/main/java/com/microsoft/o365_android_onenote_rest/snippet/SectionGroupSnippet.java)
+* [SectionSnippet](https://github.com/OneNoteDev/Android-REST-API-Explorer/blob/master/app/src/main/java/com/microsoft/o365_android_onenote_rest/snippet/SectionSnippet.java)
+* [PagesSnippet](https://github.com/OneNoteDev/Android-REST-API-Explorer/blob/master/app/src/main/java/com/microsoft/o365_android_onenote_rest/snippet/PagesSnippet.java)
+* [AbstractSnippet](https://github.com/OneNoteDev/Android-REST-API-Explorer/blob/master/app/src/main/java/com/microsoft/o365_android_onenote_rest/snippet/AbstractSnippet.java)
+
+These classes set the state required to make the calls on the OneNote service classes described below. Where necessary, a snippet class gets the notebooks, sections, or pages to load the spinner control shown on the snippet detail fragment for a given REST operation.
+
+#OneNote service classes
+These classes make the Retrofit library calls that generate the REST queries and handle operation results.
+* [NotebooksService](https://github.com/OneNoteDev/Android-REST-API-Explorer/blob/master/onenoteapi/src/main/java/com/microsoft/onenoteapi/service/NotebooksService.java)
+* [SectionGroupsService](https://github.com/OneNoteDev/Android-REST-API-Explorer/blob/master/onenoteapi/src/main/java/com/microsoft/onenoteapi/service/SectionGroupsService.java)
+* []()
