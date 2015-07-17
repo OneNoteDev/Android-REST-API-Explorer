@@ -23,11 +23,11 @@ public abstract class AbstractSnippet<Service, Result> {
     public final Service mService;
     public final Input mInputArgs;
 
-    private final int mNameIndex = 0;
-    private final int mDescIndex = 1;
-    private final int mUrlIndex = 2;
-    private final int mO365VersionIndex = 3;
-    private final int mMSAVersionIndex = 4;
+    private static final int sNameIndex = 0;
+    private static final int sDescIndex = 1;
+    private static final int sUrlIndex = 2;
+    private static final int sO365VersionIndex = 3;
+    private static final int sMSAVersionIndex = 4;
 
 
     /**
@@ -81,11 +81,11 @@ public abstract class AbstractSnippet<Service, Result> {
             String[] params = SnippetApp.getApp().getResources().getStringArray(descriptionArray);
 
             try {
-                mName = params[mNameIndex];
-                mDesc = params[mDescIndex];
-                mUrl = params[mUrlIndex];
-                mO365Version = params[mO365VersionIndex];
-                mMSAVersion = params[mMSAVersionIndex];
+                mName = params[sNameIndex];
+                mDesc = params[sDescIndex];
+                mUrl = params[sUrlIndex];
+                mO365Version = params[sO365VersionIndex];
+                mMSAVersion = params[sMSAVersionIndex];
             } catch (IndexOutOfBoundsException ex) {
                 throw new RuntimeException(
                         "Invalid array in "
