@@ -3,8 +3,8 @@ package com.microsoft.o365_android_onenote_rest.inject;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.microsoft.o365_android_onenote_rest.SignInActivity;
 import com.microsoft.o365_android_onenote_rest.application.SnippetApp;
+import com.microsoft.o365_android_onenote_rest.util.SharedPrefsUtil;
 import com.microsoft.onenoteapi.service.GsonDateTime;
 
 import dagger.Module;
@@ -45,7 +45,7 @@ public class AppModule {
                 final SharedPreferences preferences
                         = SnippetApp.getApp().getSharedPreferences(PREFS, Context.MODE_PRIVATE);
                 final String token =
-                        preferences.getString(SignInActivity.PREF_AUTH_TOKEN, null);
+                        preferences.getString(SharedPrefsUtil.PREF_AUTH_TOKEN, null);
                 if (null != token) {
                     request.addHeader("Authorization", "Bearer " + token);
                 }

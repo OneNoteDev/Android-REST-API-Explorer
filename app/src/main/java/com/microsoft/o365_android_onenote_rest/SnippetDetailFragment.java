@@ -21,10 +21,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.microsoft.AuthenticationManager;
+import com.microsoft.aad.adal.AuthenticationCallback;
+import com.microsoft.aad.adal.AuthenticationResult;
 import com.microsoft.o365_android_onenote_rest.snippet.AbstractSnippet;
 import com.microsoft.o365_android_onenote_rest.snippet.Callback;
 import com.microsoft.o365_android_onenote_rest.snippet.Input;
 import com.microsoft.o365_android_onenote_rest.snippet.SnippetContent;
+import com.microsoft.o365_android_onenote_rest.util.SharedPrefsUtil;
 import com.microsoft.onenotevos.BaseVO;
 
 import org.apache.commons.io.IOUtils;
@@ -39,6 +43,8 @@ import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -69,7 +75,7 @@ import static com.microsoft.o365_android_onenote_rest.R.string.response_body;
 import static com.microsoft.o365_android_onenote_rest.R.string.response_headers;
 
 public class SnippetDetailFragment<T, Result>
-        extends BaseFragment implements Callback<Result> {
+        extends BaseFragment implements Callback<Result>, AuthenticationCallback<AuthenticationResult> {
 
     public static final String ARG_ITEM_ID = "item_id";
     public static final String ARG_TEXT_INPUT = "TextInput";
@@ -105,6 +111,9 @@ public class SnippetDetailFragment<T, Result>
 
     @InjectView(btn_run)
     protected Button mRunButton;
+
+    @Inject
+    protected AuthenticationManager mAuthenticationManager;
 
     boolean setupDidRun = false;
     private AbstractSnippet<T, Result> mItem;
@@ -226,15 +235,7 @@ public class SnippetDetailFragment<T, Result>
     @Override
     public void onResume() {
         super.onResume();
-        if (mItem.mInputArgs == Input.None) {
-            mRunButton.setEnabled(true);
-        } else {
-            if (!setupDidRun) {
-                setupDidRun = true;
-                mProgressbar.setVisibility(View.VISIBLE);
-                mItem.setUp(AbstractSnippet.sServices, getSetUpCallback());
-            }
-        }
+        mAuthenticationManager.connect(this);
     }
 
     private retrofit.Callback<String[]> getSetUpCallback() {
@@ -402,5 +403,27 @@ public class SnippetDetailFragment<T, Result>
             throw new IllegalStateException("No input modifier to match type");
         }
         return args;
+    }
+
+    @Override
+    public void onSuccess(AuthenticationResult authenticationResult) {
+        SharedPrefsUtil.persistAuthToken(authenticationResult);
+        if (mItem.mInputArgs == Input.None) {
+            mRunButton.setEnabled(true);
+        } else {
+            if (!setupDidRun) {
+                setupDidRun = true;
+                mProgressbar.setVisibility(View.VISIBLE);
+                mItem.setUp(AbstractSnippet.sServices, getSetUpCallback());
+            }
+        }
+    }
+
+    @Override
+    public void onError(Exception e) {
+        if (!isAdded()) {
+            return;
+        }
+        Toast.makeText(getActivity(), "Failed to acquire token...", Toast.LENGTH_SHORT).show();
     }
 }
