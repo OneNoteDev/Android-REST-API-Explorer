@@ -22,4 +22,7 @@
     <string name="quick_link_error">Either no network call has been made or the request doesn\'t support this action.</string>
     <string name="dismiss">Dismiss</string>
     <string name="clippy">copied to clipboard</string>
+    <string name="token_err_title">Failed to acquire api token</string>
+    <string name="token_err_msg">Office 365 has either failed to refresh the access token or is unavailable. To view the extended stacktrace, click \'Dismiss\' then view the Response Body section</string>
+    <string name="disconnect">Disconnect</string>
 </resources>

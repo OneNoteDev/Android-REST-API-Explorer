@@ -1,8 +1,10 @@
 package com.microsoft.o365_android_onenote_rest;
 
 import android.annotation.TargetApi;
+import android.app.AlertDialog;
 import android.content.ClipData;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
@@ -424,6 +426,16 @@ public class SnippetDetailFragment<T, Result>
         if (!isAdded()) {
             return;
         }
-        Toast.makeText(getActivity(), "Failed to acquire token...", Toast.LENGTH_SHORT).show();
+        displayThrowable(e);
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle(R.string.token_err_title)
+                .setMessage(R.string.token_err_msg)
+                .setPositiveButton(R.string.dismiss, null)
+                .setNegativeButton(R.string.disconnect, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        mAuthenticationManager.disconnect();
+                    }
+                }).show();
     }
 }
