@@ -1,6 +1,5 @@
 # Android-REST-API-Explorer
 OneNote REST API Explorer for Android
-[![Build Status](https://travis-ci.org/OneNoteDev/Android-REST-API-Explorer.svg?branch=travis-integration)](https://travis-ci.org/OneNoteDev/Android-REST-API-Explorer)
 
 **Table of contents**
 
