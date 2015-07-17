@@ -32,7 +32,8 @@ public abstract class AbstractSnippet<Service, Result> {
 
     /**
      * Snippet constructor
-     * @param category Snippet category (Notebook, sectionGroup, section, page)
+     *
+     * @param category         Snippet category (Notebook, sectionGroup, section, page)
      * @param descriptionArray The String array for the specified snippet
      */
     public AbstractSnippet(
@@ -49,9 +50,10 @@ public abstract class AbstractSnippet<Service, Result> {
 
     /**
      * Snippet constructor
-     * @param category Snippet category (Notbook, sectionGroup, section, page)
+     *
+     * @param category         Snippet category (Notbook, sectionGroup, section, page)
      * @param descriptionArray The String array for the specified snippet
-     * @param inputArgs any input arguments
+     * @param inputArgs        any input arguments
      */
     public AbstractSnippet(
             SnippetCategory<Service> category,
@@ -70,6 +72,7 @@ public abstract class AbstractSnippet<Service, Result> {
     /**
      * Gets the items from the specified snippet XML string array and stores the values
      * in private class fields
+     *
      * @param category
      * @param descriptionArray
      */
@@ -77,22 +80,20 @@ public abstract class AbstractSnippet<Service, Result> {
         if (null != descriptionArray) {
             String[] params = SnippetApp.getApp().getResources().getStringArray(descriptionArray);
 
-            try{
+            try {
                 mName = params[mNameIndex];
                 mDesc = params[mDescIndex];
                 mUrl = params[mUrlIndex];
                 mO365Version = params[mO365VersionIndex];
                 mMSAVersion = params[mMSAVersionIndex];
-            }
-            catch (IndexOutOfBoundsException ex){
+            } catch (IndexOutOfBoundsException ex) {
                 throw new RuntimeException(
                         "Invalid array in "
                                 + category.mSection
-                                +" snippet XML file"
+                                + " snippet XML file"
                         , ex);
             }
-        }
-        else {
+        } else {
             mName = category.mSection;
             mDesc = mUrl = null;
             mO365Version = null;
@@ -137,18 +138,22 @@ public abstract class AbstractSnippet<Service, Result> {
     }
 
 
-    public  String getName(){
+    public String getName() {
         return mName;
     }
-    public String getDescription(){
+
+    public String getDescription() {
         return mDesc;
     }
-    public String getUrl(){
+
+    public String getUrl() {
         return mUrl;
     }
-    public String getSection(){
+
+    public String getSection() {
         return mSection;
     }
+
     public abstract void request(Service service, Callback<Result> callback);
 
 }

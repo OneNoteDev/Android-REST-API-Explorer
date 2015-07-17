@@ -15,7 +15,7 @@ public abstract class BaseFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         ((BaseActivity) getActivity()).inject(this);
     }
-    
+
 }
 // *********************************************************
 //

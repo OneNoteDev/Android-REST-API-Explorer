@@ -25,4 +25,10 @@
     <string name="token_err_title">Failed to acquire api token</string>
     <string name="token_err_msg">Office 365 has either failed to refresh the access token or is unavailable. To view the extended stacktrace, click \'Dismiss\' then view the Response Body section</string>
     <string name="disconnect">Disconnect</string>
+    <string name="wl_signin">Single sign-in behavior. With single sign-in, users who are already signed in to Live Connect are also signed in to your website.</string>
+    <string name="wl_offline_access">The ability of an app to read and update a user\'s info at any time. Without this scope, an app can access the user\'s info only while the user is signed in to Live Connect and is using your app.</string>
+    <string name="on_create">Permission to view a list of the user’s OneNote notebooks and create new pages, but not to view or edit existing pages. Gives an app the ability to enumerate the user’s notebook hierarchy and create pages in any location.</string>
+    <string name="on_update_by_app">Permission to create, view, and modify all pages created by the app.</string>
+    <string name="on_update">Permission to create, view, and modify any content in the user’s OneNote notebooks and pages.</string>
+    <string name="on_base">Permission to view OneNote notebooks and pages but not to modify them.</string>
 </resources>

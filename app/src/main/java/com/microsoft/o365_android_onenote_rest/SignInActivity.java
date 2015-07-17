@@ -5,18 +5,25 @@ package com.microsoft.o365_android_onenote_rest;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
 import com.microsoft.aad.adal.AuthenticationCallback;
 import com.microsoft.aad.adal.AuthenticationResult;
+import com.microsoft.live.LiveAuthException;
+import com.microsoft.live.LiveAuthListener;
+import com.microsoft.live.LiveConnectSession;
+import com.microsoft.live.LiveStatus;
 import com.microsoft.o365_android_onenote_rest.util.SharedPrefsUtil;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import timber.log.Timber;
+
+import static com.microsoft.o365_android_onenote_rest.R.id.msa_signin;
+import static com.microsoft.o365_android_onenote_rest.R.id.o365_signin;
 
 public class SignInActivity
         extends BaseActivity
-        implements AuthenticationCallback<AuthenticationResult> {
+        implements AuthenticationCallback<AuthenticationResult>, LiveAuthListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,9 +32,14 @@ public class SignInActivity
         ButterKnife.inject(this);
     }
 
-    @OnClick(R.id.o365_signin)
-    public void onSignInClicked(View view) {
+    @OnClick(o365_signin)
+    public void onSignInO365Clicked() {
         mAuthenticationManager.connect(this);
+    }
+
+    @OnClick(msa_signin)
+    public void onSignInMsaClicked() {
+        mLiveAuthClient.login(this, sSCOPES, this);
     }
 
     @Override
@@ -41,6 +53,21 @@ public class SignInActivity
     @Override
     public void onError(Exception e) {
         e.printStackTrace();
+    }
+
+    @Override
+    public void onAuthComplete(LiveStatus status,
+                               LiveConnectSession session,
+                               Object userState) {
+        Timber.d("MSA: Auth Complete...");
+        Timber.d(status.toString());
+        Timber.d(session.toString());
+        Timber.d(userState.toString());
+    }
+
+    @Override
+    public void onAuthError(LiveAuthException exception, Object userState) {
+        exception.printStackTrace();
     }
 }
 // *********************************************************

@@ -6,13 +6,36 @@ package com.microsoft.o365_android_onenote_rest;
 
 import com.microsoft.AzureADModule;
 import com.microsoft.AzureAppCompatActivity;
+import com.microsoft.live.LiveAuthClient;
 import com.microsoft.o365_android_onenote_rest.application.SnippetApp;
 import com.microsoft.o365_android_onenote_rest.inject.AzureModule;
 import com.microsoft.o365_android_onenote_rest.inject.ObjectGraphInjector;
+import com.microsoft.o365_android_onenote_rest.model.Scope;
+
+import java.util.ArrayList;
+
+import javax.inject.Inject;
 
 import dagger.ObjectGraph;
+import timber.log.Timber;
 
-public abstract class BaseActivity extends AzureAppCompatActivity implements ObjectGraphInjector {
+public abstract class BaseActivity
+        extends AzureAppCompatActivity
+        implements ObjectGraphInjector {
+
+    @Inject
+    protected LiveAuthClient mLiveAuthClient;
+
+    protected static final Iterable<String> sSCOPES = new ArrayList<String>() {{
+        for (Scope.wl scope : Scope.wl.values()) {
+            Timber.i("Adding scope: " + scope);
+            add(scope.getScope());
+        }
+        for (Scope.office scope : Scope.office.values()) {
+            Timber.i("Adding scope: " + scope);
+            add(scope.getScope());
+        }
+    }};
 
     @Override
     protected AzureADModule getAzureADModule() {
