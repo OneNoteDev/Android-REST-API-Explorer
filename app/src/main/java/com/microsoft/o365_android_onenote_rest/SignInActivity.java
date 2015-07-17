@@ -60,9 +60,17 @@ public class SignInActivity
                                LiveConnectSession session,
                                Object userState) {
         Timber.d("MSA: Auth Complete...");
-        Timber.d(status.toString());
-        Timber.d(session.toString());
-        Timber.d(userState.toString());
+        if (null != status) {
+            Timber.d(status.toString());
+        }
+        if (null != session) {
+            Timber.d(session.toString());
+        }
+        if (null != userState) {
+            Timber.d(userState.toString());
+        }
+        // TODO persist this session
+        // TODO refresh this session same as org login
     }
 
     @Override
