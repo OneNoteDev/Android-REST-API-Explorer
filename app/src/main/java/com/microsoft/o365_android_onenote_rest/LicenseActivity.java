@@ -19,7 +19,7 @@ public class LicenseActivity extends AppCompatActivity {
 
         @Override
         protected List<BaseLicense> getLicenses() {
-            return getLicenses(getActivity(), R.array.appcompat, R.array.live_auth);
+            return getLicenses(getActivity(), R.array.appcompat);
         }
     }
 }
