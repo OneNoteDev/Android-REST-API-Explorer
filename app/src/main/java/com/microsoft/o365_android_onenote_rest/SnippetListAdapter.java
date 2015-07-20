@@ -15,6 +15,8 @@ import com.microsoft.o365_android_onenote_rest.snippet.SnippetContent;
 
 public class SnippetListAdapter extends BaseAdapter {
 
+    public static final String UNAVAILABLE = "unavailable";
+    public static final String BETA = "beta";
     private Context mContext;
     private LayoutInflater mLayoutInflater;
 
@@ -35,7 +37,8 @@ public class SnippetListAdapter extends BaseAdapter {
 
     @Override
     public boolean isEnabled(int position) {
-        return null != getItem(position).getDescription();
+        return null != getItem(position).getDescription()
+                && !hasStatus(getItem(position), UNAVAILABLE);
     }
 
     @Override
@@ -57,12 +60,20 @@ public class SnippetListAdapter extends BaseAdapter {
         name.setText(clickedSnippet.getName());
 
         if (!isSegment) {
-            // TODO determine beta status??
-            View betaIndicator = convertView.findViewById(R.id.beta_indicator);
-            betaIndicator.setVisibility(View.GONE);
+            TextView betaIndicator = (TextView) convertView.findViewById(R.id.beta_indicator);
+            if (hasStatus(clickedSnippet, UNAVAILABLE)) {
+                betaIndicator.setText(mContext.getString(R.string.unavailable).toUpperCase());
+            }
+            if (hasStatus(clickedSnippet, BETA)) {
+                betaIndicator.setVisibility(View.VISIBLE);
+            }
         }
 
         return convertView;
+    }
+
+    private boolean hasStatus(AbstractSnippet<?, ?> clickedSnippet, String unavailable) {
+        return clickedSnippet.getVersion().equalsIgnoreCase(unavailable);
     }
 
     private boolean isWrongViewType(boolean isSegment, View convertView) {
