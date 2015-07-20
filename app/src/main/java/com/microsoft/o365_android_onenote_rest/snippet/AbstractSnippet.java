@@ -131,7 +131,7 @@ public abstract class AbstractSnippet<Service, Result> {
      *
      * @return
      */
-    protected String getVersion() {
+    public String getVersion() {
         return User.isMsa() ? mMSAVersion : mO365Version;
     }
 

@@ -31,4 +31,5 @@
     <string name="on_update_by_app">Permission to create, view, and modify all pages created by the app.</string>
     <string name="on_update">Permission to create, view, and modify any content in the user’s OneNote notebooks and pages.</string>
     <string name="on_base">Permission to view OneNote notebooks and pages but not to modify them.</string>
+    <string name="unavailable">unavailable</string>
 </resources>
