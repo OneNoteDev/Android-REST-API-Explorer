@@ -25,6 +25,8 @@ public class SnippetListFragment extends ListFragment {
         void onItemSelected(int position);
 
         void onDisconnectClicked();
+
+        void onOssClicked();
     }
 
     private static Callbacks sDummyCallbacks = new Callbacks() {
@@ -34,6 +36,11 @@ public class SnippetListFragment extends ListFragment {
 
         @Override
         public void onDisconnectClicked() {
+        }
+
+        @Override
+        public void onOssClicked() {
+
         }
     };
 
@@ -57,6 +64,9 @@ public class SnippetListFragment extends ListFragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (R.id.disconnect == item.getItemId()) {
             mCallbacks.onDisconnectClicked();
+            return true;
+        } else if (R.id.oss == item.getItemId()) {
+            mCallbacks.onOssClicked();
             return true;
         }
         return super.onOptionsItemSelected(item);
