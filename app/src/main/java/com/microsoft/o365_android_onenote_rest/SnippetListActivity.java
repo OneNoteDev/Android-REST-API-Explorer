@@ -76,6 +76,12 @@ public class SnippetListActivity extends BaseActivity
         login.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(login);
     }
+
+    @Override
+    public void onOssClicked() {
+        Intent licenseActivity = new Intent(this, LicenseActivity.class);
+        startActivity(licenseActivity);
+    }
 }
 // *********************************************************
 //
