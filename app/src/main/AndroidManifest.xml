@@ -20,6 +20,7 @@
         <activity
             android:name=".SnippetListActivity"
             android:label="@string/app_name" />
+        <activity android:name=".LicenseActivity" />
         <activity
             android:name=".SnippetDetailActivity"
             android:label="@string/title_snippet_detail"

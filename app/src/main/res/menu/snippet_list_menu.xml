@@ -5,4 +5,9 @@
         android:id="@+id/disconnect"
         android:title="@string/disconnect"
         app:showAsAction="never" />
+
+    <item
+        android:id="@+id/oss"
+        android:title="@string/oss"
+        app:showAsAction="never" />
 </menu>
