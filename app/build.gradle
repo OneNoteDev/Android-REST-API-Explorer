@@ -32,6 +32,9 @@ dependencies {
         exclude group: 'com.android.support'
     }
 
+    // MSA Authentication
+    compile 'com.microsoft.orc:live-auth:0.14.2'
+
     // Dagger compiler for DI annotation support
     provided 'com.squareup.dagger:dagger-compiler:1.2.2'
 

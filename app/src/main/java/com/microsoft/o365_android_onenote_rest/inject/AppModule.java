@@ -7,9 +7,12 @@ package com.microsoft.o365_android_onenote_rest.inject;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.microsoft.live.LiveAuthClient;
 import com.microsoft.o365_android_onenote_rest.application.SnippetApp;
 import com.microsoft.o365_android_onenote_rest.util.SharedPrefsUtil;
 import com.microsoft.onenoteapi.service.GsonDateTime;
+
+import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
@@ -19,10 +22,14 @@ import retrofit.converter.Converter;
 import retrofit.converter.GsonConverter;
 
 @Module(library = true,
-        injects = {SnippetApp.class})
+        injects = {
+                SnippetApp.class
+        }
+)
 public class AppModule {
 
     public static final String PREFS = "com.microsoft.o365_android_onenote_rest";
+    public static final String MSA_CLIENT_ID = "000000004015DC58";
 
     @Provides
     public String providesRestEndpoint() {
@@ -55,6 +62,12 @@ public class AppModule {
                 }
             }
         };
+    }
+
+    @Provides
+    @Singleton
+    public LiveAuthClient providesLiveAuthClient() {
+        return new LiveAuthClient(SnippetApp.getApp(), MSA_CLIENT_ID);
     }
 }
 // *********************************************************

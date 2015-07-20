@@ -5,6 +5,7 @@
 package com.microsoft.o365_android_onenote_rest.snippet;
 
 import com.microsoft.o365_android_onenote_rest.application.SnippetApp;
+import com.microsoft.o365_android_onenote_rest.util.User;
 import com.microsoft.onenoteapi.service.NotebooksService;
 import com.microsoft.onenoteapi.service.PagesService;
 import com.microsoft.onenoteapi.service.SectionGroupsService;
@@ -23,16 +24,17 @@ public abstract class AbstractSnippet<Service, Result> {
     public final Service mService;
     public final Input mInputArgs;
 
-    private final int mNameIndex = 0;
-    private final int mDescIndex = 1;
-    private final int mUrlIndex = 2;
-    private final int mO365VersionIndex = 3;
-    private final int mMSAVersionIndex = 4;
+    private static final int sNameIndex = 0;
+    private static final int sDescIndex = 1;
+    private static final int sUrlIndex = 2;
+    private static final int sO365VersionIndex = 3;
+    private static final int sMSAVersionIndex = 4;
 
 
     /**
      * Snippet constructor
-     * @param category Snippet category (Notebook, sectionGroup, section, page)
+     *
+     * @param category         Snippet category (Notebook, sectionGroup, section, page)
      * @param descriptionArray The String array for the specified snippet
      */
     public AbstractSnippet(
@@ -49,9 +51,10 @@ public abstract class AbstractSnippet<Service, Result> {
 
     /**
      * Snippet constructor
-     * @param category Snippet category (Notbook, sectionGroup, section, page)
+     *
+     * @param category         Snippet category (Notbook, sectionGroup, section, page)
      * @param descriptionArray The String array for the specified snippet
-     * @param inputArgs any input arguments
+     * @param inputArgs        any input arguments
      */
     public AbstractSnippet(
             SnippetCategory<Service> category,
@@ -70,6 +73,7 @@ public abstract class AbstractSnippet<Service, Result> {
     /**
      * Gets the items from the specified snippet XML string array and stores the values
      * in private class fields
+     *
      * @param category
      * @param descriptionArray
      */
@@ -77,22 +81,20 @@ public abstract class AbstractSnippet<Service, Result> {
         if (null != descriptionArray) {
             String[] params = SnippetApp.getApp().getResources().getStringArray(descriptionArray);
 
-            try{
-                mName = params[mNameIndex];
-                mDesc = params[mDescIndex];
-                mUrl = params[mUrlIndex];
-                mO365Version = params[mO365VersionIndex];
-                mMSAVersion = params[mMSAVersionIndex];
-            }
-            catch (IndexOutOfBoundsException ex){
+            try {
+                mName = params[sNameIndex];
+                mDesc = params[sDescIndex];
+                mUrl = params[sUrlIndex];
+                mO365Version = params[sO365VersionIndex];
+                mMSAVersion = params[sMSAVersionIndex];
+            } catch (IndexOutOfBoundsException ex) {
                 throw new RuntimeException(
                         "Invalid array in "
                                 + category.mSection
-                                +" snippet XML file"
+                                + " snippet XML file"
                         , ex);
             }
-        }
-        else {
+        } else {
             mName = category.mSection;
             mDesc = mUrl = null;
             mO365Version = null;
@@ -130,25 +132,26 @@ public abstract class AbstractSnippet<Service, Result> {
      * @return
      */
     protected String getVersion() {
-        //TODO get authentication location logic
-        //and condition returned value on result
-        //At the moment, return the O365 version
-        return mO365Version;
+        return User.isMsa() ? mMSAVersion : mO365Version;
     }
 
 
-    public  String getName(){
+    public String getName() {
         return mName;
     }
-    public String getDescription(){
+
+    public String getDescription() {
         return mDesc;
     }
-    public String getUrl(){
+
+    public String getUrl() {
         return mUrl;
     }
-    public String getSection(){
+
+    public String getSection() {
         return mSection;
     }
+
     public abstract void request(Service service, Callback<Result> callback);
 
 }

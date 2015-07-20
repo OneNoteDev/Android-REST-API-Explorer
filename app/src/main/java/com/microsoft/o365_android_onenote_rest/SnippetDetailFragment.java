@@ -26,11 +26,17 @@ import android.widget.Toast;
 import com.microsoft.AuthenticationManager;
 import com.microsoft.aad.adal.AuthenticationCallback;
 import com.microsoft.aad.adal.AuthenticationResult;
+import com.microsoft.live.LiveAuthClient;
+import com.microsoft.live.LiveAuthException;
+import com.microsoft.live.LiveAuthListener;
+import com.microsoft.live.LiveConnectSession;
+import com.microsoft.live.LiveStatus;
 import com.microsoft.o365_android_onenote_rest.snippet.AbstractSnippet;
 import com.microsoft.o365_android_onenote_rest.snippet.Callback;
 import com.microsoft.o365_android_onenote_rest.snippet.Input;
 import com.microsoft.o365_android_onenote_rest.snippet.SnippetContent;
 import com.microsoft.o365_android_onenote_rest.util.SharedPrefsUtil;
+import com.microsoft.o365_android_onenote_rest.util.User;
 import com.microsoft.onenotevos.BaseVO;
 
 import org.apache.commons.io.IOUtils;
@@ -77,7 +83,9 @@ import static com.microsoft.o365_android_onenote_rest.R.string.response_body;
 import static com.microsoft.o365_android_onenote_rest.R.string.response_headers;
 
 public class SnippetDetailFragment<T, Result>
-        extends BaseFragment implements Callback<Result>, AuthenticationCallback<AuthenticationResult> {
+        extends BaseFragment
+        implements Callback<Result>,
+        AuthenticationCallback<AuthenticationResult>, LiveAuthListener {
 
     public static final String ARG_ITEM_ID = "item_id";
     public static final String ARG_TEXT_INPUT = "TextInput";
@@ -116,6 +124,9 @@ public class SnippetDetailFragment<T, Result>
 
     @Inject
     protected AuthenticationManager mAuthenticationManager;
+
+    @Inject
+    protected LiveAuthClient mLiveAuthClient;
 
     boolean setupDidRun = false;
     private AbstractSnippet<T, Result> mItem;
@@ -237,7 +248,11 @@ public class SnippetDetailFragment<T, Result>
     @Override
     public void onResume() {
         super.onResume();
-        mAuthenticationManager.connect(this);
+        if (User.isOrg()) {
+            mAuthenticationManager.connect(this);
+        } else if (User.isMsa()) {
+            mLiveAuthClient.loginSilent(BaseActivity.sSCOPES, this);
+        }
     }
 
     private retrofit.Callback<String[]> getSetUpCallback() {
@@ -280,18 +295,6 @@ public class SnippetDetailFragment<T, Result>
         }
         mProgressbar.setVisibility(GONE);
         displayResponse(response);
-    }
-
-    private boolean hasWebClientLink(BaseVO vo) {
-        return null != vo.links
-                && null != vo.links.oneNoteWebUrl
-                && null != vo.links.oneNoteWebUrl.href;
-    }
-
-    private boolean hasOneNoteClientLink(BaseVO vo) {
-        return null != vo.links
-                && null != vo.links.oneNoteClientUrl
-                && null != vo.links.oneNoteClientUrl.href;
     }
 
     private void displayResponse(Response response) {
@@ -410,14 +413,16 @@ public class SnippetDetailFragment<T, Result>
     @Override
     public void onSuccess(AuthenticationResult authenticationResult) {
         SharedPrefsUtil.persistAuthToken(authenticationResult);
-        if (mItem.mInputArgs == Input.None) {
+        ready();
+    }
+
+    private void ready() {
+        if (Input.None == mItem.mInputArgs) {
             mRunButton.setEnabled(true);
-        } else {
-            if (!setupDidRun) {
-                setupDidRun = true;
-                mProgressbar.setVisibility(View.VISIBLE);
-                mItem.setUp(AbstractSnippet.sServices, getSetUpCallback());
-            }
+        } else if (!setupDidRun) {
+            setupDidRun = true;
+            mProgressbar.setVisibility(View.VISIBLE);
+            mItem.setUp(AbstractSnippet.sServices, getSetUpCallback());
         }
     }
 
@@ -437,5 +442,18 @@ public class SnippetDetailFragment<T, Result>
                         mAuthenticationManager.disconnect();
                     }
                 }).show();
+    }
+
+    @Override
+    public void onAuthComplete(LiveStatus status, LiveConnectSession session, Object userState) {
+        if (null != session) {
+            SharedPrefsUtil.persistAuthToken(session);
+        }
+        ready();
+    }
+
+    @Override
+    public void onAuthError(LiveAuthException exception, Object userState) {
+        onError(exception);
     }
 }

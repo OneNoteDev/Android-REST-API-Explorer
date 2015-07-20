@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.microsoft.aad.adal.AuthenticationResult;
+import com.microsoft.live.LiveConnectSession;
 import com.microsoft.o365_android_onenote_rest.application.SnippetApp;
 import com.microsoft.o365_android_onenote_rest.inject.AppModule;
 
@@ -16,8 +17,16 @@ public class SharedPrefsUtil {
     }
 
     public static void persistAuthToken(AuthenticationResult result) {
-        getSharedPreferences().edit().putString(
-                PREF_AUTH_TOKEN, result.getAccessToken())
-                .commit();
+        setAccessToken(result.getAccessToken());
+        User.isOrg(true);
+    }
+
+    public static void persistAuthToken(LiveConnectSession session) {
+        setAccessToken(session.getAccessToken());
+        User.isMsa(true);
+    }
+
+    private static void setAccessToken(String accessToken) {
+        getSharedPreferences().edit().putString(PREF_AUTH_TOKEN, accessToken).commit();
     }
 }

@@ -12,6 +12,7 @@ import com.microsoft.o365_android_onenote_rest.SnippetListActivity;
 import dagger.Module;
 
 @Module(includes = AzureADModule.class,
+        complete = false,
         injects = {
                 SignInActivity.class,
                 SnippetListActivity.class,
