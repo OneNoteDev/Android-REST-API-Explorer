@@ -32,4 +32,6 @@
     <string name="on_update">Permission to create, view, and modify any content in the user’s OneNote notebooks and pages.</string>
     <string name="on_base">Permission to view OneNote notebooks and pages but not to modify them.</string>
     <string name="unavailable">unavailable</string>
+    <string name="err_setup">Error preparing snippet</string>
+    <string name="err_setup_msg">This snippet requires a notebook, section, group, or page before it will run. For example if you are deleting a page, you must first have a page to delete. Check that the appropriate item exists before running this snippet.</string>
 </resources>

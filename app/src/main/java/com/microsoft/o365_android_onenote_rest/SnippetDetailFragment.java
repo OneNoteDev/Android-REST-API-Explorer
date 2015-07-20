@@ -37,7 +37,6 @@ import com.microsoft.o365_android_onenote_rest.snippet.Input;
 import com.microsoft.o365_android_onenote_rest.snippet.SnippetContent;
 import com.microsoft.o365_android_onenote_rest.util.SharedPrefsUtil;
 import com.microsoft.o365_android_onenote_rest.util.User;
-import com.microsoft.onenotevos.BaseVO;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringEscapeUtils;
@@ -259,10 +258,16 @@ public class SnippetDetailFragment<T, Result>
         return new retrofit.Callback<String[]>() {
             @Override
             public void success(String[] strings, Response response) {
-                if (isAdded()) {
+                if (isAdded() && strings.length > 0) {
                     mProgressbar.setVisibility(View.GONE);
                     populateSpinner(strings);
                     mRunButton.setEnabled(true);
+                } else if (isAdded() && strings.length <= 0) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                    builder.setTitle(R.string.err_setup)
+                            .setMessage(R.string.err_setup_msg)
+                            .setPositiveButton(R.string.dismiss, null)
+                            .show();
                 }
             }
 
