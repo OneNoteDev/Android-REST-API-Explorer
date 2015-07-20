@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.microsoft.o365_android_onenote_rest.inject.AppModule;
+import com.microsoft.o365_android_onenote_rest.util.User;
 
 
 public class SnippetListActivity extends BaseActivity
@@ -60,12 +61,17 @@ public class SnippetListActivity extends BaseActivity
     @Override
     public void onDisconnectClicked() {
         finish();
+
+        if (User.isOrg()) {
+            mAuthenticationManager.disconnect();
+        } else if (User.isMsa()) {
+            mLiveAuthClient.logout(null);
+        }
         // drop the application shared preferences to clear any old auth tokens
         getSharedPreferences(AppModule.PREFS, Context.MODE_PRIVATE)
                 .edit() // get the editor
                 .clear() // clear it
                 .apply(); // asynchronously apply
-        mAuthenticationManager.disconnect();
         Intent login = new Intent(this, SignInActivity.class);
         login.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(login);

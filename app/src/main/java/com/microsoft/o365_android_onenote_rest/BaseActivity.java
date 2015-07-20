@@ -26,7 +26,7 @@ public abstract class BaseActivity
     @Inject
     protected LiveAuthClient mLiveAuthClient;
 
-    protected static final Iterable<String> sSCOPES = new ArrayList<String>() {{
+    public static final Iterable<String> sSCOPES = new ArrayList<String>() {{
         for (Scope.wl scope : Scope.wl.values()) {
             Timber.i("Adding scope: " + scope);
             add(scope.getScope());

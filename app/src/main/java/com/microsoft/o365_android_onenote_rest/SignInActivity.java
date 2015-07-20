@@ -46,6 +46,10 @@ public class SignInActivity
     public void onSuccess(AuthenticationResult authenticationResult) {
         finish();
         SharedPrefsUtil.persistAuthToken(authenticationResult);
+        start();
+    }
+
+    private void start() {
         Intent appLaunch = new Intent(this, SnippetListActivity.class);
         startActivity(appLaunch);
     }
@@ -65,12 +69,12 @@ public class SignInActivity
         }
         if (null != session) {
             Timber.d(session.toString());
+            SharedPrefsUtil.persistAuthToken(session);
         }
         if (null != userState) {
             Timber.d(userState.toString());
         }
-        // TODO persist this session
-        // TODO refresh this session same as org login
+        start();
     }
 
     @Override

@@ -12,6 +12,8 @@ import com.microsoft.o365_android_onenote_rest.application.SnippetApp;
 import com.microsoft.o365_android_onenote_rest.util.SharedPrefsUtil;
 import com.microsoft.onenoteapi.service.GsonDateTime;
 
+import javax.inject.Singleton;
+
 import dagger.Module;
 import dagger.Provides;
 import retrofit.RequestInterceptor;
@@ -63,6 +65,7 @@ public class AppModule {
     }
 
     @Provides
+    @Singleton
     public LiveAuthClient providesLiveAuthClient() {
         return new LiveAuthClient(SnippetApp.getApp(), MSA_CLIENT_ID);
     }

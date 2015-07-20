@@ -5,6 +5,7 @@
 package com.microsoft.o365_android_onenote_rest.snippet;
 
 import com.microsoft.o365_android_onenote_rest.application.SnippetApp;
+import com.microsoft.o365_android_onenote_rest.util.User;
 import com.microsoft.onenoteapi.service.NotebooksService;
 import com.microsoft.onenoteapi.service.PagesService;
 import com.microsoft.onenoteapi.service.SectionGroupsService;
@@ -131,10 +132,7 @@ public abstract class AbstractSnippet<Service, Result> {
      * @return
      */
     protected String getVersion() {
-        //TODO get authentication location logic
-        //and condition returned value on result
-        //At the moment, return the O365 version
-        return mO365Version;
+        return User.isMsa() ? mMSAVersion : mO365Version;
     }
 
 
