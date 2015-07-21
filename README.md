@@ -15,7 +15,7 @@ OneNote REST API Explorer for Android
 * [Questions and comments](#questions-and-comments)
 * [Additional resources](#additional-resources)
 
-Looking to build cool apps that help people work with their OneNote notebooks? Explore, learn, and understand the OneNote REST APIs by using the OneNote REST API explorer for Android. This sample lets you view and run the REST APIs that read, add, update, and delete OneNote entities such as notebooks, section groups, sections, and pages. The app lets you authenticate in two ways. You can authenticate using a Microsoft Account (MSA) to connect to OneNote on your personal OneDrive. Or you can authenticate using an organization account to connect to OneNote on either your organization's OneDrive or SharePoint site on Office 365.
+Looking to build cool apps that help people work with their OneNote notebooks? Explore, learn, and understand the OneNote REST APIs by using the OneNote REST API explorer for Android. This sample lets you view and run the REST APIs that read, add, update, and delete OneNote entities such as notebooks, section groups, sections, and pages. The app lets you authenticate in two ways. You can authenticate using a Microsoft Account (MSA) to connect to OneNote on your personal OneDrive. Or you can authenticate using a work or school account to connect to OneNote on either your organization's OneDrive or SharePoint site on Office 365.
 
 You can explore the following operations for OneNote:
 
@@ -93,6 +93,18 @@ Each client application that you register with Azure can have its own unique set
 > Note: Be sure to select the **native client application** on step 5 of the Azure Management Portal azure application procedure. 
 
 ##Microsoft account application registration
+1. Go to the [Windows Live application management site](http://go.microsoft.com/fwlink/?LinkID=144070).
+
+2. Sign in by using your Windows Live ID.
+	>Note: If this is your first visit to this site, you will see several pages that configure your Windows Live ID for use with the site. 
+
+3. Click **Create application**.
+4. Enter a unique application name. If you agree to the terms, click **Accept**.
+5. There are many settings for your app, but to make it work with this sample, you need to make the following changes:
+	1. On **API Settings**, set the **Mobile or desktop client app** field to **Yes**.
+	2. On **API Settings**, set the **Redirect URLs** field to a valid URL. The URL does not need to reference an actual location, but it must be a valid URL.
+3. Once you are satisfied with your app settings, click **Save**.
+4. Click **App Settings**. This will display a page with your client id. You will use this value later when configuring your project.
 
 ##Configure the project
 
