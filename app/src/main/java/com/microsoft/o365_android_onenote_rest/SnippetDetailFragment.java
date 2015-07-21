@@ -456,7 +456,6 @@ public class SnippetDetailFragment<T, Result>
     public Map<String, String> getParams() {
         Map<String, String> args = new HashMap<>();
         if (Input.Spinner == mItem.mInputArgs) {
-            // TODO use the object model....
             args.put(ARG_SPINNER_SELECTION, mSpinner.getSelectedItem().toString());
         } else if (Input.Text == mItem.mInputArgs) {
             args.put(ARG_TEXT_INPUT, mEditText.getText().toString());

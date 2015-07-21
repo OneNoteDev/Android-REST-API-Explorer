@@ -56,6 +56,8 @@
             android:id="@+id/txt_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
+            android:hint="@string/et_hint"
             android:inputType="text"
             android:visibility="gone" />
 
@@ -64,8 +66,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
-            android:freezesText="true"
-            android:text="Description of the Snippet here" />
+            android:freezesText="true" />
 
         <TextView
             style="@style/detail_section"
