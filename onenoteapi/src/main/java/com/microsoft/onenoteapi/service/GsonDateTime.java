@@ -12,7 +12,7 @@ public class GsonDateTime {
     public static GsonBuilder getOneNoteBuilder() {
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.registerTypeAdapter(DateTime.class, new DateTimeSerializer());
-        gsonBuilder.registerTypeAdapter(DateTime.class, new DateTimeDeSerializer());
+        gsonBuilder.registerTypeAdapter(DateTime.class, new DateTimeDeserializer());
         return gsonBuilder;
     }
 

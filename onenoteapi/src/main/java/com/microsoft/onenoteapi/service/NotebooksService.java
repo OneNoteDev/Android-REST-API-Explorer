@@ -39,7 +39,6 @@ public interface NotebooksService {
             @Query("$top") Integer top,
             @Query("$skip") Integer skip,
             Callback<Envelope<Notebook>> callback
-            // TODO use the POJO
     );
 
     /**
@@ -97,7 +96,6 @@ public interface NotebooksService {
             @Body TypedString body,
             Callback<Envelope<Notebook>> callback
     );
-    // etc...
 }
 // *********************************************************
 //

@@ -41,7 +41,6 @@ public interface SectionsService {
             @Query("skip") Integer skip,
             @Query("search") String search,
             Callback<Envelope<Section>> callback
-            // TODO use the POJO
     );
 
     /**
