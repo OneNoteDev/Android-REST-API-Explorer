@@ -204,8 +204,6 @@ public class SnippetDetailFragment<T, Result>
         displayStatusCode("", getResources().getColor(R.color.transparent));
         mProgressbar.setVisibility(VISIBLE);
         mItem.request(mItem.mService, this);
-
-
     }
 
     @OnClick(txt_hyperlink)
