@@ -124,10 +124,10 @@
     </string-array>
 
     <string-array name="create_page_under_named_section">
-        <item>POST a page under a named section - Not supported for enterprise</item>
+        <item>POST a page under a named section</item>
         <item>Not supported for enterprise notebooks: Create a page under a given section name using the \'sectionName\' query parameter. Please enter a section name in the TextBox below. If the named section does not exist, it will be auto-created</item>
         <item>http://dev.onenote.com/docs#/reference/post-pages/v10pages</item>
-        <item>beta</item>
+        <item>unavailable</item>
         <item>v1.0</item>
     </string-array>
 
