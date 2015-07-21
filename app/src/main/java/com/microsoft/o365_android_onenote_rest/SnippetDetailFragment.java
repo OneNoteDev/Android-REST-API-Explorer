@@ -94,6 +94,7 @@ public class SnippetDetailFragment<T, Result>
     public static final String ARG_TEXT_INPUT = "TextInput";
     public static final String ARG_SPINNER_SELECTION = "SpinnerSelection";
     public static final int UNSET = -1;
+    public static final String APP_STORE_URI = "https://play.google.com/store/apps/details?id=com.microsoft.office.onenote";
 
     @InjectView(txt_status_code)
     protected TextView mStatusCode;
@@ -209,17 +210,16 @@ public class SnippetDetailFragment<T, Result>
 
     @OnClick(txt_hyperlink)
     public void onDocsLinkClicked(TextView textView) {
-        launchUrl(Uri.parse(mItem.getUrl()));
+        launchUri(Uri.parse(mItem.getUrl()));
     }
 
-    private void launchUrl(Uri uri) {
+    private void launchUri(Uri uri) {
+        Intent launchOneNoteExtern = new Intent(Intent.ACTION_VIEW, uri);
         try {
-            Intent viewDocs = new Intent(Intent.ACTION_VIEW, uri);
-            startActivity(viewDocs);
+            startActivity(launchOneNoteExtern);
         } catch (ActivityNotFoundException e) {
-            Intent viewAppStore = new Intent(Intent.ACTION_VIEW,
-                    Uri.parse("https://play.google.com/store/apps/details?id=com.microsoft.office.onenote"));
-            startActivity(viewAppStore);
+            launchOneNoteExtern = new Intent(Intent.ACTION_VIEW, Uri.parse(APP_STORE_URI));
+            startActivity(launchOneNoteExtern);
         }
     }
 
@@ -344,7 +344,7 @@ public class SnippetDetailFragment<T, Result>
         mLaunchBrowser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                launchUrl(Uri.parse(vo.links.oneNoteWebUrl.href));
+                launchUri(Uri.parse(vo.links.oneNoteWebUrl.href));
             }
         });
     }
@@ -354,7 +354,7 @@ public class SnippetDetailFragment<T, Result>
         mLaunchOneNote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                launchUrl(Uri.parse(page.links.oneNoteClientUrl.href));
+                launchUri(Uri.parse(page.links.oneNoteClientUrl.href));
             }
         });
     }
