@@ -272,8 +272,8 @@ public class SnippetDetailFragment<T, Result>
         return new retrofit.Callback<String[]>() {
             @Override
             public void success(String[] strings, Response response) {
+                mProgressbar.setVisibility(View.GONE);
                 if (isAdded() && strings.length > 0) {
-                    mProgressbar.setVisibility(View.GONE);
                     populateSpinner(strings);
                     mRunButton.setEnabled(true);
                 } else if (isAdded() && strings.length <= 0) {
