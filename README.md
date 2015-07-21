@@ -15,7 +15,7 @@ OneNote REST API Explorer for Android
 * [Questions and comments](#questions-and-comments)
 * [Additional resources](#additional-resources)
 
-Looking to build cool apps that help people work with their OneNote notebooks? Explore, learn, and understand the OneNote REST APIs by using the OneNote REST API explorer for Android. This sample lets you view and run the REST APIs that read, add, update, and delete OneNote entities such as notebooks, section groups, sections, and pages. The app lets you authenticate against your organization’s Office 365 tenant such as Office 365 Enterprise, or your personal Office 365 account such as Office 365 Home.
+Looking to build cool apps that help people work with their OneNote notebooks? Explore, learn, and understand the OneNote REST APIs by using the OneNote REST API explorer for Android. This sample lets you view and run the REST APIs that read, add, update, and delete OneNote entities such as notebooks, section groups, sections, and pages. The app lets you authenticate in two ways. You can authenticate using a Microsoft Account (MSA) to connect to OneNote on your personal OneDrive. Or you can authenticate using an organization account to connect to OneNote on either your organization's OneDrive or SharePoint site on Office 365.
 
 You can explore the following operations for OneNote:
 
