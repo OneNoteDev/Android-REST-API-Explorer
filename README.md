@@ -6,24 +6,22 @@ OneNote REST API Explorer for Android
 * [Change History](#change-history)
 * [Device requirements](#device-requirements)
 * [Prerequisites](#prerequisites)
-* [Open the project using Android Studio](#open-the-project-using-android-studio)
+* [Azure client application registration](#Azure-client-application-registration)
+* [Microsoft account application registration](#Microsoft-account-application-registration)
+* [Configure the project](#configure-the-project)
 * [Run the project](#run-the-project)
 * [Understand the code](#understand-the-code)
-* [Connect to Office 365](#connect-to-office-365)
-* [Connect to consumer OneNote](#connect-to-consumer-onenote)
+* [Contributing](#contributing)
 * [Questions and comments](#questions-and-comments)
 * [Additional resources](#additional-resources)
 
-This sample for Android explores the simple REST calls that access, add, update, and delete OneNote entities such as notebooks, 
-section groups, sections, and pages. The app lets you authenticate against an Office 365 tenant or your personal OneDrive. 
-Office 365 authentication lets you access your enterprise OneNote notebooks and MSA authentication lets you access your personal OneNote
-notebooks on consumer OneDrive.
+Looking to build cool apps that help people work with their OneNote notebooks? Explore, learn, and understand the OneNote REST APIs by using the OneNote REST API explorer for Android. This sample lets you view and run the REST APIs that read, add, update, and delete OneNote entities such as notebooks, section groups, sections, and pages. The app lets you authenticate in two ways. You can authenticate using a Microsoft Account (MSA) to connect to OneNote on your personal OneDrive. Or you can authenticate using an organization account to connect to OneNote on either your organization's OneDrive or SharePoint site on Office 365.
 
-This sample includes the following operations for enterprise and consumer OneNote:
+You can explore the following operations for OneNote:
 
 **Notebook**
 
-* Get a list of your noteobooks
+* Get a list of your notebooks
 * Get notebooks and expand notebook sections
 * Get a notebook by id
 * Get metadata for a notebook
@@ -79,71 +77,62 @@ To use the Android REST API explorer, you need the following:
 * the [Gradle](http://www.gradle.org) build automation system version 2.2.1 or later.
 * An Office 365 account. You can sign up for [an Office 365 Developer subscription](https://portal.office.com/Signup/Signup.aspx?OfferId=C69E7747-2566-4897-8CBA-B998ED3BAB88&DL=DEVELOPERPACK&ali=1#0) that includes the resources you need to start building Office 365 apps.
 * [Java Development Kit (JDK) 7](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html).
-* A registered Azure application with a client id and redirect uri value. The application must have the following permissions:
+* A registered Azure application with a client id and redirect URI value. The application must have the following permissions:
     * View and modify OneNote notebooks in your organization
     * View and modify OneNote notebooks
     * Create pages in OneNote notebooks
     * Sign you in and read your profile
     * Access your organization's directory
+* A registered Microsoft application with a client id.
     
 ##Azure client application registration
 Each client application that you register with Azure can have its own unique set of permissions, application title, and redirect URL. Unless you have an existing application registration that uses the same combination of permissions, title, and URL, you should create a new registration for each app.
 
-* [Register a native client application in Azure Active Directory](https://msdn.microsoft.com/library/azure/dn132599.aspx#) and [assign the required prmissions](https://github.com/OfficeDev/O365-Android-Snippets/wiki/Grant-permission-for-the-snippet-application-in-Azure) to the sample application in Azure.
+* [Register a native client application in Azure Active Directory](https://msdn.microsoft.com/library/azure/dn132599.aspx#) and [assign the required permissions](https://github.com/OfficeDev/O365-Android-Snippets/wiki/Grant-permission-for-the-snippet-application-in-Azure) to the sample application in Azure.
 
 > Note: Be sure to select the **native client application** on step 5 of the Azure Management Portal azure application procedure. 
 
-##Open the project using Android Studio
-Open the project by importing the settings.gradle file.
+##Microsoft account application registration
 
-1. Install [Android Studio](http://developer.android.com/tools/studio/index.html#install-updates) and add the Android SDK packages according to the [instructions](http://developer.android.com/sdk/installing/adding-packages.html) on developer.android.com
+##Configure the project
+
 2. Download or clone the [Android REST API Explorer](https://github.com/OneNoteDev/Android-REST-API-Explorer).
 3. Start Android Studio.
 4. From the **Welcome to Android Studio** dialog box, choose **Import project (Eclipse ADT, Gradle, etc)**.
-5. Respond to the dialog ("Gradle Sync: Gradle settings for this project are not configured yet. Would you like the project to use the Gradle wrapper? ") by clicking the OK button to use the Gradle wrapper
 5. Select the **settings.gradle** file in the **Android-REST-API-Explorer** folder and click **OK**.
+6. Respond to the dialog ("Gradle Sync: Gradle settings for this project are not configured yet. Would you like the project to use the Gradle wrapper? ") by clicking the **OK** button to use the Gradle wrapper. 
 6. Open the BaseActivity.java file in the com.microsoft.o365_android_onenote_rest package.
 7. Find the CLIENT_ID string argument in the builder.clientId() method and set its String value equal to the client id you registered in step&nbsp;1.
 8. Find the REDIRECT_URI string argument in the builder.redirectUri() method and set its String value equal to the redirect URI you registered in step&nbsp;1.
-
-    ![Office 365 Snippet sample](/readme-images/clientid_redirect.tiff "Client ID and Redirect URI values in Constants file")
-
-> Note: The REST API Explorer project declares the required dependencies using Gradle. The dependencies are:
-> * The [Azure Active Directory Authentication Library for Android](https://github.com/AzureAD/azure-activedirectory-library-for-android).
-> * The [Office 365 SDK for Android](https://github.com/OfficeDev/Office-365-SDK-for-Android).
-> * The [Google Core Libraries for Java 18.0 API](https://code.google.com/p/guava-libraries/).
-> * [Jake Wharton - butterknife](https://github.com/JakeWharton/butterknife)
-> * [Jake Wharton - timber](https://github.com/JakeWharton/timber) 
-> * [Square - Dagger](https://github.com/square/dagger)
-> * [Square -retrofit](https://github.com/square/retrofit)
-> * [Square - Okhttp](https://github.com/square/okhttp)
+9. Open the AppModule.java file in the com.microsoft.o365_android_onenote_rest.inject package.
+10. Find the MSA_CLIENT_ID string and set its string value equal to the client id you registered for MSA.
 
 ##Run the project
 Once you've built the REST explorer project you can run it on an emulator or device.
 
-1. Run the project
-2. Click the authentication account that you want to sign in to
-3. Enter your credentials
-4. Click a REST operation in the main activity to show operation details
-5. Choose a notebook, section, or page from the spinner below the run button if the spinner is shown on the page
-6. Enter a text value in the text box below the run button if the text box is shown on the page.
+1. Run the project.
+2. Click the authentication account that you want to sign in to.
+3. Enter your credentials.
+4. Click a REST operation in the main activity to show operation details.
+	>Note: Some operations require input before they will run. For example, to update a page, you must first select a page to update. On these operations there will be a spinner, or text box, to select or enter required input for an operation.
+
 7. Click the run button to start the REST operation and wait for the operation to finish.
-8. Click the mouse in the Response Headers or Response Body text boxes to copy the box contents to the emulator/device clipboard.
+8. Click in the Response Headers or Response Body text boxes to copy the box contents to the emulator/device clipboard.
 9. Press the Back button on the REST Explorer toolbar to return to the REST operation list.
 10. (Optional) Click the overflow menu to get the Disconnect menu option.
 
 ##Understand the code
 The REST API Explorer project uses these classes to manage interactions with OneNote for Enterprise and consumer OneNote:
 ###Sample project organization
-The REST API explorer project is comprised of four modules. The modular design allows you to easily add authentication and OneNote REST API support to your app by importing modules from REST API Explorer into your app. After you've imported our modules, use the code in the REST API Explorer [app](https://github.com/OneNoteDev/Android-REST-API-Explorer/tree/master/app) module as an example of how to call methods in the other sample modules.
+The REST API explorer project is comprised of four modules. The modular design allows you to add authentication and OneNote REST API support to your app by importing modules from REST API Explorer into your app. After you've imported the modules, use the code in the REST API Explorer [app](https://github.com/OneNoteDev/Android-REST-API-Explorer/tree/master/app) module as an example of how to call methods in the other sample modules.
 ###REST API Explorer modules
 * [O365-Auth](https://github.com/OneNoteDev/Android-REST-API-Explorer/tree/master/O365-auth). This module contains the library calls to authenticate a user with Office 365.
-* [onenoteapi](https://github.com/OneNoteDev/Android-REST-API-Explorer/tree/master/onenoteapi). This module encapsulates the Retrofit REST operations against the OneNote (enterprise and consumer) endpoints.
-* [onenotevos](https://github.com/OneNoteDev/Android-REST-API-Explorer/tree/master/onenotevos). This module provides the value objects that wrap deserialized json REST response payloads. Use the value objects in your app logic to get the metadata and content of OneDrive notebooks, sections, and pages you get with the API.
-* [app](https://github.com/OneNoteDev/Android-REST-API-Explorer/tree/master/app). The REST API Explorer UI and business logic module. REST API Explorer consumes the api and vo modules from the logic in the app module. REST operations are started in the snippet classes in this module.
+* [onenoteapi](https://github.com/OneNoteDev/Android-REST-API-Explorer/tree/master/onenoteapi). This module encapsulates the Retrofit REST operations used for the OneNote (enterprise and consumer) endpoints.
+* [onenotevos](https://github.com/OneNoteDev/Android-REST-API-Explorer/tree/master/onenotevos). This module provides the value objects that wrap deserialized JSON REST response payloads. Use the value objects in your app logic to get the metadata and content of OneDrive notebooks, sections, and pages returned by the API.
+* [app](https://github.com/OneNoteDev/Android-REST-API-Explorer/tree/master/app). The REST API explorer UI and business logic module. REST API Explorer consumes the **api** and **vo** modules from the logic in the app module. REST operations are started in the snippet classes in this module.
 
 ###Snippet classes
-These business logic classes are found in the [app](https://github.com/OneNoteDev/Android-REST-API-Explorer/tree/master/app) module. The snippet logic sets the state required to make the calls on the OneNote service classes described below. Where necessary, a snippet class gets the notebooks, sections, or pages to load the spinner control shown on the snippet detail fragment for a given REST operation.
+A snippet  runs a single REST operation and returns the results. They are found in the [app](https://github.com/OneNoteDev/Android-REST-API-Explorer/tree/master/app) module. Snippets set the state required to make the calls on the OneNote service classes described below. Where necessary, a snippet class gets the notebooks, sections, or pages to load the spinner control shown on the snippet detail fragment for a given REST operation.
 * [NotebookSnippet](https://github.com/OneNoteDev/Android-REST-API-Explorer/blob/master/app/src/main/java/com/microsoft/o365_android_onenote_rest/snippet/NotebookSnippet.java)
 * [SectionGroupSnippet](https://github.com/OneNoteDev/Android-REST-API-Explorer/blob/master/app/src/main/java/com/microsoft/o365_android_onenote_rest/snippet/SectionGroupSnippet.java)
 * [SectionSnippet](https://github.com/OneNoteDev/Android-REST-API-Explorer/blob/master/app/src/main/java/com/microsoft/o365_android_onenote_rest/snippet/SectionSnippet.java)
@@ -160,40 +149,33 @@ These classes are found in the [onenoteapi](https://github.com/OneNoteDev/Androi
 * [PagesService](https://github.com/OneNoteDev/Android-REST-API-Explorer/blob/master/onenoteapi/src/main/java/com/microsoft/onenoteapi/service/PagesService.java)
 
 ###Value object classes
-These classes are found in the [onenotevos](https://github.com/OneNoteDev/Android-REST-API-Explorer/tree/master/onenotevos) module. The value object classes describe json payloads as managed objects.
+These classes are found in the [onenotevos](https://github.com/OneNoteDev/Android-REST-API-Explorer/tree/master/onenotevos) module. The value object classes describe JSON payloads as objects.
 
 * [BaseVO](https://github.com/OneNoteDev/Android-REST-API-Explorer/blob/master/onenotevos/src/main/java/com/microsoft/onenotevos/BaseVO.java). The superclass for other value objects. 
-* [Envelope](https://github.com/OneNoteDev/Android-REST-API-Explorer/blob/master/onenotevos/src/main/java/com/microsoft/onenotevos/Envelope.java). A collection of individual notebook, section, section group, or page ojbects returned in  GET request.
+* [Envelope](https://github.com/OneNoteDev/Android-REST-API-Explorer/blob/master/onenotevos/src/main/java/com/microsoft/onenotevos/Envelope.java). A collection of individual notebook, section, section group, or page objects returned in  GET request.
 * [Links](https://github.com/OneNoteDev/Android-REST-API-Explorer/blob/master/onenotevos/src/main/java/com/microsoft/onenotevos/Links.java). The collection of URLs returned in the body of a notebook, section, or page.
 * [Notebook](https://github.com/OneNoteDev/Android-REST-API-Explorer/blob/master/onenotevos/src/main/java/com/microsoft/onenotevos/Notebook.java). A OneNote notebook.
 * [Page](https://github.com/OneNoteDev/Android-REST-API-Explorer/blob/master/onenotevos/src/main/java/com/microsoft/onenotevos/Page.java). A OneNote page.
-* [Section](https://github.com/OneNoteDev/Android-REST-API-Explorer/blob/master/onenotevos/src/main/java/com/microsoft/onenotevos/Section.java). A OnenNote section.
+* [Section](https://github.com/OneNoteDev/Android-REST-API-Explorer/blob/master/onenotevos/src/main/java/com/microsoft/onenotevos/Section.java). A OneNote section.
 * [SectionGroup](https://github.com/OneNoteDev/Android-REST-API-Explorer/blob/master/onenotevos/src/main/java/com/microsoft/onenotevos/SectionGroup.java). A OneNote section group.
 
-###Authentication classes
-The authentication classes are found in the [O365-Auth](https://github.com/OneNoteDev/Android-REST-API-Explorer/tree/master/O365-auth) module. The application logic calls into these classes to conect a user to Office 365 or OneDrive for consumer.
+###Authentication classes for Office 365 business accounts
+The authentication classes are found in the [O365-Auth](https://github.com/OneNoteDev/Android-REST-API-Explorer/tree/master/O365-auth) module. These classes use the [Microsoft Azure Active Directory Library (ADAL) for Android](https://github.com/AzureAD/azure-activedirectory-library-for-android) to connect to a business version of Office 365 such as Office 365 for Enterprise. 
 
 * [AuthenticationManager](https://github.com/OneNoteDev/Android-REST-API-Explorer/blob/master/O365-auth/src/main/java/com/microsoft/AuthenticationManager.java). Encapsulates user connect and disconnect logic in addition to Azure app authorization.
 * [AzureADModule](https://github.com/OneNoteDev/Android-REST-API-Explorer/blob/master/O365-auth/src/main/java/com/microsoft/AzureADModule.java). Authentication helper class. 
 * [AzureAppCompatActivity](https://github.com/OneNoteDev/Android-REST-API-Explorer/blob/master/O365-auth/src/main/java/com/microsoft/AzureAppCompatActivity.java). Dependency injection helper.
 
-### Connect to Office 365
+### Authentication for Office 365 personal accounts
+Authentication for logging in with a Microsoft Account to a personal version of Office 365 such as Office 365 Home is handled by the [MSA Auth for Android](https://github.com/MSOpenTech/msa-auth-for-android) library. The app uses the [LiveAuthClient](https://github.com/MSOpenTech/msa-auth-for-android/blob/dev/src/main/java/com/microsoft/services/msa/LiveAuthClient.java) class to connect and disconnect.
 
-The OneNote API for Android uses the Azure Active Directory Library (ADAL) for Android for connecting your app to Office 365. The ADAL provides protocol support for OAuth2, Web API integration with user level consent, and two-factor authentication. The REST API Explorer uses the ADAL library to authenticate a user who wants to access OneNote for enterprise notebooks.
+## Questions and comments
+We'd love to get your feedback on the OneNote REST API Explorer for Android sample. You can send your feedback to us in the [Issues](https://github.com/OneNoteDev/Android-REST-API-Explorer/issues) section of this repository. <br/>
+Questions about Office 365 development in general should be posted to [Stack Overflow](http://stackoverflow.com/questions/tagged/Office365+API). Make sure that your questions are tagged with [Office365] and [API].
 
-The **AuthenticationController** object manages getting a token from ADAL and returning it to your application.
+## Contributing
+You will need to sign a [Contributor License Agreement](https://cla.microsoft.com/) before submitting your pull request. To complete the Contributor License Agreement (CLA), you will need to submit a request via the form and then electronically sign the Contributor License Agreement when you receive the email containing the link to the document. 
 
-### Connect to a OneDrive with a Microsoft account
-The OneNote API for Android uses the Live-auth library for Android to connect your app to consumer OneDrive. The REST API Explorer use the Live-auth library to authenticate a user who wants to access OneNote for consumer notebooks.
-
-## Aplication logic flow
-1. **Authentication**. The main activity supports app authentication through the [BaseActivity](https://github.com/OneNoteDev/Android-REST-API-Explorer/blob/master/app/src/main/java/com/microsoft/o365_android_onenote_rest/BaseActivity.java). BaseActivity initiates the dependency injection used throughout the sample. It also builds the ADAL object responsible for Office 365 authentication. 
-2. **REST operation list initialization**. [SnippetListFragment](https://github.com/OneNoteDev/Android-REST-API-Explorer/blob/master/app/src/main/java/com/microsoft/o365_android_onenote_rest/SnippetListFragment.java). This class tips up a new [SnippetListAdapter](https://github.com/OneNoteDev/Android-REST-API-Explorer/blob/master/app/src/main/java/com/microsoft/o365_android_onenote_rest/SnippetListAdapter.java) that calls into a static [SnippetContent](https://github.com/OneNoteDev/Android-REST-API-Explorer/blob/master/app/src/main/java/com/microsoft/o365_android_onenote_rest/snippet/SnippetContent.java) class for a collection of snippets to show.
-3. **REST operation detail selected**. The [SnippetDetaiFragment](https://github.com/OneNoteDev/Android-REST-API-Explorer/blob/master/app/src/main/java/com/microsoft/o365_android_onenote_rest/SnippetDetailFragment.java) shows the name and description of a REST operation and lets the user run the operation. If the operation needs context like the notebook parent of a new section, The detail fragment calls an asynchronous setup() method on the snippet. A spinner is populated with a collection of notebooks or sections and the Run button is enabled in a callback invoked by the setup method.
-4. **Run button clicked**. The request() method is called on the snippet with the  [OneNote serivce](https://github.com/OneNoteDev/Android-REST-API-Explorer/tree/master/onenoteapi/src/main/java/com/microsoft/onenoteapi/service) to query and a reference to the object implementing the callback.
-5. **Make the REST query**. The snippet request() method takes the arguments passed and uses the callback params to get any contextual objects (notebooks or sections) selected by a user. The appropriate method is called on the passed service.
-5. **Handle the callback**. The [SnippetDetailFragment](https://github.com/OneNoteDev/Android-REST-API-Explorer/blob/master/app/src/main/java/com/microsoft/o365_android_onenote_rest/SnippetDetailFragment.java) handles the callback to get the REST query created by the service, the query headers, and the response body.
-<a name="resources"/>
 ## Additional resources
 
 * [OneNote APIs documentation](https://msdn.microsoft.com/en-us/library/office/dn575420.aspx)

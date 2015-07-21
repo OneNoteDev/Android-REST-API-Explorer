@@ -29,6 +29,7 @@ import retrofit.converter.GsonConverter;
 public class AppModule {
 
     public static final String PREFS = "com.microsoft.o365_android_onenote_rest";
+    //todo replace client id with text <insert MSA client id here>
     public static final String MSA_CLIENT_ID = "000000004015DC58";
 
     @Provides
