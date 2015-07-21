@@ -5,7 +5,6 @@ import com.microsoft.o365_android_onenote_rest.application.SnippetApp;
 import static com.microsoft.o365_android_onenote_rest.R.string.on_base;
 import static com.microsoft.o365_android_onenote_rest.R.string.on_create;
 import static com.microsoft.o365_android_onenote_rest.R.string.on_update;
-import static com.microsoft.o365_android_onenote_rest.R.string.on_update_by_app;
 import static com.microsoft.o365_android_onenote_rest.R.string.wl_offline_access;
 import static com.microsoft.o365_android_onenote_rest.R.string.wl_signin;
 
@@ -35,7 +34,6 @@ public class Scope {
 
     public enum office {
         onenote_create(on_create),
-        onenote_update_by_app(on_update_by_app),
         onenote_update(on_update), onenote(on_base);
 
         public final String mDescription;
