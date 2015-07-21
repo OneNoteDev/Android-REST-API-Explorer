@@ -127,6 +127,37 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/quick_link_header"
+            style="@style/detail_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/quick_links" />
+
+        <LinearLayout
+            android:id="@+id/quick_link_btn_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1.0">
+
+            <Button
+                android:id="@+id/btn_launch_onenote"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:enabled="false"
+                android:text="@string/launch_onenote" />
+
+            <Button
+                android:id="@+id/btn_launch_browser"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:enabled="false"
+                android:text="@string/launch_browser" />
+
+        </LinearLayout>
+
+        <TextView
             style="@style/detail_section"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
