@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 
 import com.microsoft.live.LiveAuthClient;
 import com.microsoft.o365_android_onenote_rest.application.SnippetApp;
+import com.microsoft.o365_android_onenote_rest.conf.ServiceConstants;
 import com.microsoft.o365_android_onenote_rest.util.SharedPrefsUtil;
 import com.microsoft.onenoteapi.service.GsonDateTime;
 
@@ -29,12 +30,10 @@ import retrofit.converter.GsonConverter;
 public class AppModule {
 
     public static final String PREFS = "com.microsoft.o365_android_onenote_rest";
-    //todo replace client id with text <insert MSA client id here>
-    public static final String MSA_CLIENT_ID = "000000004015DC58";
 
     @Provides
     public String providesRestEndpoint() {
-        return "https://www.onenote.com/api";
+        return ServiceConstants.ONENOTE_API;
     }
 
     @Provides
@@ -68,7 +67,7 @@ public class AppModule {
     @Provides
     @Singleton
     public LiveAuthClient providesLiveAuthClient() {
-        return new LiveAuthClient(SnippetApp.getApp(), MSA_CLIENT_ID);
+        return new LiveAuthClient(SnippetApp.getApp(), ServiceConstants.MSA_CLIENT_ID);
     }
 }
 // *********************************************************

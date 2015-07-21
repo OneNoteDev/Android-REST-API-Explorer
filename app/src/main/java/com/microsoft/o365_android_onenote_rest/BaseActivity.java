@@ -8,6 +8,7 @@ import com.microsoft.AzureADModule;
 import com.microsoft.AzureAppCompatActivity;
 import com.microsoft.live.LiveAuthClient;
 import com.microsoft.o365_android_onenote_rest.application.SnippetApp;
+import com.microsoft.o365_android_onenote_rest.conf.ServiceConstants;
 import com.microsoft.o365_android_onenote_rest.inject.AzureModule;
 import com.microsoft.o365_android_onenote_rest.inject.ObjectGraphInjector;
 import com.microsoft.o365_android_onenote_rest.model.Scope;
@@ -40,14 +41,12 @@ public abstract class BaseActivity
     @Override
     protected AzureADModule getAzureADModule() {
         AzureADModule.Builder builder = new AzureADModule.Builder(this);
-
-        //TODO - remove these uri and client id values before publication!
         builder.validateAuthority(true)
                 .skipBroker(true)
-                .authenticationResourceId("https://onenote.com")
-                .authorityUrl("https://login.microsoftonline.com/common")
-                .redirectUri("https://www.patsoldemo4.com/")
-                .clientId("52607527-c2f8-4685-a106-4f8e103067b6");
+                .authenticationResourceId(ServiceConstants.AUTHENTICATION_RESOURCE_ID)
+                .authorityUrl(ServiceConstants.AUTHORITY_URL)
+                .redirectUri(ServiceConstants.REDIRECT_URI)
+                .clientId(ServiceConstants.CLIENT_ID);
         return builder.build();
     }
 

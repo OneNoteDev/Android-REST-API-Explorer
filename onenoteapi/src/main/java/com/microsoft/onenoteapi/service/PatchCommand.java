@@ -9,24 +9,36 @@ public class PatchCommand {
     private String mAction;
     private String mContent;
     private String mPosition;
-    public void setTarget(String target){
+
+    public void setTarget(String target) {
         mTarget = target;
     }
+
     public void setAction(String action) {
         mAction = action;
     }
-    public void setPosition(String position) {mPosition = position;}
-    public void setContent(String content){
+
+    public void setPosition(String position) {
+        mPosition = position;
+    }
+
+    public void setContent(String content) {
         mContent = content;
     }
-    public String getTarget(){
+
+    public String getTarget() {
         return mTarget;
     }
+
     public String getAction() {
         return mAction;
     }
-    public String getPosition() {return mPosition;}
-    public String getContent(){
+
+    public String getPosition() {
+        return mPosition;
+    }
+
+    public String getContent() {
         return mContent;
     }
 

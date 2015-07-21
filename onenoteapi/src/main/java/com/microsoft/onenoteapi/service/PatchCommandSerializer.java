@@ -15,7 +15,9 @@ import java.lang.reflect.Type;
 public class PatchCommandSerializer implements JsonSerializer<PatchCommand> {
 
     @Override
-    public JsonElement serialize(PatchCommand patchCommand, Type typeOfSrc, JsonSerializationContext context) {
+    public JsonElement serialize(PatchCommand patchCommand,
+                                 Type typeOfSrc,
+                                 JsonSerializationContext context) {
         JsonObject result = new JsonObject();
         result.add("Target", new JsonPrimitive(patchCommand.getTarget()));
         result.add("Action", new JsonPrimitive(patchCommand.getAction()));
