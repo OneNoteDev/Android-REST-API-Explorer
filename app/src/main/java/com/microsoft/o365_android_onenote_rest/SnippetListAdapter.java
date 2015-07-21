@@ -65,6 +65,7 @@ public class SnippetListAdapter extends BaseAdapter {
                 betaIndicator.setText(mContext.getString(R.string.unavailable).toUpperCase());
             }
             if (hasStatus(clickedSnippet, BETA)) {
+                betaIndicator.setText(R.string.beta);
                 betaIndicator.setVisibility(View.VISIBLE);
             }
         }

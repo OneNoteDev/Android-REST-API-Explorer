@@ -13,6 +13,7 @@ import com.microsoft.live.LiveAuthListener;
 import com.microsoft.live.LiveConnectSession;
 import com.microsoft.live.LiveStatus;
 import com.microsoft.o365_android_onenote_rest.util.SharedPrefsUtil;
+import com.microsoft.o365_android_onenote_rest.util.User;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -29,12 +30,31 @@ public class SignInActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signin);
+        if (User.isOrg()) {
+            mAuthenticationManager.connect(this);
+        }
         ButterKnife.inject(this);
     }
 
     @OnClick(o365_signin)
     public void onSignInO365Clicked() {
-        mAuthenticationManager.connect(this);
+        if (!User.isOrg()) {
+            mLiveAuthClient.logout(new LiveAuthListener() {
+                @Override
+                public void onAuthComplete(LiveStatus status,
+                                           LiveConnectSession session,
+                                           Object userState) {
+                    mAuthenticationManager.connect(SignInActivity.this);
+                }
+
+                @Override
+                public void onAuthError(LiveAuthException exception, Object userState) {
+                    mAuthenticationManager.connect(SignInActivity.this);
+                }
+            });
+        } else {
+            mAuthenticationManager.connect(this);
+        }
     }
 
     @OnClick(msa_signin)
