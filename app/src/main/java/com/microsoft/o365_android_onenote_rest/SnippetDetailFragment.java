@@ -2,6 +2,7 @@ package com.microsoft.o365_android_onenote_rest;
 
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
 import android.content.ClipData;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -37,6 +38,7 @@ import com.microsoft.o365_android_onenote_rest.snippet.Input;
 import com.microsoft.o365_android_onenote_rest.snippet.SnippetContent;
 import com.microsoft.o365_android_onenote_rest.util.SharedPrefsUtil;
 import com.microsoft.o365_android_onenote_rest.util.User;
+import com.microsoft.onenotevos.BaseVO;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringEscapeUtils;
@@ -65,6 +67,8 @@ import static android.R.layout.simple_spinner_dropdown_item;
 import static android.R.layout.simple_spinner_item;
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
+import static com.microsoft.o365_android_onenote_rest.R.id.btn_launch_browser;
+import static com.microsoft.o365_android_onenote_rest.R.id.btn_launch_onenote;
 import static com.microsoft.o365_android_onenote_rest.R.id.btn_run;
 import static com.microsoft.o365_android_onenote_rest.R.id.progressbar;
 import static com.microsoft.o365_android_onenote_rest.R.id.spinner;
@@ -148,6 +152,12 @@ public class SnippetDetailFragment<T, Result>
         clipboard(tv);
     }
 
+    @InjectView(btn_launch_onenote)
+    protected Button mLaunchOneNote;
+
+    @InjectView(btn_launch_browser)
+    protected Button mLaunchBrowser;
+
     private void clipboard(TextView tv) {
         int which;
         switch (tv.getId()) {
@@ -203,8 +213,14 @@ public class SnippetDetailFragment<T, Result>
     }
 
     private void launchUrl(Uri uri) {
-        Intent viewDocs = new Intent(Intent.ACTION_VIEW, uri);
-        startActivity(viewDocs);
+        try {
+            Intent viewDocs = new Intent(Intent.ACTION_VIEW, uri);
+            startActivity(viewDocs);
+        } catch (ActivityNotFoundException e) {
+            Intent viewAppStore = new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("https://play.google.com/store/apps/details?id=com.microsoft.office.onenote"));
+            startActivity(viewAppStore);
+        }
     }
 
     @Override
@@ -300,6 +316,47 @@ public class SnippetDetailFragment<T, Result>
         }
         mProgressbar.setVisibility(GONE);
         displayResponse(response);
+        maybeShowQuickLink(result);
+    }
+
+    private void maybeShowQuickLink(Result result) {
+        if (result instanceof BaseVO) {
+            final BaseVO vo = (BaseVO) result;
+            if (hasOneNoteClientLink(vo)) {
+                showOneNoteLaunchBtn(vo);
+            }
+            if (hasWebClientLink(vo)) {
+                showBrowserLaunchBtn(vo);
+            }
+        }
+    }
+
+    private boolean hasWebClientLink(BaseVO vo) {
+        return null != vo.links && null != vo.links.oneNoteWebUrl;
+    }
+
+    private boolean hasOneNoteClientLink(BaseVO vo) {
+        return null != vo.links && null != vo.links.oneNoteClientUrl;
+    }
+
+    private void showBrowserLaunchBtn(final BaseVO vo) {
+        mLaunchBrowser.setEnabled(true);
+        mLaunchBrowser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                launchUrl(Uri.parse(vo.links.oneNoteWebUrl.href));
+            }
+        });
+    }
+
+    private void showOneNoteLaunchBtn(final BaseVO page) {
+        mLaunchOneNote.setEnabled(true);
+        mLaunchOneNote.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                launchUrl(Uri.parse(page.links.oneNoteClientUrl.href));
+            }
+        });
     }
 
     private void displayResponse(Response response) {
