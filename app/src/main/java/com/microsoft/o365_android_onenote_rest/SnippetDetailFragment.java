@@ -287,7 +287,6 @@ public class SnippetDetailFragment<T, Result>
 
             @Override
             public void failure(RetrofitError error) {
-                // TODO show an error and disable the run button
                 if (isAdded()) {
                     displayThrowable(error.getCause());
                     mProgressbar.setVisibility(View.GONE);
