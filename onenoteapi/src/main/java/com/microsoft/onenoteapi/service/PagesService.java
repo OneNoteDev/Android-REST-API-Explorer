@@ -81,7 +81,7 @@ public interface PagesService {
      * on the page collection
      *
      * @param version
-     * @param sectionID
+     * @param sectionId
      * @param order
      * @param select
      * @param top
@@ -92,7 +92,7 @@ public interface PagesService {
     @GET("/{version}/me/notes/sections/{sectionId}/pages")
     void getSectionPages(
             @Path("version") String version,
-            @Path("sectionId") String sectionID,
+            @Path("sectionId") String sectionId,
             @Query("orderby") String order,
             @Query("select") String select,
             @Query("top") Integer top,
@@ -177,7 +177,7 @@ public interface PagesService {
      * @param body
      * @param callback
      */
-    @PATCH("/{version}/me/notes/pages/{pageId}")
+    @PATCH("/{version}/me/notes/pages/{pageId}/content")
     void patchPage(
             @Path("version") String version,
             @Path("pageId") String pageId,

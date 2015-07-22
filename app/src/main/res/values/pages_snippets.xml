@@ -29,7 +29,7 @@
 
     <string-array name="create_page_with_url_snapshot">
         <item>POST a page with a snapshot of a url</item>
-        <item>Create a page with a snapshot of the OneNote.com homepage on it.</item>
+        <item>Create a page with a snapshot of the OneNote.com home page on it.</item>
         <item>http://dev.onenote.com/docs#/reference/post-pages/v10pages</item>
         <item>beta</item>
         <item>v1.0</item>
@@ -117,7 +117,7 @@
 
     <string-array name="create_page_with_product_info">
         <item>POST a page with product info</item>
-        <item>Create a page with a product info automatically extracted from an example amazon.com webpage</item>
+        <item>Create a page with product info automatically extracted from an example amazon.com webpage</item>
         <item>http://dev.onenote.com/docs#/reference/post-pages/v10pages</item>
         <item>beta</item>
         <item>v1.0</item>

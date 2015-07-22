@@ -82,7 +82,7 @@ public interface NotebooksService {
     );
 
     /**
-     * Creates a new notebook under the user's OneDrive for business notebooks folder
+     * Creates a new notebook under the user's OneDrive for Business notebooks folder
      *
      * @param version
      * @param contentTypeHeader

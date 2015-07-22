@@ -4,10 +4,6 @@
 
 package com.microsoft.o365_android_onenote_rest.inject;
 
-/*
- *  Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license.
- *  See full license at the bottom of this file.
- */
 public interface ObjectGraphInjector {
 
     void inject(Object target);

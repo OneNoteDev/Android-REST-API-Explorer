@@ -127,7 +127,7 @@ public abstract class AbstractSnippet<Service, Result> {
 
     /**
      * Returns the version segment of the endpoint url with input from
-     * XML snippet description and authentication method (O365, MSA)
+     * XML snippet description and authentication method (Office 365, MSA)
      *
      * @return
      */
