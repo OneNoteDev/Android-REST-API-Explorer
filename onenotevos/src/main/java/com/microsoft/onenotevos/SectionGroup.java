@@ -3,9 +3,6 @@
 */
 package com.microsoft.onenotevos;
 
-/**
- * Created by johnaustin on 6/22/15.
- */
 public class SectionGroup extends BaseVO {
     public String pagesUrl;
 }
