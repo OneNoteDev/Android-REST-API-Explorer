@@ -113,11 +113,10 @@ Each client application that you register with Azure can have its own unique set
 4. From the **Welcome to Android Studio** dialog box, choose **Import project (Eclipse ADT, Gradle, etc)**.
 5. Select the **settings.gradle** file in the **Android-REST-API-Explorer** folder and click **OK**.
 6. Respond to the dialog ("Gradle Sync: Gradle settings for this project are not configured yet. Would you like the project to use the Gradle wrapper? ") by clicking the **OK** button to use the Gradle wrapper. 
-6. Open the BaseActivity.java file in the com.microsoft.o365_android_onenote_rest package.
-7. Find the CLIENT_ID string argument in the builder.clientId() method and set its String value equal to the client id you registered in step&nbsp;1.
-8. Find the REDIRECT_URI string argument in the builder.redirectUri() method and set its String value equal to the redirect URI you registered in step&nbsp;1.
-9. Open the AppModule.java file in the com.microsoft.o365_android_onenote_rest.inject package.
-10. Find the MSA_CLIENT_ID string and set its string value equal to the client id you registered for MSA.
+7. Open the ServiceConstants.java file in the com.microsoft.o365_android_onenote_rest.conf package.
+7. Find the CLIENT_ID string and set its value to the client id you registered in Azure.
+8. Find the REDIRECT_URI string and set its value to the redirect URI you registered in Azure.
+9. Find the MSA_CLIENT_ID string and set its value to the client id you registered for your app in your Microsoft Account.
 
 ##Run the project
 Once you've built the REST explorer project you can run it on an emulator or device.
