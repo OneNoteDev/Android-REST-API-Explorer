@@ -10,4 +10,4 @@ This project incorporates material from the project(s) listed below (collectivel
 - [Okhttp](https://github.com/square/okhttp), which is Copyright (c) Square, Inc. and is available under the Apache License, Version 2.0 (the "License").
 - [Butterknife](https://github.com/JakeWharton/butterknife), which is Copyright (c) Jake Wharton, and is available under the Apache License, Version 2.0 (the "License").
 - [Timber](https://github.com/JakeWharton/timber), which is Copyright (c) Jake Wharton, and is available under the Apache License, Version 2.0 (the "License").
-<hr/>
+
