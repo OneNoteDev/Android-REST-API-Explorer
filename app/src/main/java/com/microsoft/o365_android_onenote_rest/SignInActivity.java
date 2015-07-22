@@ -5,6 +5,7 @@ package com.microsoft.o365_android_onenote_rest;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.microsoft.aad.adal.AuthenticationCallback;
 import com.microsoft.aad.adal.AuthenticationResult;
@@ -12,8 +13,12 @@ import com.microsoft.live.LiveAuthException;
 import com.microsoft.live.LiveAuthListener;
 import com.microsoft.live.LiveConnectSession;
 import com.microsoft.live.LiveStatus;
+import com.microsoft.o365_android_onenote_rest.conf.ServiceConstants;
 import com.microsoft.o365_android_onenote_rest.util.SharedPrefsUtil;
 import com.microsoft.o365_android_onenote_rest.util.User;
+
+import java.net.URI;
+import java.util.UUID;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -38,6 +43,22 @@ public class SignInActivity
 
     @OnClick(o365_signin)
     public void onSignInO365Clicked() {
+        try {
+            authenticateOrganization();
+        } catch (IllegalArgumentException e) {
+            warnBadClient();
+        }
+    }
+
+    private void warnBadClient() {
+        Toast.makeText(this,
+                R.string.warning_clientid_redirecturi_incorrect,
+                Toast.LENGTH_LONG)
+                .show();
+    }
+
+    private void authenticateOrganization() throws IllegalArgumentException {
+        validateOrganizationArgs();
         if (!User.isOrg()) {
             mLiveAuthClient.logout(new LiveAuthListener() {
                 @Override
@@ -57,9 +78,29 @@ public class SignInActivity
         }
     }
 
+    private void validateOrganizationArgs() throws IllegalArgumentException {
+        UUID.fromString(ServiceConstants.CLIENT_ID);
+        URI.create(ServiceConstants.REDIRECT_URI);
+    }
+
     @OnClick(msa_signin)
     public void onSignInMsaClicked() {
-        mLiveAuthClient.login(this, sSCOPES, this);
+        authenticateMsa();
+    }
+
+    private void authenticateMsa() {
+        try {
+            validateMsaArgs();
+            mLiveAuthClient.login(this, sSCOPES, this);
+        } catch (IllegalArgumentException e) {
+            warnBadClient();
+        }
+    }
+
+    private void validateMsaArgs() throws IllegalArgumentException {
+        if (ServiceConstants.MSA_CLIENT_ID.equals("<Your MSA CLIENT ID>")) {
+            throw new IllegalArgumentException();
+        }
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.microsoft.o365_android_onenote_rest.conf;
 
 public class ServiceConstants {
+
     // MSA
     public static final String MSA_CLIENT_ID = "<Your MSA CLIENT ID>";
     public static final String ONENOTE_API = "https://www.onenote.com/api";
