@@ -69,7 +69,7 @@ July 2015:
  
 ##Device requirements
 To run the REST explorer project, your device must meet the following requirements:
-* Android API leve 16 or newer
+* Android API level 16 or newer
 
 ###Prerequisites
 To use the OneNote REST API Explorer for Android, you need the following:
