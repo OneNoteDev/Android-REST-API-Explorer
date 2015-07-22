@@ -53,7 +53,7 @@
 
     <string-array name="get_notebooks_shared_by_others">
         <item>GET: Notebooks shared by others</item>
-        <item>Query for a list of all notebooks where the current user is not an Owner (i.e. the notebooks are owned by someone else and were shared with the current user with either a Reader or Contributor access level). This example shows how to use the \'$filter=userRole ne Microsoft.OneNote.Api.UserRole\'Owner\'\' query parameter and will return non-zero results only if the current user has access to shared notebooks</item>
+        <item>Query for a list of all notebooks where the current user is not an Owner (i.e., the notebooks are owned by someone else and were shared with the current user with either a Reader or Contributor access level). This example shows how to use the \'$filter=userRole ne Microsoft.OneNote.Api.UserRole\'Owner\'\' query parameter and will return nonzero results only if the current user has access to shared notebooks</item>
         <item>http://dev.onenote.com/docs#/reference/get-notebooks</item>
         <item>beta</item>
         <item>v1.0</item>
