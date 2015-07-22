@@ -68,7 +68,7 @@ July 2015:
 * Initial release
  
 ##Device requirements
-To run the REST explorer project, your device must meet the following requirements:
+To run the REST Explorer project, your device must meet the following requirements:
 * Android API level 16 or newer
 
 ###Prerequisites
@@ -119,7 +119,7 @@ Each client application that you register with Azure can have its own unique set
 9. Find the MSA_CLIENT_ID string and set its value to the client id you registered for your app in your Microsoft Account.
 
 ##Run the project
-Once you've built the REST explorer project you can run it on an emulator or device.
+Once you've built the REST Explorer project you can run it on an emulator or device.
 
 1. Run the project.
 2. Click the authentication account that you want to sign in to.
