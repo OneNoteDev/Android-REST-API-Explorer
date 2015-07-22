@@ -218,7 +218,7 @@ public abstract class NotebookSnippet<Result> extends AbstractSnippet<NotebooksS
                     }
 
                     /**
-                     * Call the POST request on the OneNote for business endpoint
+                     * Call the POST request on the Microsoft OneNote endpoint
                      * @param service
                      * @param callback
                      */
