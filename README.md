@@ -129,7 +129,7 @@ Once you've built the REST explorer project you can run it on an emulator or dev
 
 7. Click the run button to start the REST operation and wait for the operation to finish.
 8. Click in the Response Headers or Response Body text boxes to copy the box contents to the emulator/device clipboard.
-9. Press the Back button on the REST Explorer toolbar to return to the REST operation list.
+9. Click the Back button on the REST Explorer toolbar to return to the REST operation list.
 10. (Optional) Click the overflow menu to get the Disconnect menu option.
 
 ##Understand the code
