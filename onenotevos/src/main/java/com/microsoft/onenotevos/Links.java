@@ -3,12 +3,9 @@
 */
 package com.microsoft.onenotevos;
 
-/**
- * Created by johnaustin on 7/10/15.
- */
 public class Links {
 
-    // Is this a bug??
+    // todo Is this a bug??
     public static class Url {
         public String href;
     }
