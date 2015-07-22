@@ -15,7 +15,7 @@ OneNote REST API Explorer for Android
 * [Questions and comments](#questions-and-comments)
 * [Additional resources](#additional-resources)
 
-Looking to build cool apps that help people work with their OneNote notebooks? Explore, learn, and understand the OneNote REST APIs by using the OneNote REST API explorer for Android. This sample lets you view and run the REST APIs that read, add, update, and delete OneNote entities such as notebooks, section groups, sections, and pages. The app lets you authenticate in two ways. You can authenticate using a Microsoft Account (MSA) to connect to OneNote on your personal OneDrive. Or you can authenticate using a work or school account to connect to OneNote on either your organization's OneDrive or SharePoint site on Office 365.
+Looking to build cool apps that help people work with their OneNote notebooks? Explore, learn, and understand the OneNote REST APIs by using the OneNote REST API Explorer for Android. This sample lets you view and run the REST APIs that read, add, update, and delete OneNote entities such as notebooks, section groups, sections, and pages. The app lets you authenticate in two ways. You can authenticate using a Microsoft Account (MSA) to connect to OneNote on your personal OneDrive. Or you can authenticate using a work or school account to connect to OneNote on either your organization's OneDrive or SharePoint site on Office 365.
 
 You can explore the following operations for OneNote:
 
@@ -108,12 +108,12 @@ Each client application that you register with Azure can have its own unique set
 
 ##Configure the project
 
-2. Download or clone the [Android REST API Explorer](https://github.com/OneNoteDev/Android-REST-API-Explorer).
-3. Start Android Studio.
-4. From the **Welcome to Android Studio** dialog box, choose **Import project (Eclipse ADT, Gradle, etc)**.
-5. Select the **settings.gradle** file in the **Android-REST-API-Explorer** folder and click **OK**.
-6. Respond to the dialog ("Gradle Sync: Gradle settings for this project are not configured yet. Would you like the project to use the Gradle wrapper? ") by clicking the **OK** button to use the Gradle wrapper. 
-7. Open the ServiceConstants.java file in the com.microsoft.o365_android_onenote_rest.conf package.
+1. Download or clone the [OneNote REST API Explorer for Android](https://github.com/OneNoteDev/Android-REST-API-Explorer).
+2. Start Android Studio.
+3. From the **Welcome to Android Studio** dialog box, choose **Import project (Eclipse ADT, Gradle, etc)**.
+4. Select the **settings.gradle** file in the **Android-REST-API-Explorer** folder and click **OK**.
+5. Respond to the dialog ("Gradle Sync: Gradle settings for this project are not configured yet. Would you like the project to use the Gradle wrapper? ") by clicking the **OK** button to use the Gradle wrapper. 
+6. Open the ServiceConstants.java file in the com.microsoft.o365_android_onenote_rest.conf package.
 7. Find the CLIENT_ID string and set its value to the client id you registered in Azure.
 8. Find the REDIRECT_URI string and set its value to the redirect URI you registered in Azure.
 9. Find the MSA_CLIENT_ID string and set its value to the client id you registered for your app in your Microsoft Account.
