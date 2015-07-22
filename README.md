@@ -90,7 +90,7 @@ Each client application that you register with Azure can have its own unique set
 
 * [Register a native client application in Azure Active Directory](https://msdn.microsoft.com/library/azure/dn132599.aspx#) and [assign the required permissions](https://github.com/OfficeDev/O365-Android-Snippets/wiki/Grant-permission-for-the-snippet-application-in-Azure) to the sample application in Azure.
 
-> Note: Be sure to select the **native client application** on step 5 of the Azure Management Portal azure application procedure. 
+> Note: Be sure to select the **native client application** in step 5 of the Azure Management Portal Azure application procedure. 
 
 ##Microsoft account application registration
 1. Go to the [Windows Live application management site](http://go.microsoft.com/fwlink/?LinkID=144070).
