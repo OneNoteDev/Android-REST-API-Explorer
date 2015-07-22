@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="@dimen/activity_vertical_margin"
+    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+    android:layout_marginRight="@dimen/activity_horizontal_margin"
+    android:layout_marginTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/detail_section"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/microsoft_acct" />
+
+    <LinearLayout
+        android:id="@+id/msa_signin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_margin="8dp"
+            android:layout_weight="0.3"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/msa" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.7"
+            android:text="@string/msa_hint" />
+
+    </LinearLayout>
+
+    <TextView
+        style="@style/detail_section"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/org_acct" />
+
+    <LinearLayout
+        android:id="@+id/o365_signin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.7"
+            android:text="@string/o365_hint" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_margin="8dp"
+            android:layout_weight="0.3"
+            android:scaleType="fitCenter"
+            android:src="@drawable/o365" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- The name of this section-->
+    <string name="section_notebooks">/notebooks</string>
+
+    <string-array name="get_all_notebooks">
+        <item>GET: List of all Notebooks</item>
+        <item>Queries for all notebooks in OneNote and returns a list</item>
+        <item>http://dev.onenote.com/docs#/reference/get-notebooks</item>
+        <item>beta</item>
+        <item>v1.0</item>
+    </string-array>
+
+    <string-array name="get_notebooks_expand">
+        <item>GET: Get Notebooks and Sections using $expand</item>
+        <item>This is one example to demonstrate how the $expand query parameter can be used to return all notebooks and their descendant sections, sectionGroups in one roundtrip. In this case we are going to make a GET request on ~/notebooks?$expand=sections,sectionGroups($expand=sections)</item>
+        <item>http://dev.onenote.com/docs#/reference/get-notebooks</item>
+        <item>beta</item>
+        <item>v1.0</item>
+    </string-array>
+
+    <string-array name="get_notebook_by_id">
+        <item>GET: Get a specific Notebook by id</item>
+        <item>Query for a list of all notebooks with a given id. This example shows how to use the</item>
+        <item>http://dev.onenote.com/docs#/reference/get-notebooks</item>
+        <item>beta</item>
+        <item>v1.0</item>
+    </string-array>
+
+    <string-array name="notebook_specific_meta">
+        <item>GET: Metadata of a specific notebook</item>
+        <item>Following the previous example, first we get a list of all notebooks and then query the metadata for one of the selected notebooks. Please select a specific notebook from the drop-down below</item>
+        <item>http://dev.onenote.com/docs#/reference/get-notebooks</item>
+        <item>beta</item>
+        <item>v1.0</item>
+    </string-array>
+
+    <string-array name="notebook_specific_name">
+        <item>GET: Notebooks with a specific name</item>
+        <item>Query for a list of all notebooks with a given name. This example shows how to use the \'$filter=name eq \'&lt;term&gt;\' query parameter. Please enter the case-sensitive full notebook name to look for in the TextBox below</item>
+        <item>http://dev.onenote.com/docs#/reference/get-notebooks</item>
+        <item>beta</item>
+        <item>v1.0</item>
+    </string-array>
+
+    <string-array name="notebook_selected_meta">
+        <item>GET: Sorted list of notebooks with selected metadata</item>
+        <item>Get a sorted list of notebooks using the $orderBy=name asc query parameter and only specific metadata in the response using the $select=id,name query parameter. $orderBy can be used to specify your custom sort order</item>
+        <item>http://dev.onenote.com/docs#/reference/get-notebooks</item>
+        <item>beta</item>
+        <item>v1.0</item>
+    </string-array>
+
+    <string-array name="get_notebooks_shared_by_others">
+        <item>GET: Notebooks shared by others</item>
+        <item>Query for a list of all notebooks where the current user is not an Owner (i.e. the notebooks are owned by someone else and were shared with the current user with either a Reader or Contributor access level). This example shows how to use the \'$filter=userRole ne Microsoft.OneNote.Api.UserRole\'Owner\'\' query parameter and will return non-zero results only if the current user has access to shared notebooks</item>
+        <item>http://dev.onenote.com/docs#/reference/get-notebooks</item>
+        <item>beta</item>
+        <item>v1.0</item>
+    </string-array>
+
+    <string-array name="create_new_notebook">
+        <item>POST: Create a new notebook</item>
+        <item>Create a new blank notebook. Please enter the new notebook\'s name in the TextBox below</item>
+        <item>http://dev.onenote.com/docs#/reference/get-notebooks</item>
+        <item>beta</item>
+        <item>v1.0</item>
+    </string-array>
+
+</resources>

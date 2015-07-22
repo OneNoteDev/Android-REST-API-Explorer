@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">OneNote REST Demo</string>
+    <string name="title_snippet_detail">Snippet Detail</string>
+    <string name="beta">BETA</string>
+    <string name="run">Run</string>
+    <string name="req_url">Request URL</string>
+    <string name="req_headers">Request Headers</string>
+    <string name="req_body">Request Body</string>
+    <string name="response">Response</string>
+    <string name="response_headers">Response Headers</string>
+    <string name="response_body">Response Body</string>
+    <string name="docs"><u>Documentation</u></string>
+    <string name="status_code">HTTP Status Code</string>
+    <string name="msa_hint">Sign in with the account you use for OneDrive, Xbox Live, Outlook.com, or other Microsoft services</string>
+    <string name="o365_hint">Sign in with the account provided by your work or school to use with Office 365 or other Microsoft services</string>
+    <string name="org_acct">Organizational Account</string>
+    <string name="microsoft_acct">Microsoft Account</string>
+    <string name="launch_onenote">Open in OneNote</string>
+    <string name="launch_browser">Open in browser</string>
+    <string name="quick_links">Quick Links</string>
+    <string name="quick_link_unavailable">Quick Link Unavailable</string>
+    <string name="quick_link_error">Either no network call has been made or the request doesn\'t support this action.</string>
+    <string name="dismiss">Dismiss</string>
+    <string name="clippy">copied to clipboard</string>
+    <string name="token_err_title">Failed to acquire api token</string>
+    <string name="token_err_msg">Office 365 has either failed to refresh the access token or is unavailable. To view the extended stacktrace, click \'Dismiss\' then view the Response Body section</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="wl_signin">Single sign-in behavior. With single sign-in, users who are already signed in to Live Connect are also signed in to your website.</string>
+    <string name="wl_offline_access">The ability of an app to read and update a user\'s info at any time. Without this scope, an app can access the user\'s info only while the user is signed in to Live Connect and is using your app.</string>
+    <string name="on_create">Permission to view a list of the user’s OneNote notebooks and create new pages, but not to view or edit existing pages. Gives an app the ability to enumerate the user’s notebook hierarchy and create pages in any location.</string>
+    <string name="on_update">Permission to create, view, and modify any content in the user’s OneNote notebooks and pages.</string>
+    <string name="on_base">Permission to view OneNote notebooks and pages but not to modify them.</string>
+    <string name="unavailable">unavailable</string>
+    <string name="err_setup">Error preparing snippet</string>
+    <string name="err_setup_msg">This snippet requires a notebook, section, group, or page before it will run. For example if you are deleting a page, you must first have a page to delete. Check that the appropriate item exists before running this snippet.</string>
+    <string name="et_hint">&lt;Your text here&gt;</string>
+</resources>

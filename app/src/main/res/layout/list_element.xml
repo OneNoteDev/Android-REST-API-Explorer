@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="15dp">
+
+    <TextView
+        android:id="@+id/txt_snippet_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Get all pages" />
+
+    <TextView
+        android:id="@+id/beta_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-condensed"
+        android:paddingLeft="3dp"
+        android:paddingRight="3dp"
+        android:text="@string/beta"
+        android:textColor="#A32800"
+        android:textSize="12sp"
+        android:visibility="gone" />
+</LinearLayout>
