@@ -9,5 +9,5 @@ public class ServiceConstants {
     public static final String AUTHENTICATION_RESOURCE_ID = "https://onenote.com";
     public static final String AUTHORITY_URL = "https://login.microsoftonline.com/common";
     public static final String REDIRECT_URI = "<Your REDIRECT URI HERE>";
-    public static final String CLIENT_ID = "Your CLIENT ID HERE>";
+    public static final String CLIENT_ID = "<Your CLIENT ID HERE>";
 }
