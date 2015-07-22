@@ -72,7 +72,7 @@ To run the REST explorer project, your device must meet the following requiremen
 * Android API leve 16 or newer
 
 ###Prerequisites
-To use the Android REST API explorer, you need the following:
+To use the OneNote REST API Explorer for Android, you need the following:
 * The latest version of [Android Studio](http://developer.android.com/sdk/index.html).
 * the [Gradle](http://www.gradle.org) build automation system version 2.2.1 or later.
 * An Office 365 account. You can sign up for [an Office 365 Developer subscription](https://portal.office.com/Signup/Signup.aspx?OfferId=C69E7747-2566-4897-8CBA-B998ED3BAB88&DL=DEVELOPERPACK&ali=1#0) that includes the resources you need to start building Office 365 apps.
