@@ -3,45 +3,35 @@
 */
 package com.microsoft.onenoteapi.service;
 
-public class PatchCommand {
+import android.util.Log;
 
-    private String mTarget;
-    private String mAction;
-    private String mContent;
-    private String mPosition;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
+import com.google.gson.annotations.SerializedName;
 
-    public void setTarget(String target) {
-        mTarget = target;
+import java.lang.reflect.Type;
+
+public class PatchCommand implements JsonSerializer<PatchCommand> {
+
+    @SerializedName("Target")
+    public String mTarget;
+    @SerializedName("Action")
+    public String mAction;
+    @SerializedName("Content")
+    public String mContent;
+    @SerializedName("Position")
+    public String mPosition;
+
+    @Override
+    public JsonElement serialize(PatchCommand patchCommand,
+                                 Type typeOfSrc,
+                                 JsonSerializationContext context) {
+        JsonElement result = new GsonBuilder().create().toJsonTree(patchCommand);
+        Log.i(getClass().getSimpleName(), result.toString());
+        return result;
     }
-
-    public void setAction(String action) {
-        mAction = action;
-    }
-
-    public void setPosition(String position) {
-        mPosition = position;
-    }
-
-    public void setContent(String content) {
-        mContent = content;
-    }
-
-    public String getTarget() {
-        return mTarget;
-    }
-
-    public String getAction() {
-        return mAction;
-    }
-
-    public String getPosition() {
-        return mPosition;
-    }
-
-    public String getContent() {
-        return mContent;
-    }
-
 }
 // *********************************************************
 //

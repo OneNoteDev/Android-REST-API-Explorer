@@ -177,7 +177,7 @@ public interface PagesService {
      * @param body
      * @param callback
      */
-    @PATCH("/{version}/me/notes/pages/{pageId}")
+    @PATCH("/{version}/me/notes/pages/{pageId}/content")
     void patchPage(
             @Path("version") String version,
             @Path("pageId") String pageId,

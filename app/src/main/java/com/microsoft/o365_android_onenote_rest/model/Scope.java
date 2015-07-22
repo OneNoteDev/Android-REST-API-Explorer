@@ -34,7 +34,8 @@ public class Scope {
 
     public enum office {
         onenote_create(on_create),
-        onenote_update(on_update), onenote(on_base);
+        onenote_update(on_update),
+        onenote(on_base);
 
         public final String mDescription;
 

@@ -4,14 +4,13 @@
 
 package com.microsoft.o365_android_onenote_rest.snippet;
 
-import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
 import com.microsoft.o365_android_onenote_rest.R;
 import com.microsoft.o365_android_onenote_rest.SnippetDetailFragment;
 import com.microsoft.o365_android_onenote_rest.application.SnippetApp;
 import com.microsoft.onenoteapi.service.OneNotePartsMap;
 import com.microsoft.onenoteapi.service.PagesService;
 import com.microsoft.onenoteapi.service.PatchCommand;
-import com.microsoft.onenoteapi.service.PatchCommandSerializer;
 import com.microsoft.onenotevos.Envelope;
 import com.microsoft.onenotevos.Page;
 import com.microsoft.onenotevos.Section;
@@ -32,6 +31,7 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 import retrofit.mime.TypedFile;
 import retrofit.mime.TypedString;
+import timber.log.Timber;
 
 import static com.microsoft.o365_android_onenote_rest.R.array.create_page_under_named_section;
 import static com.microsoft.o365_android_onenote_rest.R.array.create_page_with_business_cards;
@@ -351,17 +351,14 @@ public abstract class PagesSnippet<Result> extends AbstractSnippet<PagesService,
 
                         //Create PatchCommand list and convert to json to build patch request body
                         PatchCommand command = new PatchCommand();
-                        command.setAction("append");
-                        command.setTarget("body");
-                        command.setPosition("after");
-                        command.setContent("New trailing content");
-                        com.google.gson.Gson gson = new GsonBuilder()
-                                .registerTypeAdapter(
-                                        PatchCommand.class,
-                                        new PatchCommandSerializer())
-                                .create();
-
-                        TypedString typedString = new TypedString(gson.toJson(command)) {
+                        command.mAction = "append";
+                        command.mTarget = "body";
+                        command.mPosition = "after";
+                        command.mContent = "<p>New trailing content</p>";
+                        JsonArray jsonArray = new JsonArray();
+                        jsonArray.add(command.serialize(command, null, null));
+                        Timber.d(jsonArray.toString());
+                        TypedString typedString = new TypedString(jsonArray.toString()) {
                             @Override
                             public String mimeType() {
                                 return "application/json";
