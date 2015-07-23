@@ -217,4 +217,3 @@ You will need to sign a [Contributor License Agreement](https://cla.microsoft.co
 
 ## Copyright
 Copyright (c) 2015 Microsoft. All rights reserved.
-
