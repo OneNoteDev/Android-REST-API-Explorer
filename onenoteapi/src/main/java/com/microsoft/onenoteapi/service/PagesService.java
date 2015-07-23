@@ -81,7 +81,7 @@ public interface PagesService {
      * on the page collection
      *
      * @param version
-     * @param sectionID
+     * @param sectionId
      * @param order
      * @param select
      * @param top
@@ -92,7 +92,7 @@ public interface PagesService {
     @GET("/{version}/me/notes/sections/{sectionId}/pages")
     void getSectionPages(
             @Path("version") String version,
-            @Path("sectionId") String sectionID,
+            @Path("sectionId") String sectionId,
             @Query("orderby") String order,
             @Query("select") String select,
             @Query("top") Integer top,
@@ -172,13 +172,18 @@ public interface PagesService {
      * Appends new content to an existing page
      * specified by page id
      *
+     * Note: This passes a blank Accept-Encoding header to
+     * work around a known issue with the PATCH on this OneNote API
+     *
+     * @param encoding
      * @param version
      * @param pageId
      * @param body
      * @param callback
      */
-    @PATCH("/{version}/me/notes/pages/{pageId}")
+    @PATCH("/{version}/me/notes/pages/{pageId}/content")
     void patchPage(
+            @Header("Accept-Encoding") String encoding,
             @Path("version") String version,
             @Path("pageId") String pageId,
             @Body TypedString body,

@@ -6,6 +6,7 @@ package com.microsoft.o365_android_onenote_rest.snippet;
 
 import com.google.gson.JsonObject;
 import com.microsoft.o365_android_onenote_rest.SnippetDetailFragment;
+import com.microsoft.onenoteapi.service.NotebooksService;
 import com.microsoft.onenoteapi.service.SectionsService;
 import com.microsoft.onenotevos.Envelope;
 import com.microsoft.onenotevos.Notebook;
@@ -44,8 +45,7 @@ public abstract class SectionSnippet<Result>
                         // not implemented
                     }
                 },
-                /**
-                 *
+                /*
                  * Gets all sections in the selected notebook specified by notebook id
                  */
                 new SectionSnippet<String[]>(sections_specific_notebook, Input.Spinner) {
@@ -54,7 +54,7 @@ public abstract class SectionSnippet<Result>
 
                     @Override
                     public void setUp(Services services, final retrofit.Callback<String[]> callback) {
-                        fillNotebookSpinner(services, callback, notebookMap);
+                        fillNotebookSpinner(services.mNotebooksService, callback, notebookMap);
                     }
 
                     @Override
@@ -78,7 +78,7 @@ public abstract class SectionSnippet<Result>
                     }
                 },
 
-                /**
+                /*
                  * Gets all of the sections in the user's default notebook
                  * HTTP GET https://www.onenote.com/api/beta/me/notes/sections
                  */
@@ -97,7 +97,7 @@ public abstract class SectionSnippet<Result>
                     }
                 },
 
-                /**
+                /*
                  * Gets any section whose title matches the given title
                  * HTTP GET https://www.onenote.com/api/beta/me/notes/sections?filter=name+eq+%27{1}%27
                  */
@@ -120,7 +120,7 @@ public abstract class SectionSnippet<Result>
                     }
                 },
 
-                /**
+                /*
                  * Gets the metadata for a section by section id
                  */
                 new SectionSnippet<Envelope<Section>>(get_metadata_of_section, Input.Spinner) {
@@ -128,7 +128,7 @@ public abstract class SectionSnippet<Result>
 
                     @Override
                     public void setUp(Services services, final retrofit.Callback<String[]> callback) {
-                        fillSectionSpinner(services, callback, sectionMap);
+                        fillSectionSpinner(services.mSectionsService, callback, sectionMap);
                     }
 
                     @Override
@@ -145,7 +145,7 @@ public abstract class SectionSnippet<Result>
                     }
                 },
 
-                /**
+                /*
                  * Creates a new section with a title in a notebook specified by id
                  */
                 new SectionSnippet<Envelope<Section>>(create_section, Input.Both) {
@@ -156,7 +156,7 @@ public abstract class SectionSnippet<Result>
                     public void setUp(
                             Services services,
                             final retrofit.Callback<String[]> callback) {
-                        fillNotebookSpinner(services, callback, notebookMap);
+                        fillNotebookSpinner(services.mNotebooksService, callback, notebookMap);
                     }
 
                     //Create the JSON body of a new section request.
@@ -197,20 +197,11 @@ public abstract class SectionSnippet<Result>
     @Override
     public abstract void request(SectionsService service, Callback<Result> callback);
 
-    /**
-     * Returns a map of the user's notebooks to look up a notebook
-     * based on a notebook name
-     *
-     * @param services
-     * @param callback
-     * @param notebookMap
-     * @return
-     */
     protected void fillNotebookSpinner(
-            Services services,
+            NotebooksService notebooksService,
             final retrofit.Callback<String[]> callback,
             final Map<String, Notebook> notebookMap) {
-        services.mNotebooksService.getNotebooks(getVersion(),
+        notebooksService.getNotebooks(getVersion(),
                 null,
                 null,
                 null,
@@ -242,20 +233,11 @@ public abstract class SectionSnippet<Result>
                 });
     }
 
-    /**
-     * Returns a map of the user's notebook sections to look up a section
-     * based on a notebook name
-     *
-     * @param services
-     * @param callback
-     * @param sectionMap
-     * @return
-     */
     protected void fillSectionSpinner(
-            Services services,
+            SectionsService sectionsService,
             final retrofit.Callback<String[]> callback,
             final Map<String, Section> sectionMap) {
-        services.mSectionsService.getSections(
+        sectionsService.getSections(
                 getVersion(),
                 null,
                 null,
