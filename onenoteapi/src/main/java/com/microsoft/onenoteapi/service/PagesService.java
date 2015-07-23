@@ -172,6 +172,10 @@ public interface PagesService {
      * Appends new content to an existing page
      * specified by page id
      *
+     * Note: This passes a blank Accept-Encoding header to
+     * work around a known issue with the PATCH on this OneNote API
+     *
+     * @param encoding
      * @param version
      * @param pageId
      * @param body
