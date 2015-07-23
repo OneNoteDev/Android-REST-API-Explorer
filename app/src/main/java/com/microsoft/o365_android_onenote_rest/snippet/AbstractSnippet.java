@@ -58,7 +58,7 @@ public abstract class AbstractSnippet<Service, Result> {
     /**
      * Snippet constructor
      *
-     * @param category         Snippet category (Notbook, sectionGroup, section, page)
+     * @param category         Snippet category (Notebook, sectionGroup, section, page)
      * @param descriptionArray The String array for the specified snippet
      * @param inputArgs        any input arguments
      */
