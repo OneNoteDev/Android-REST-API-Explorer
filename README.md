@@ -86,11 +86,30 @@ To use the OneNote REST API Explorer for Android, you need the following:
 * A registered Microsoft application with a client id.
     
 ##Azure client application registration
-Each client application that you register with Azure can have its own unique set of permissions, application title, and redirect URL. Unless you have an existing application registration that uses the same combination of permissions, title, and URL, you should create a new registration for each app.
+1.	Sign in to the [Azure Management Portal](https://manage.windowsazure.com), using your Azure AD credentials.
+2.	Click **Active Directory** on the left menu, then select the directory for your Office 365 developer site.
+3.	On the top menu, click **Applications**.
+4.	Click **Add** from the bottom menu.
+5.	On the **What do you want to do page**, click **Add an application my organization is developing**.
+6.	On the **Tell us about your application page**, specify **OneNote REST API Explorer** for the application name and select **NATIVE CLIENT APPLICATION** for type.
+7.	Click the arrow icon on the bottom-right corner of the page.
+8.	On the **Application information** page, specify a **Redirect URI**, for this example, you can specify http://localhost/OneNoteRESTExplorer, and then select the checkbox in the lower-right hand corner of the page. Remember this value for the below section **Getting the ClientID and RedirectUri into the project**.
+9.	Once the application has been successfully added, you will be taken to the **Quick Start** page for the application. From here, select **Configure** in the top menu.
+10.	Under **permissions to other applications**, select **Add application.** Select OneNote and then the check box to proceed.
+11.	For the **OneNote** application add the following permissions:
+    * View and modify OneNote notebooks in your organization
+    * View and modify OneNote notebooks
+    * Create pages in OneNote notebooks
+![](/readme-images/OneNotePermissions.jpg)
 
-* [Register a native client application in Azure Active Directory](https://msdn.microsoft.com/library/azure/dn132599.aspx#) and [assign the required permissions](https://github.com/OfficeDev/O365-Android-Snippets/wiki/Grant-permission-for-the-snippet-application-in-Azure) to the sample application in Azure.
+12. For the **Windows Azure Active Directory** application add or make sure the following permissions are enabled:
+	* Enable sign-on and read users' profiles
+    * Access your organization's directory
+![](/readme-images/AADPermissions.jpg)
 
-> Note: Be sure to select the **native client application** in step 5 of the Azure Management Portal Azure application procedure. 
+13.	Copy the value specified for **Client ID** on the **Configure** page. Remember this value for the below section **Getting the ClientID and RedirectUri into the project**.
+14.	Click **Save** in the bottom menu.
+
 
 ##Microsoft account application registration
 1. Go to the [Windows Live application management site](http://go.microsoft.com/fwlink/?LinkID=144070).
