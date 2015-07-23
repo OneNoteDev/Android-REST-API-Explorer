@@ -76,7 +76,7 @@ public abstract class PagesSnippet<Result> extends AbstractSnippet<PagesService,
                     }
                 },
 
-                /**
+                /*
                  * POST a new OneNote page in the section picked by the user
                  * HTTP POST https://www.onenote.com/api/beta/me/notes/sections/{id}/pages
                  * @see http://dev.onenote.com/docs#/reference/post-pages
@@ -122,8 +122,7 @@ public abstract class PagesSnippet<Result> extends AbstractSnippet<PagesService,
                     }
                 },
 
-
-                /**
+                /*
                  * Creates a new page in a section referenced by title instead of Id
                  * HTTP POST https://www.onenote.com/api/beta/me/notes/pages{?sectionName}
                  * @see http://dev.onenote.com/docs#/reference/post-pages/v10menotespagessectionname
@@ -169,7 +168,7 @@ public abstract class PagesSnippet<Result> extends AbstractSnippet<PagesService,
                     }
                 },
 
-                /**
+                /*
                  * Creates a page with an embedded image
                  * @see http://dev.onenote.com/docs#/reference/post-pages/v10menotespages
                  */
@@ -217,7 +216,7 @@ public abstract class PagesSnippet<Result> extends AbstractSnippet<PagesService,
                     }
                 },
 
-                /**
+                /*
                  * Gets a page by using a filter query that asks for
                  * pages whose title contains text input by user
                  */
@@ -239,7 +238,7 @@ public abstract class PagesSnippet<Result> extends AbstractSnippet<PagesService,
                     }
                 },
 
-                /**
+                /*
                  * Creates a new page with an embedded web page
                  * @see http://dev.onenote.com/docs#/reference/post-pages/v10menotespages
                  */
@@ -304,7 +303,7 @@ public abstract class PagesSnippet<Result> extends AbstractSnippet<PagesService,
                     }
                 },
 
-                /**
+                /*
                  * Deletes a page specified by page Id
                  * @see http://dev.onenote.com/docs#/reference/delete-pages
                  */
@@ -333,7 +332,7 @@ public abstract class PagesSnippet<Result> extends AbstractSnippet<PagesService,
                 },
 
 
-                /**
+                /*
                  * Appends an HTML para to the end of the page selected by the user
                  * @see http://dev.onenote.com/docs#/reference/patch-pages
                  */
@@ -379,7 +378,7 @@ public abstract class PagesSnippet<Result> extends AbstractSnippet<PagesService,
                     }
                 },
 
-                /**
+                /*
                  * Creates a page that embeds a webpage and renders the embedded web page
                  * @see http://dev.onenote.com/docs#/reference/post-pages/v10menotespages
                  */
@@ -423,7 +422,7 @@ public abstract class PagesSnippet<Result> extends AbstractSnippet<PagesService,
                     }
                 },
 
-                /**
+                /*
                  * Gets a collection of pages in a specific section
                  * @see http://dev.onenote.com/docs#/reference/post-pages/v10menotespages
                  */
@@ -455,7 +454,7 @@ public abstract class PagesSnippet<Result> extends AbstractSnippet<PagesService,
                     }
                 },
 
-                /**
+                /*
                  * Creates a page that embeds an image
                  * @see http://dev.onenote.com/docs#/reference/post-pages/v10menotespages
                  */
@@ -504,7 +503,7 @@ public abstract class PagesSnippet<Result> extends AbstractSnippet<PagesService,
                     }
                 },
 
-                /**
+                /*
                  * Creates a new page with HTML content that includes para tags with data-tag attributes
                  * @see http://dev.onenote.com/docs#/reference/post-pages/v10menotespages
                  */
@@ -548,7 +547,7 @@ public abstract class PagesSnippet<Result> extends AbstractSnippet<PagesService,
                 },
 
 
-                /**
+                /*
                  * Creates a new page with content extracted from an image
                  * @see http://dev.onenote.com/docs#/reference/post-pages/v10menotespages
                  */
@@ -594,8 +593,7 @@ public abstract class PagesSnippet<Result> extends AbstractSnippet<PagesService,
                     }
                 },
 
-
-                /**
+                /*
                  * Create a new page with contents that are extracted from a web page
                  * specified by Url in the HTML from the raw resource
                  * @see http://dev.onenote.com/docs#/reference/post-pages/v10menotespages
@@ -638,8 +636,7 @@ public abstract class PagesSnippet<Result> extends AbstractSnippet<PagesService,
                     }
                 },
 
-
-                /**
+                /*
                  * Creates a new page with the content of a web page referenced by Url in
                  * HTML from raw resource
                  * @see http://dev.onenote.com/docs#/reference/post-pages/v10menotespages
@@ -682,7 +679,7 @@ public abstract class PagesSnippet<Result> extends AbstractSnippet<PagesService,
                     }
                 },
 
-                /**
+                /*
                  * Get a collection of all the user's pages
                  * @see http://dev.onenote.com/docs#/reference/get-pages/v10menotespagesfilterorderbyselecttopskipsearchcount
                  */
@@ -700,7 +697,7 @@ public abstract class PagesSnippet<Result> extends AbstractSnippet<PagesService,
                     }
                 },
 
-                /**
+                /*
                  * Get a 20 page collection, starting with the 3rd page in the user's collection
                  * @see http://dev.onenote.com/docs#/reference/get-pages/v10menotessectionsidpagesfilterorderbyselecttopskipsearchcount
                  */
@@ -718,7 +715,7 @@ public abstract class PagesSnippet<Result> extends AbstractSnippet<PagesService,
                     }
                 },
 
-                /**
+                /*
                  * GET a collection of pages whose subject or content contains the search text
                  * @see http://dev.onenote.com/docs#/reference/get-pages/v10menotespagesfilterorderbyselecttopskipsearchcount
                  */
@@ -738,7 +735,7 @@ public abstract class PagesSnippet<Result> extends AbstractSnippet<PagesService,
                     }
                 },
 
-                /**
+                /*
                  * GET a page from the user's page collection for specific id
                  */
                 new PagesSnippet<Envelope<Page>>(meta_specific_page, Input.Spinner) {
@@ -764,7 +761,8 @@ public abstract class PagesSnippet<Result> extends AbstractSnippet<PagesService,
                         );
                     }
                 },
-                /**
+
+                /*
                  * GET a collection of pages ordered by title
                  */
                 new PagesSnippet(pages_selected_meta) {
@@ -783,7 +781,7 @@ public abstract class PagesSnippet<Result> extends AbstractSnippet<PagesService,
                     }
                 },
 
-                /**
+                /*
                  * GET the content of a page specified by page id
                  */
                 new PagesSnippet<Envelope<Page>>(get_page_as_html, Input.Spinner) {
@@ -811,22 +809,11 @@ public abstract class PagesSnippet<Result> extends AbstractSnippet<PagesService,
         };
     }
 
-    /**
-     * Gets an HTML formatted resource from a raw resource, replaces a token with
-     * a string replacement value, and returns the HTML
-     *
-     * @param input
-     * @param replacement
-     * @return
-     */
     static String getSimplePageContentBody(
-            InputStream input
-            , String replacement
-            , String imagePartName) {
+            InputStream input, String replacement, String imagePartName) {
         String simpleHtml = "";
         try {
-            simpleHtml = IOUtils.toString(
-                    input);
+            simpleHtml = IOUtils.toString(input);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -843,7 +830,7 @@ public abstract class PagesSnippet<Result> extends AbstractSnippet<PagesService,
     @Override
     public abstract void request(PagesService service, Callback<Result> callback);
 
-    /**
+    /*
      * @param imagePath The path to the image
      * @return File. the image to attach to a OneNote page
      */
@@ -866,11 +853,6 @@ public abstract class PagesSnippet<Result> extends AbstractSnippet<PagesService,
         return imageFile;
     }
 
-    /**
-     * @param services
-     * @param callback
-     * @param pageMap
-     */
     protected void fillPageSpinner(
             Services services,
             final retrofit.Callback<String[]> callback,
@@ -910,17 +892,6 @@ public abstract class PagesSnippet<Result> extends AbstractSnippet<PagesService,
         );
 
     }
-
-
-    /**
-     * Returns a map of the user's notebook sections to look up a section
-     * based on a notebook name
-     *
-     * @param services
-     * @param callback
-     * @param sectionMap
-     * @return
-     */
 
     protected void fillSectionSpinner(
             Services services,

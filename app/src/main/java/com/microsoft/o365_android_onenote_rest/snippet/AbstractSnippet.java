@@ -16,6 +16,12 @@ import static com.microsoft.o365_android_onenote_rest.snippet.SnippetCategory.pa
 import static com.microsoft.o365_android_onenote_rest.snippet.SnippetCategory.sectionGroupsSnippetCategory;
 import static com.microsoft.o365_android_onenote_rest.snippet.SnippetCategory.sectionsSnippetCategory;
 
+/**
+ * The base class for snippets
+ *
+ * @param <Service> the service which descendants will use to make their calls
+ * @param <Result>  the expected object to be returned by the service
+ */
 public abstract class AbstractSnippet<Service, Result> {
 
     public static final Services sServices = new Services();
@@ -129,7 +135,7 @@ public abstract class AbstractSnippet<Service, Result> {
      * Returns the version segment of the endpoint url with input from
      * XML snippet description and authentication method (Office 365, MSA)
      *
-     * @return
+     * @return the version of the endpoint to use
      */
     public String getVersion() {
         return User.isMsa() ? mMSAVersion : mO365Version;
@@ -152,6 +158,12 @@ public abstract class AbstractSnippet<Service, Result> {
         return mSection;
     }
 
+    /**
+     * Abstract declaration of method which subclasses must define to actually run the snippet
+     *
+     * @param service  the service instance to use
+     * @param callback the recipient of the result
+     */
     public abstract void request(Service service, Callback<Result> callback);
 
 }
