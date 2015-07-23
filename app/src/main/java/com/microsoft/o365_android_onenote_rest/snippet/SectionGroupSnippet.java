@@ -40,7 +40,7 @@ public abstract class SectionGroupSnippet<Result>
                     }
                 },
 
-                /**
+                /*
                  * Gets all of the Section groups for all of a user's notebooks
                  * @see http://dev.onenote.com/docs#/reference/get-sectiongroups/v10menotessectiongroupsfilterorderbyselectexpandtopskipcount
                  */
@@ -62,7 +62,7 @@ public abstract class SectionGroupSnippet<Result>
                     }
                 },
 
-                /**
+                /*
                  * Gets all section groups for a given notebook
                  * @see http://dev.onenote.com/docs#/reference/get-sectiongroups/v10menotesnotebooksidsectiongroupsfilterorderbyselectexpandtopskipcount
                  */
@@ -98,15 +98,6 @@ public abstract class SectionGroupSnippet<Result>
     @Override
     public abstract void request(SectionGroupsService service, Callback<Result> callback);
 
-    /**
-     * Returns a map of the user's notebooks to look up a notebook
-     * based on a notebook name
-     *
-     * @param services
-     * @param callback
-     * @param notebookMap
-     * @return
-     */
     protected void fillNotebookSpinner(
             Services services,
             final retrofit.Callback<String[]> callback,

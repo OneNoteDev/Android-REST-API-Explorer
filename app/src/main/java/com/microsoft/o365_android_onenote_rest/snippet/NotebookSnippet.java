@@ -47,7 +47,7 @@ public abstract class NotebookSnippet<Result> extends AbstractSnippet<NotebooksS
                 },
                 // Snippets
 
-                /**
+                /*
                  * Gets all of the user's notebooks
                  */
                 new NotebookSnippet<Envelope<Notebook>>(get_all_notebooks) {
@@ -65,7 +65,7 @@ public abstract class NotebookSnippet<Result> extends AbstractSnippet<NotebooksS
                     }
                 },
 
-                /**
+                /*
                  * Gets all of the user's notebooks and expands notebook sections
                  */
                 new NotebookSnippet(get_notebooks_expand) {
@@ -85,7 +85,7 @@ public abstract class NotebookSnippet<Result> extends AbstractSnippet<NotebooksS
                     }
                 },
 
-                /**
+                /*
                  * Gets a notebook by specified notebook id
                  */
                 new NotebookSnippet<Envelope<Notebook>>(get_notebook_by_id, Input.Spinner) {
@@ -112,7 +112,7 @@ public abstract class NotebookSnippet<Result> extends AbstractSnippet<NotebooksS
                     }
                 },
 
-                /**
+                /*
                  * Gets specified metadata from a specified notebook
                  */
                 new NotebookSnippet<Envelope<Notebook>>(notebook_specific_meta, Input.Spinner) {
@@ -141,7 +141,8 @@ public abstract class NotebookSnippet<Result> extends AbstractSnippet<NotebooksS
 
                     }
                 },
-                /**
+
+                /*
                  * Gets a notebook in your personal OneDrive notebook folder by name
                  * For example: the Microsoft-my.sharepoint.com/personal/denisd_microsoft_com/documents/Test_Notebook
                  * location for Denis D. holds a notebook called "Test_Notebook"
@@ -163,7 +164,7 @@ public abstract class NotebookSnippet<Result> extends AbstractSnippet<NotebooksS
 
                     }
                 },
-                /**
+                /*
                  * Returns id and name metadata fields in sorted ascending order
                  * from all notebooks.
                  */
@@ -182,7 +183,7 @@ public abstract class NotebookSnippet<Result> extends AbstractSnippet<NotebooksS
                     }
                 },
 
-                /**
+                /*
                  * Gets notebooks whose owner is not the current user
                  */
                 new NotebookSnippet(get_notebooks_shared_by_others) {
@@ -200,7 +201,7 @@ public abstract class NotebookSnippet<Result> extends AbstractSnippet<NotebooksS
                     }
                 },
 
-                /**
+                /*
                  * Create a new notebook under Microsoft-my.sharepoint.com/personal/{username}_microsoft_com/documents/notebooks
                  */
                 new NotebookSnippet<Envelope<Notebook>>(create_new_notebook, Input.Text) {
@@ -217,10 +218,8 @@ public abstract class NotebookSnippet<Result> extends AbstractSnippet<NotebooksS
                         };
                     }
 
-                    /**
+                    /*
                      * Call the POST request on the Microsoft OneNote endpoint
-                     * @param service
-                     * @param callback
                      */
                     @Override
                     public void request(
@@ -244,15 +243,6 @@ public abstract class NotebookSnippet<Result> extends AbstractSnippet<NotebooksS
     @Override
     public abstract void request(NotebooksService service, Callback<Result> callback);
 
-    /**
-     * Returns a map of the user's notebooks to look up a notebook
-     * based on a notebook name
-     *
-     * @param services
-     * @param callback
-     * @param notebookMap
-     * @return
-     */
     protected void fillNotebookSpinner(
             Services services,
             final retrofit.Callback<String[]> callback,
