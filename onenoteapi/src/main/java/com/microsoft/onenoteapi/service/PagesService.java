@@ -179,6 +179,7 @@ public interface PagesService {
      */
     @PATCH("/{version}/me/notes/pages/{pageId}/content")
     void patchPage(
+            @Header("Accept-Encoding") String encoding,
             @Path("version") String version,
             @Path("pageId") String pageId,
             @Body TypedString body,

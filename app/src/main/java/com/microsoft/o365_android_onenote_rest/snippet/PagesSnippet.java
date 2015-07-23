@@ -370,6 +370,7 @@ public abstract class PagesSnippet<Result> extends AbstractSnippet<PagesService,
                                 .get(SnippetDetailFragment.ARG_SPINNER_SELECTION));
 
                         service.patchPage(
+                                "",
                                 getVersion(),
                                 page.id,
                                 typedString,
