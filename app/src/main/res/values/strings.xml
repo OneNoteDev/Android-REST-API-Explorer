@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">OneNote REST Demo</string>
+    <string name="app_name">OneNote REST API Explorer</string>
     <string name="title_snippet_detail">Snippet Detail</string>
     <string name="beta">BETA</string>
     <string name="run">Run</string>
