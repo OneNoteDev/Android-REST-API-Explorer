@@ -200,7 +200,7 @@ The authentication classes are found in the [O365-Auth](https://github.com/OneNo
 Authentication for logging in with a Microsoft Account to a personal version of Office 365 such as Office 365 Home is handled by the [MSA Auth for Android](https://github.com/MSOpenTech/msa-auth-for-android) library. The app uses the [LiveAuthClient](https://github.com/MSOpenTech/msa-auth-for-android/blob/dev/src/main/java/com/microsoft/services/msa/LiveAuthClient.java) class to connect and disconnect.
 
 ### Screenshots
-![](/readme-images/login.png =200x)![](/readme-images/list.png =200x)![](/readme-images/detail.png =200x)
+<img src="/readme-images/login.png" alt="Login Screen" style="width: 200px;"/><img src="/readme-images/list.png" alt="Main screen" style="width: 200px;"/><img src="/readme-images/detail.png" alt="REST Call Detail View" style="width: 200px;"/>
 
 ## Questions and comments
 We'd love to get your feedback about the OneNote REST API Explorer for Android sample. You can send your feedback to us in the [Issues](https://github.com/OneNoteDev/Android-REST-API-Explorer/issues) section of this repository. <br/>
