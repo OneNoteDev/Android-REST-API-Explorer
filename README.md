@@ -204,9 +204,9 @@ Login|REST Call List
 :-:|:-:
 ![](/readme-images/login.png)|![](/readme-images/list.png)
 
-REST Call Detail|
+REST Call Detail|Create Page
 :-:|:-:
-![](/readme-images/detail.png)|
+![](/readme-images/detail.png)|![](/readme-images/create_page.png)
 
 ## Questions and comments
 We'd love to get your feedback about the OneNote REST API Explorer for Android sample. You can send your feedback to us in the [Issues](https://github.com/OneNoteDev/Android-REST-API-Explorer/issues) section of this repository. <br/>
