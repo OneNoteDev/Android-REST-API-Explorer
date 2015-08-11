@@ -33,6 +33,8 @@ You can explore the following operations for OneNote:
 
 * Get a list of section groups
 * Get a list of all section groups in a notebook
+* Create a section group in a notebook
+* Create a section group in a section group
   
 **Sections**
 
@@ -42,7 +44,8 @@ You can explore the following operations for OneNote:
 * Get metadata of a section
 * Get sections by name
 * Get metadata for a section
-* Create a section
+* Create a section in a notebook
+* Create a section in a section group
 
 **Pages**
 
@@ -64,6 +67,9 @@ You can explore the following operations for OneNote:
 * Get the HTML contents of a page
  
 ##Change History
+August 2015
+* Add "Create section group" and "Create section in a section group" calls.
+
 July 2015:
 * Initial release
  
