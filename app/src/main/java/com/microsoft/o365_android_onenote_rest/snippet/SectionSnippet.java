@@ -7,9 +7,11 @@ package com.microsoft.o365_android_onenote_rest.snippet;
 import com.google.gson.JsonObject;
 import com.microsoft.o365_android_onenote_rest.SnippetDetailFragment;
 import com.microsoft.onenoteapi.service.NotebooksService;
+import com.microsoft.onenoteapi.service.SectionGroupsService;
 import com.microsoft.onenoteapi.service.SectionsService;
 import com.microsoft.onenotevos.Envelope;
 import com.microsoft.onenotevos.Notebook;
+import com.microsoft.onenotevos.SectionGroup;
 import com.microsoft.onenotevos.Section;
 
 import java.util.HashMap;
@@ -20,6 +22,7 @@ import retrofit.client.Response;
 import retrofit.mime.TypedString;
 
 import static com.microsoft.o365_android_onenote_rest.R.array.create_section;
+import static com.microsoft.o365_android_onenote_rest.R.array.create_section_in_sectiongroup;
 import static com.microsoft.o365_android_onenote_rest.R.array.get_all_sections;
 import static com.microsoft.o365_android_onenote_rest.R.array.get_metadata_of_section;
 import static com.microsoft.o365_android_onenote_rest.R.array.sections_specific_name;
@@ -190,12 +193,60 @@ public abstract class SectionSnippet<Result>
                                 callback
                         );
                     }
+                },
+
+                /*
+                 * Creates a new section with a title in a section group specified by id
+                 */
+                new SectionSnippet<Envelope<Section>>(create_section_in_sectiongroup, Input.Both) {
+
+                    Map<String, SectionGroup> sectionGroupMap = new HashMap<>();
+
+                    @Override
+                    public void setUp(
+                            Services services,
+                            final retrofit.Callback<String[]> callback) {
+                        fillSectionGroupSpinner(services.mSectionGroupsService, callback, sectionGroupMap);
+                    }
+
+                    //Create the JSON body of a new section request.
+                    //The body sets the section name
+                    TypedString createSectionInSectionGroup(String sectionName) {
+                        JsonObject jsonObject = new JsonObject();
+                        jsonObject.addProperty("name", sectionName);
+                        return new TypedString(jsonObject.toString()) {
+                            @Override
+                            public String mimeType() {
+                                return "application/json";
+                            }
+                        };
+                    }
+
+                    @Override
+                    public void request(SectionsService service, Callback callback) {
+
+                        SectionGroup sectionGroup = sectionGroupMap.get(callback
+                                .getParams()
+                                .get(SnippetDetailFragment.ARG_SPINNER_SELECTION).toString());
+
+                        service.postSectionInSectionGroup(
+                                getVersion(),
+                                "application/json",
+                                sectionGroup.id,
+                                createSectionInSectionGroup(callback
+                                        .getParams()
+                                        .get(SnippetDetailFragment.ARG_TEXT_INPUT)
+                                        .toString()),
+                                callback
+                        );
+                    }
                 }
         };
     }
 
     @Override
     public abstract void request(SectionsService service, Callback<Result> callback);
+
 
     protected void fillNotebookSpinner(
             NotebooksService notebooksService,
@@ -219,6 +270,42 @@ public abstract class SectionSnippet<Result>
                             notebookMap.put(notebooks[i].name, notebooks[i]);
                         }
                         callback.success(bookNames, response);
+                    }
+
+                    @Override
+                    public void failure(RetrofitError error) {
+
+                    }
+
+                    @Override
+                    public Map<String, String> getParams() {
+                        return null;
+                    }
+                });
+    }
+
+    protected void fillSectionGroupSpinner(
+            SectionGroupsService sectionGroupsService,
+            final retrofit.Callback<String[]> callback,
+            final Map<String, SectionGroup> sectionGroupMap) {
+        sectionGroupsService.getSectionGroups(getVersion(),
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                new Callback<Envelope<SectionGroup>>() {
+
+                    @Override
+                    public void success(Envelope<SectionGroup> sectionGroupEnvelope, Response response) {
+                        SectionGroup[] sectionGroups = sectionGroupEnvelope.value;
+                        String[] sectionGroupNames = new String[sectionGroups.length];
+                        for (int i = 0; i < sectionGroups.length; i++) {
+                            sectionGroupNames[i] = sectionGroups[i].name;
+                            sectionGroupMap.put(sectionGroups[i].name, sectionGroups[i]);
+                        }
+                        callback.success(sectionGroupNames, response);
                     }
 
                     @Override

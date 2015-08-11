@@ -35,10 +35,18 @@
     </string-array>
 
     <string-array name="create_section">
-        <item>POST: Create a new section</item>
-        <item>First we get a list of all notebooks and then create a new blank section under one of the selected notebooks. Please select a specific notebook from the drop-down below and also enter the new section\'s name in the TextBox below</item>
-        <item>http://dev.onenote.com/docs#/reference/post-sections/v10notebooksidsections</item>
+        <item>POST: Create a section in a notebook</item>
+        <item>First we get a list of all notebooks and then create an empty section in the selected notebook. Please select a notebook from the drop-down above and enter the new section\'s name in the text box.</item>
+        <item>http://dev.onenote.com/docs#/reference/post-sections/v10menotesnotebooksidsections</item>
         <item>beta</item>
         <item>v1.0</item>
+    </string-array>
+
+    <string-array name="create_section_in_sectiongroup">
+        <item>POST: Create a section in a section group</item>
+        <item>First we get a list of all section groups and then create an empty section group in the selected section group. Please select a section group from the drop-down above and enter the new section group\'s name in the text box.</item>
+        <item>http://dev.onenote.com/docs#/reference/post-sections/betamenotessectiongroupsidsections</item>
+        <item>beta</item>
+        <item>beta</item>
     </string-array>
 </resources>

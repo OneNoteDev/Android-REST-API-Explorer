@@ -126,7 +126,6 @@ public abstract class PagesSnippet<Result> extends AbstractSnippet<PagesService,
                  * Creates a new page in a section referenced by title instead of Id
                  * HTTP POST https://www.onenote.com/api/beta/me/notes/pages{?sectionName}
                  * @see http://dev.onenote.com/docs#/reference/post-pages/v10menotespagessectionname
-                 * This method is not yet supported for enterprise notebooks
                  */
                 new PagesSnippet<Envelope<Page>>(create_page_under_named_section, Input.Spinner) {
 
