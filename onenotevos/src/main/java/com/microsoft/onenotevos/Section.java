@@ -9,7 +9,7 @@ public class Section extends BaseVO {
 
     public String pagesUrl;
     public Notebook parentNotebook;
-    public String parentSectionGroup;
+    public SectionGroup parentSectionGroup;
 
     @SerializedName("parentSectionGroup@odata.context")
     public String parentSectionGroup_odata_context;
