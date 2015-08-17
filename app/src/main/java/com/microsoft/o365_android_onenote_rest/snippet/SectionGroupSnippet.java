@@ -7,10 +7,8 @@ package com.microsoft.o365_android_onenote_rest.snippet;
 import com.google.gson.JsonObject;
 import com.microsoft.o365_android_onenote_rest.SnippetDetailFragment;
 import com.microsoft.onenoteapi.service.SectionGroupsService;
-import com.microsoft.onenoteapi.service.SectionsService;
 import com.microsoft.onenotevos.Envelope;
 import com.microsoft.onenotevos.Notebook;
-import com.microsoft.onenotevos.Section;
 import com.microsoft.onenotevos.SectionGroup;
 
 import java.util.HashMap;
@@ -50,11 +48,12 @@ public abstract class SectionGroupSnippet<Result>
                  * Gets all of the Section groups for all of a user's notebooks
                  * @see http://dev.onenote.com/docs#/reference/get-sectiongroups/v10menotessectiongroupsfilterorderbyselectexpandtopskipcount
                  */
-                new SectionGroupSnippet<SectionGroup>(list_sectiongroups) {
+                new SectionGroupSnippet<Envelope<SectionGroup>>(list_sectiongroups) {
 
 
                     @Override
-                    public void request(SectionGroupsService service, Callback callback) {
+                    public void request(SectionGroupsService service,
+                                        Callback<Envelope<SectionGroup>> callback) {
                         service.getSectionGroups(
                                 getVersion(),
                                 null,
@@ -127,11 +126,11 @@ public abstract class SectionGroupSnippet<Result>
                     }
 
                     @Override
-                    public void request(SectionGroupsService service, Callback callback) {
+                    public void request(SectionGroupsService service, Callback<Envelope<SectionGroup>> callback) {
 
                         Notebook notebook = notebookMap.get(callback
                                 .getParams()
-                                .get(SnippetDetailFragment.ARG_SPINNER_SELECTION).toString());
+                                .get(SnippetDetailFragment.ARG_SPINNER_SELECTION));
 
                         service.postSectionGroupInNotebook(
                                 getVersion(),
@@ -139,8 +138,7 @@ public abstract class SectionGroupSnippet<Result>
                                 notebook.id,
                                 createSectionGroup(callback
                                         .getParams()
-                                        .get(SnippetDetailFragment.ARG_TEXT_INPUT)
-                                        .toString()),
+                                        .get(SnippetDetailFragment.ARG_TEXT_INPUT)),
                                 callback
                         );
                     }
@@ -174,11 +172,12 @@ public abstract class SectionGroupSnippet<Result>
                     }
 
                     @Override
-                    public void request(SectionGroupsService service, Callback callback) {
+                    public void request(SectionGroupsService service,
+                                        Callback<Envelope<SectionGroup>> callback) {
 
                         SectionGroup sectionGroup = sectionGroupMap.get(callback
                                 .getParams()
-                                .get(SnippetDetailFragment.ARG_SPINNER_SELECTION).toString());
+                                .get(SnippetDetailFragment.ARG_SPINNER_SELECTION));
 
                         service.postSectionGroupInSectionGroup(
                                 getVersion(),
@@ -186,8 +185,7 @@ public abstract class SectionGroupSnippet<Result>
                                 sectionGroup.id,
                                 createSectionGroupInSectionGroup(callback
                                         .getParams()
-                                        .get(SnippetDetailFragment.ARG_TEXT_INPUT)
-                                        .toString()),
+                                        .get(SnippetDetailFragment.ARG_TEXT_INPUT)),
                                 callback
                         );
                     }

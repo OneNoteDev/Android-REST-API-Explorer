@@ -18,15 +18,15 @@
         <item>v1.0</item>
     </string-array>
     <string-array name="create_sectiongroup_in_notebook">
-        <item>POST: Create a section group in a notebook</item>
-        <item>First we get a list of all notebooks and then create an empty section group in the selected notebook. Please select a notebook from the drop-down above and enter the new section group\'s name in the text box.</item>
+        <item>POST: Create a SectionGroup in a notebook</item>
+        <item>First we get a list of all notebooks and then create an empty SectionGroup in the selected notebook. Please select a notebook from the drop-down above and enter the new SectionGroup\'s name in the text box.</item>
         <item>http://dev.onenote.com/docs#/reference/post-sectiongroups/betamenotesnotebooksidsectiongroups</item>
         <item>beta</item>
         <item>beta</item>
     </string-array>
     <string-array name="create_sectiongroup_in_sectiongroup">
-        <item>POST: Create a section group in a section group</item>
-        <item>First we get a list of all section groups and then create an empty section group in the selected section group. Please select a section group from the drop-down above and enter the new section group\'s name in the text box.</item>
+        <item>POST: Create a SectionGroup in a SectionGroup</item>
+        <item>First we get a list of all section groups and then create an empty section group in the selected section group. Please select a section group from the drop-down above and enter the new SectionGroup\'s name in the text box.</item>
         <item>http://dev.onenote.com/docs#/reference/post-sectiongroups/betamenotessectiongroupsidsectiongroups</item>
         <item>beta</item>
         <item>beta</item>
