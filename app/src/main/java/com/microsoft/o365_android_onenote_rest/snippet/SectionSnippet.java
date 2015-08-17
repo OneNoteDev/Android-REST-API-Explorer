@@ -11,8 +11,8 @@ import com.microsoft.onenoteapi.service.SectionGroupsService;
 import com.microsoft.onenoteapi.service.SectionsService;
 import com.microsoft.onenotevos.Envelope;
 import com.microsoft.onenotevos.Notebook;
-import com.microsoft.onenotevos.SectionGroup;
 import com.microsoft.onenotevos.Section;
+import com.microsoft.onenotevos.SectionGroup;
 
 import java.util.HashMap;
 import java.util.Map;
