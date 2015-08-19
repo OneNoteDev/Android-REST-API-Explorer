@@ -85,7 +85,7 @@ public interface SectionsService {
             @Header("Content-type") String contentTypeHeader,
             @Path("id") String id,
             @Body TypedString content,
-            Callback<Envelope> callback
+            Callback<Envelope<Section>> callback
     );
 
     /**
@@ -103,7 +103,7 @@ public interface SectionsService {
             @Header("Content-type") String contentTypeHeader,
             @Path("id") String id,
             @Body TypedString content,
-            Callback<Envelope> callback
+            Callback<Envelope<Section>> callback
     );
 
     /**

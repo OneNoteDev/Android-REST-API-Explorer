@@ -21,7 +21,7 @@
 
     <string-array name="get_notebook_by_id">
         <item>GET: Get a specific notebook by id</item>
-        <item>Query for a list of all notebooks with a given id. This example shows how to use the</item>
+        <item>Choose a notebook from the list above. We\'ll use the id of the notebook you select for the query.</item>
         <item>http://dev.onenote.com/docs#/reference/get-notebooks</item>
         <item>beta</item>
         <item>v1.0</item>
@@ -29,7 +29,7 @@
 
     <string-array name="notebook_specific_meta">
         <item>GET: Get metadata of a specific notebook</item>
-        <item>Following the previous example, first we get a list of all notebooks and then query the metadata for one of the selected notebooks. Please select a specific notebook from the drop-down below</item>
+        <item>Following the previous example, first we get a list of all notebooks and then query the metadata for one of the selected notebooks. Please select a specific notebook from the drop-down above</item>
         <item>http://dev.onenote.com/docs#/reference/get-notebooks</item>
         <item>beta</item>
         <item>v1.0</item>
@@ -37,7 +37,7 @@
 
     <string-array name="notebook_specific_name">
         <item>GET: Get notebooks with a specific name</item>
-        <item>Query for a list of all notebooks with a given name. This example shows how to use the \'$filter=name eq \'&lt;term&gt;\' query parameter. Please enter the case-sensitive full notebook name to look for in the TextBox below</item>
+        <item>Query for a list of all notebooks with a given name. This example shows how to use the \'$filter=name eq \'&lt;term&gt;\' query parameter. Please enter the case-sensitive full notebook name to look for in the TextBox above</item>
         <item>http://dev.onenote.com/docs#/reference/get-notebooks</item>
         <item>beta</item>
         <item>v1.0</item>
@@ -61,7 +61,7 @@
 
     <string-array name="create_new_notebook">
         <item>POST: Create a new notebook</item>
-        <item>Create a new blank notebook. Please enter the new notebook\'s name in the TextBox below</item>
+        <item>Create a new empty notebook. Please enter the new notebook\'s name in the TextBox above</item>
         <item>http://dev.onenote.com/docs#/reference/get-notebooks</item>
         <item>beta</item>
         <item>v1.0</item>

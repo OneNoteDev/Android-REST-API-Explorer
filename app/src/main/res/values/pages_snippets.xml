@@ -37,7 +37,7 @@
 
     <string-array name="meta_specific_page">
         <item>GET: Get metadata of a specific page</item>
-        <item>Following the previous example, first we get a paginated list of all pages and then query the metadata for one of the selected pages. Please select a specific page from the drop-down below</item>
+        <item>Following the previous example, first we get a paginated list of all pages and then query for the selected page. Please select a specific page from the drop-down above</item>
         <item>http://dev.onenote.com/docs#/reference/get-pages</item>
         <item>beta</item>
         <item>v1.0</item>
@@ -45,7 +45,7 @@
 
     <string-array name="specific_title">
         <item>GET: Get pages with a specific title</item>
-        <item>Query for a paginated list of pages that contain a given title substring. This example shows how to use the $filter=contains(title, \'&lt;term&gt;\') query parameter. Please enter a case-sensitive title substring in the TextBox below.</item>
+        <item>Query for a paginated list of pages that contain a given title substring. This example shows how to use the $filter=contains(title, \'&lt;term&gt;\') query parameter. Please enter a case-sensitive title substring in the TextBox above.</item>
         <item>http://dev.onenote.com/docs#/reference/get-pages</item>
         <item>beta</item>
         <item>v1.0</item>
@@ -125,7 +125,7 @@
 
     <string-array name="create_page_under_named_section">
         <item>POST: Create a page under a named section</item>
-        <item>Create a page under a given section name using the \'sectionName\' query parameter. Please enter a section name in the TextBox below. If the named section does not exist, it will be auto-created</item>
+        <item>Create a page under a given section name using the \'sectionName\' query parameter. Please choose a section in the list above. Note: If a specified section doesn\'t exist, the API creates it.</item>
         <item>http://dev.onenote.com/docs#/reference/post-pages/v10pages</item>
         <item>beta</item>
         <item>v1.0</item>

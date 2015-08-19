@@ -71,7 +71,7 @@ public abstract class SectionGroupSnippet<Result>
                  * Gets all section groups for a given notebook
                  * @see http://dev.onenote.com/docs#/reference/get-sectiongroups/v10menotesnotebooksidsectiongroupsfilterorderbyselectexpandtopskipcount
                  */
-                new SectionGroupSnippet<SectionGroup>(
+                new SectionGroupSnippet<Envelope<SectionGroup>>(
                         list_sectiongroups_in_a_notebook, Input.Spinner) {
 
                     Map<String, Notebook> notebookMap = new HashMap<>();
@@ -82,7 +82,7 @@ public abstract class SectionGroupSnippet<Result>
                     }
 
                     @Override
-                    public void request(SectionGroupsService service, Callback callback) {
+                    public void request(SectionGroupsService service, Callback<Envelope<SectionGroup>> callback) {
                         Notebook notebook = notebookMap.get(
                                 callback.getParams().get(
                                         SnippetDetailFragment.ARG_SPINNER_SELECTION));

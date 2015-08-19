@@ -5,7 +5,7 @@
 
     <string-array name="sections_specific_notebook">
         <item>GET: Get list of all sections under a specific notebook</item>
-        <item>First we get a list of all notebooks and then query for a list of all sections under one of the selected notebooks. Please select a specific notebook from the drop-down below</item>
+        <item>First we get a list of all notebooks and then query for a list of all sections under the selected notebook. Please select a specific notebook from the drop-down above</item>
         <item>http://dev.onenote.com/docs#/reference/get-sections</item>
         <item>beta</item>
         <item>v1.0</item>
@@ -13,7 +13,7 @@
 
     <string-array name="sections_specific_name">
         <item>GET: Get sections with a specific name</item>
-        <item>Query for a list of all sections with a given name. This example shows how to use the \'$filter=name eq \'&lt;term&gt;\' query parameter. Please enter the case-sensitive full section name to look for in the TextBox below</item>
+        <item>Query for a list of all sections with a given name. This example shows how to use the \'$filter=name eq \'&lt;term&gt;\' query parameter. Please enter the case-sensitive full section name to look for in the TextBox above</item>
         <item>http://dev.onenote.com/docs#/reference/get-sections</item>
         <item>beta</item>
         <item>v1.0</item>
@@ -28,7 +28,7 @@
 
     <string-array name="get_metadata_of_section">
         <item>GET: Get metadata of a specific section</item>
-        <item>Following the previous example, first we get a list of all sections and then query the metadata for one of the selected sections. Please select a specific section from the drop-down below</item>
+        <item>Following the previous example, first we get a list of all sections and then query for the selected section. Please select a specific section from the drop-down above</item>
         <item>http://dev.onenote.com/docs#/reference/get-sections</item>
         <item>beta</item>
         <item>v1.0</item>

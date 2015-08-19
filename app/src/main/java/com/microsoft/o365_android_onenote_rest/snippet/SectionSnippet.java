@@ -51,7 +51,7 @@ public abstract class SectionSnippet<Result>
                 /*
                  * Gets all sections in the selected notebook specified by notebook id
                  */
-                new SectionSnippet<String[]>(sections_specific_notebook, Input.Spinner) {
+                new SectionSnippet<Envelope<Section>>(sections_specific_notebook, Input.Spinner) {
 
                     Map<String, Notebook> notebookMap = new HashMap<>();
 
@@ -61,11 +61,11 @@ public abstract class SectionSnippet<Result>
                     }
 
                     @Override
-                    public void request(SectionsService service, Callback callback) {
+                    public void request(SectionsService service, Callback<Envelope<Section>> callback) {
 
                         Notebook notebook = notebookMap.get(callback
                                 .getParams()
-                                .get(SnippetDetailFragment.ARG_SPINNER_SELECTION).toString());
+                                .get(SnippetDetailFragment.ARG_SPINNER_SELECTION));
 
                         service.getNotebookSections(
                                 getVersion(),
@@ -113,7 +113,7 @@ public abstract class SectionSnippet<Result>
                                 "name eq '" + callback
                                         .getParams()
                                         .get(SnippetDetailFragment.ARG_TEXT_INPUT)
-                                        .toString() + "'",
+                                        + "'",
                                 null,
                                 null,
                                 null,
@@ -135,7 +135,7 @@ public abstract class SectionSnippet<Result>
                     }
 
                     @Override
-                    public void request(SectionsService service, Callback callback) {
+                    public void request(SectionsService service, Callback<Envelope<Section>> callback) {
 
                         Section section = sectionMap.get(callback
                                 .getParams()
@@ -176,11 +176,11 @@ public abstract class SectionSnippet<Result>
                     }
 
                     @Override
-                    public void request(SectionsService service, Callback callback) {
+                    public void request(SectionsService service, Callback<Envelope<Section>> callback) {
 
                         Notebook notebook = notebookMap.get(callback
                                 .getParams()
-                                .get(SnippetDetailFragment.ARG_SPINNER_SELECTION).toString());
+                                .get(SnippetDetailFragment.ARG_SPINNER_SELECTION));
 
                         service.postSection(
                                 getVersion(),
@@ -188,8 +188,7 @@ public abstract class SectionSnippet<Result>
                                 notebook.id,
                                 createNewSection(callback
                                         .getParams()
-                                        .get(SnippetDetailFragment.ARG_TEXT_INPUT)
-                                        .toString()),
+                                        .get(SnippetDetailFragment.ARG_TEXT_INPUT)),
                                 callback
                         );
                     }
@@ -223,11 +222,11 @@ public abstract class SectionSnippet<Result>
                     }
 
                     @Override
-                    public void request(SectionsService service, Callback callback) {
+                    public void request(SectionsService service, Callback<Envelope<Section>> callback) {
 
                         SectionGroup sectionGroup = sectionGroupMap.get(callback
                                 .getParams()
-                                .get(SnippetDetailFragment.ARG_SPINNER_SELECTION).toString());
+                                .get(SnippetDetailFragment.ARG_SPINNER_SELECTION));
 
                         service.postSectionInSectionGroup(
                                 getVersion(),
@@ -235,8 +234,7 @@ public abstract class SectionSnippet<Result>
                                 sectionGroup.id,
                                 createSectionInSectionGroup(callback
                                         .getParams()
-                                        .get(SnippetDetailFragment.ARG_TEXT_INPUT)
-                                        .toString()),
+                                        .get(SnippetDetailFragment.ARG_TEXT_INPUT)),
                                 callback
                         );
                     }
