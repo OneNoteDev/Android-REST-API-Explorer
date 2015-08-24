@@ -71,7 +71,7 @@ public interface SectionsService {
     );
 
     /**
-     * POST to the sections resource
+     * POST to the sections resource of a notebook
      *
      * @param contentTypeHeader
      * @param version
@@ -85,7 +85,25 @@ public interface SectionsService {
             @Header("Content-type") String contentTypeHeader,
             @Path("id") String id,
             @Body TypedString content,
-            Callback<Envelope> callback
+            Callback<Envelope<Section>> callback
+    );
+
+    /**
+     * POST to the sections resource of a section group
+     *
+     * @param contentTypeHeader
+     * @param version
+     * @param id
+     * @param content
+     * @param callback
+     */
+    @POST("/{version}/me/notes/sectiongroups/{id}/sections")
+    void postSectionInSectionGroup(
+            @Path("version") String version,
+            @Header("Content-type") String contentTypeHeader,
+            @Path("id") String id,
+            @Body TypedString content,
+            Callback<Envelope<Section>> callback
     );
 
     /**
