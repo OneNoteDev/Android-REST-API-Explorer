@@ -74,7 +74,8 @@ public abstract class NotebookSnippet<Result> extends AbstractSnippet<NotebooksS
                      */
                     @Override
                     public void request(NotebooksService service, Callback callback) {
-                        service.getNotebooks(getVersion(),
+                        service.getNotebooks(
+                                getVersion(),
                                 null, // filter
                                 null, // orderby
                                 null, // select
@@ -98,10 +99,10 @@ public abstract class NotebookSnippet<Result> extends AbstractSnippet<NotebooksS
                     }
 
                     @Override
-                    public void request(NotebooksService service, Callback callback) {
+                    public void request(NotebooksService service, Callback<Envelope<Notebook>> callback) {
                         Notebook notebook = notebookMap.get(callback
                                 .getParams()
-                                .get(SnippetDetailFragment.ARG_SPINNER_SELECTION).toString());
+                                .get(SnippetDetailFragment.ARG_SPINNER_SELECTION));
 
                         service.getNotebookById(
                                 getVersion(),
@@ -125,11 +126,11 @@ public abstract class NotebookSnippet<Result> extends AbstractSnippet<NotebooksS
                     }
 
                     @Override
-                    public void request(NotebooksService service, Callback callback) {
+                    public void request(NotebooksService service, Callback<Envelope<Notebook>> callback) {
 
                         Notebook notebook = notebookMap.get(callback
                                 .getParams()
-                                .get(SnippetDetailFragment.ARG_SPINNER_SELECTION).toString());
+                                .get(SnippetDetailFragment.ARG_SPINNER_SELECTION));
 
                         service.getNotebookById(
                                 getVersion(),
@@ -150,11 +151,12 @@ public abstract class NotebookSnippet<Result> extends AbstractSnippet<NotebooksS
                 new NotebookSnippet(notebook_specific_name, Input.Text) {
                     @Override
                     public void request(NotebooksService service, Callback callback) {
-                        service.getNotebooks(getVersion(),
+                        service.getNotebooks(
+                                getVersion(),
                                 "name eq '" + callback
                                         .getParams()
                                         .get(SnippetDetailFragment.ARG_TEXT_INPUT)
-                                        .toString() + "'",
+                                        + "'",
                                 null,
                                 null,
                                 null,
@@ -231,8 +233,7 @@ public abstract class NotebookSnippet<Result> extends AbstractSnippet<NotebooksS
                                 createNewSection(
                                         callback
                                                 .getParams()
-                                                .get(SnippetDetailFragment.ARG_TEXT_INPUT)
-                                                .toString()),
+                                                .get(SnippetDetailFragment.ARG_TEXT_INPUT)),
                                 callback
                         );
                     }

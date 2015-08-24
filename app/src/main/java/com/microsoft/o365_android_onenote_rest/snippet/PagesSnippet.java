@@ -126,7 +126,6 @@ public abstract class PagesSnippet<Result> extends AbstractSnippet<PagesService,
                  * Creates a new page in a section referenced by title instead of Id
                  * HTTP POST https://www.onenote.com/api/beta/me/notes/pages{?sectionName}
                  * @see http://dev.onenote.com/docs#/reference/post-pages/v10menotespagessectionname
-                 * This method is not yet supported for enterprise notebooks
                  */
                 new PagesSnippet<Envelope<Page>>(create_page_under_named_section, Input.Spinner) {
 
@@ -138,7 +137,7 @@ public abstract class PagesSnippet<Result> extends AbstractSnippet<PagesService,
                     }
 
                     @Override
-                    public void request(PagesService service, Callback callback) {
+                    public void request(PagesService service, Callback<Envelope<Page>> callback) {
                         DateTime date = DateTime.now();
                         String simpleHtml = getSimplePageContentBody(SnippetApp
                                 .getApp()
@@ -228,7 +227,7 @@ public abstract class PagesSnippet<Result> extends AbstractSnippet<PagesService,
                                 getVersion(),
                                 "contains(title,'" + callback
                                         .getParams()
-                                        .get(SnippetDetailFragment.ARG_TEXT_INPUT).toString() + "')",
+                                        .get(SnippetDetailFragment.ARG_TEXT_INPUT) + "')",
                                 null,
                                 null,
                                 null,
@@ -317,7 +316,7 @@ public abstract class PagesSnippet<Result> extends AbstractSnippet<PagesService,
                     }
 
                     @Override
-                    public void request(PagesService service, Callback callback) {
+                    public void request(PagesService service, Callback<Envelope<Page>> callback) {
 
                         Page page = pageMap.get(callback
                                 .getParams()
@@ -436,7 +435,7 @@ public abstract class PagesSnippet<Result> extends AbstractSnippet<PagesService,
                     }
 
                     @Override
-                    public void request(PagesService service, Callback callback) {
+                    public void request(PagesService service, Callback<Envelope<Page>> callback) {
 
                         Section section = sectionMap.get(callback
                                 .getParams()
@@ -748,7 +747,7 @@ public abstract class PagesSnippet<Result> extends AbstractSnippet<PagesService,
                     }
 
                     @Override
-                    public void request(PagesService service, Callback callback) {
+                    public void request(PagesService service, Callback<Envelope<Page>> callback) {
 
                         Page page = pageMap.get(callback
                                 .getParams()
@@ -765,9 +764,9 @@ public abstract class PagesSnippet<Result> extends AbstractSnippet<PagesService,
                 /*
                  * GET a collection of pages ordered by title
                  */
-                new PagesSnippet(pages_selected_meta) {
+                new PagesSnippet<Envelope<Page>>(pages_selected_meta) {
                     @Override
-                    public void request(PagesService service, Callback callback) {
+                    public void request(PagesService service, Callback<Envelope<Page>> callback) {
                         service.getPages(
                                 getVersion(),
                                 null,
@@ -784,7 +783,7 @@ public abstract class PagesSnippet<Result> extends AbstractSnippet<PagesService,
                 /*
                  * GET the content of a page specified by page id
                  */
-                new PagesSnippet<Envelope<Page>>(get_page_as_html, Input.Spinner) {
+                new PagesSnippet<Response>(get_page_as_html, Input.Spinner) {
                     Map<String, Page> pageMap = new HashMap<>();
 
                     @Override
@@ -793,7 +792,7 @@ public abstract class PagesSnippet<Result> extends AbstractSnippet<PagesService,
                     }
 
                     @Override
-                    public void request(PagesService service, Callback callback) {
+                    public void request(PagesService service, Callback<Response> callback) {
                         Page page = pageMap.get(callback
                                 .getParams()
                                 .get(SnippetDetailFragment.ARG_SPINNER_SELECTION));

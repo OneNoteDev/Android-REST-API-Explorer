@@ -4,12 +4,17 @@
 
 package com.microsoft.onenoteapi.service;
 
+import com.microsoft.onenotevos.Envelope;
 import com.microsoft.onenotevos.SectionGroup;
 
 import retrofit.Callback;
+import retrofit.http.Body;
 import retrofit.http.GET;
+import retrofit.http.Header;
+import retrofit.http.POST;
 import retrofit.http.Path;
 import retrofit.http.Query;
+import retrofit.mime.TypedString;
 
 public interface SectionGroupsService {
 
@@ -32,7 +37,7 @@ public interface SectionGroupsService {
             @Query("top") Integer top,
             @Query("skip") Integer skip,
             @Query("search") String search,
-            Callback<SectionGroup> callback
+            Callback<Envelope<SectionGroup>> callback
     );
 
     @GET("/{version}/me/notes/notebooks/{id}/sectionGroups")
@@ -45,8 +50,45 @@ public interface SectionGroupsService {
             @Query("top") Integer top,
             @Query("skip") Integer skip,
             @Query("search") String search,
-            Callback<SectionGroup> callback
+            Callback<Envelope<SectionGroup>> callback
 
+    );
+
+    /**
+     * POST to the sectiongroups resource of a notebook
+     *
+     * @param contentTypeHeader
+     * @param version
+     * @param id
+     * @param content
+     * @param callback
+     */
+    @POST("/{version}/me/notes/notebooks/{id}/sectiongroups")
+    void postSectionGroupInNotebook(
+            @Path("version") String version,
+            @Header("Content-type") String contentTypeHeader,
+            @Path("id") String id,
+            @Body TypedString content,
+            Callback<Envelope<SectionGroup>> callback
+    );
+
+
+    /**
+     * POST to the sectiongroups resource of a section group
+     *
+     * @param contentTypeHeader
+     * @param version
+     * @param id
+     * @param content
+     * @param callback
+     */
+    @POST("/{version}/me/notes/sectiongroups/{id}/sectiongroups")
+    void postSectionGroupInSectionGroup(
+            @Path("version") String version,
+            @Header("Content-type") String contentTypeHeader,
+            @Path("id") String id,
+            @Body TypedString content,
+            Callback<Envelope<SectionGroup>> callback
     );
 }
 // *********************************************************
