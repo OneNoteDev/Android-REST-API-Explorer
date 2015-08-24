@@ -3,8 +3,6 @@
 */
 package com.microsoft.onenotevos;
 
-import org.joda.time.DateTime;
-
 public class Page extends BaseVO {
     public String title;
     public String contentUrl;
