@@ -1,3 +1,5 @@
+# Use the new Docker builds
+sudo: false
 language: android
 android:
   components:
