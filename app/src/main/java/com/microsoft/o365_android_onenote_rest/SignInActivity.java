@@ -118,6 +118,11 @@ public class SignInActivity
     @Override
     public void onError(Exception e) {
         e.printStackTrace();
+        String msg;
+        if (null == (msg = e.getLocalizedMessage())) {
+            msg = getString(R.string.signin_err);
+        }
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 
     @Override
