@@ -1,10 +1,13 @@
+/*
+ * Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license.
+ * See LICENSE in the project root for license information.
+ */
 package com.microsoft.o365_android_onenote_rest;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.MenuItem;
-
 
 public class SnippetDetailActivity extends BaseActivity {
 
