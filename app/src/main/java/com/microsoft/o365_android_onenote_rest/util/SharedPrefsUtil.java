@@ -7,9 +7,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.microsoft.aad.adal.AuthenticationResult;
-import com.microsoft.live.LiveConnectSession;
 import com.microsoft.o365_android_onenote_rest.application.SnippetApp;
 import com.microsoft.o365_android_onenote_rest.inject.AppModule;
+import com.microsoft.services.msa.LiveConnectSession;
 
 public class SharedPrefsUtil {
 

@@ -9,13 +9,13 @@ import android.widget.Toast;
 
 import com.microsoft.aad.adal.AuthenticationCallback;
 import com.microsoft.aad.adal.AuthenticationResult;
-import com.microsoft.live.LiveAuthException;
-import com.microsoft.live.LiveAuthListener;
-import com.microsoft.live.LiveConnectSession;
-import com.microsoft.live.LiveStatus;
 import com.microsoft.o365_android_onenote_rest.conf.ServiceConstants;
 import com.microsoft.o365_android_onenote_rest.util.SharedPrefsUtil;
 import com.microsoft.o365_android_onenote_rest.util.User;
+import com.microsoft.services.msa.LiveAuthException;
+import com.microsoft.services.msa.LiveAuthListener;
+import com.microsoft.services.msa.LiveConnectSession;
+import com.microsoft.services.msa.LiveStatus;
 
 import java.net.URI;
 import java.util.UUID;
@@ -126,9 +126,9 @@ public class SignInActivity
     }
 
     @Override
-    public void onAuthComplete(LiveStatus status,
-                               LiveConnectSession session,
-                               Object userState) {
+    public void onAuthComplete(final LiveStatus status,
+                               final LiveConnectSession session,
+                               final Object userState) {
         Timber.d("MSA: Auth Complete...");
         if (null != status) {
             Timber.d(status.toString());
@@ -140,7 +140,9 @@ public class SignInActivity
         if (null != userState) {
             Timber.d(userState.toString());
         }
-        start();
+        if (status == LiveStatus.CONNECTED) {
+            start();
+        }
     }
 
     @Override

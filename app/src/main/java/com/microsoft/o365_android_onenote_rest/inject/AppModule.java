@@ -7,11 +7,11 @@ package com.microsoft.o365_android_onenote_rest.inject;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.microsoft.live.LiveAuthClient;
 import com.microsoft.o365_android_onenote_rest.application.SnippetApp;
 import com.microsoft.o365_android_onenote_rest.conf.ServiceConstants;
 import com.microsoft.o365_android_onenote_rest.util.SharedPrefsUtil;
 import com.microsoft.onenoteapi.service.GsonDateTime;
+import com.microsoft.services.msa.LiveAuthClient;
 
 import javax.inject.Singleton;
 

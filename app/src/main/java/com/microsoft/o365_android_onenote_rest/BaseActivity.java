@@ -6,12 +6,12 @@ package com.microsoft.o365_android_onenote_rest;
 
 import com.microsoft.AzureADModule;
 import com.microsoft.AzureAppCompatActivity;
-import com.microsoft.live.LiveAuthClient;
 import com.microsoft.o365_android_onenote_rest.application.SnippetApp;
 import com.microsoft.o365_android_onenote_rest.conf.ServiceConstants;
 import com.microsoft.o365_android_onenote_rest.inject.AzureModule;
 import com.microsoft.o365_android_onenote_rest.inject.ObjectGraphInjector;
 import com.microsoft.o365_android_onenote_rest.model.Scope;
+import com.microsoft.services.msa.LiveAuthClient;
 
 import java.util.ArrayList;
 

@@ -30,11 +30,6 @@ import android.widget.Toast;
 import com.microsoft.AuthenticationManager;
 import com.microsoft.aad.adal.AuthenticationCallback;
 import com.microsoft.aad.adal.AuthenticationResult;
-import com.microsoft.live.LiveAuthClient;
-import com.microsoft.live.LiveAuthException;
-import com.microsoft.live.LiveAuthListener;
-import com.microsoft.live.LiveConnectSession;
-import com.microsoft.live.LiveStatus;
 import com.microsoft.o365_android_onenote_rest.snippet.AbstractSnippet;
 import com.microsoft.o365_android_onenote_rest.snippet.Callback;
 import com.microsoft.o365_android_onenote_rest.snippet.Input;
@@ -42,6 +37,11 @@ import com.microsoft.o365_android_onenote_rest.snippet.SnippetContent;
 import com.microsoft.o365_android_onenote_rest.util.SharedPrefsUtil;
 import com.microsoft.o365_android_onenote_rest.util.User;
 import com.microsoft.onenotevos.BaseVO;
+import com.microsoft.services.msa.LiveAuthClient;
+import com.microsoft.services.msa.LiveAuthException;
+import com.microsoft.services.msa.LiveAuthListener;
+import com.microsoft.services.msa.LiveConnectSession;
+import com.microsoft.services.msa.LiveStatus;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringEscapeUtils;
@@ -457,9 +457,16 @@ public class SnippetDetailFragment<T, Result>
     }
 
     @Override
-    public void onSuccess(AuthenticationResult authenticationResult) {
-        SharedPrefsUtil.persistAuthToken(authenticationResult);
-        ready();
+    public void onSuccess(final AuthenticationResult authenticationResult) {
+        if (null != getActivity()) {
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    SharedPrefsUtil.persistAuthToken(authenticationResult);
+                    ready();
+                }
+            });
+        }
     }
 
     private void ready() {
@@ -491,16 +498,30 @@ public class SnippetDetailFragment<T, Result>
     }
 
     @Override
-    public void onAuthComplete(LiveStatus status, LiveConnectSession session, Object userState) {
-        if (null != session) {
-            SharedPrefsUtil.persistAuthToken(session);
+    public void onAuthComplete(LiveStatus status, final LiveConnectSession session, Object userState) {
+        if (null != getActivity()) {
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    if (null != session) {
+                        SharedPrefsUtil.persistAuthToken(session);
+                    }
+                    ready();
+                }
+            });
         }
-        ready();
     }
 
     @Override
-    public void onAuthError(LiveAuthException exception, Object userState) {
-        onError(exception);
+    public void onAuthError(final LiveAuthException exception, Object userState) {
+        if (null != getActivity()) {
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    onError(exception);
+                }
+            });
+        }
     }
 }
 // *********************************************************
