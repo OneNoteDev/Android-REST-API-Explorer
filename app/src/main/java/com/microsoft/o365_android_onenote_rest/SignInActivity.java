@@ -35,9 +35,9 @@ public class SignInActivity
     protected final LiveAuthListener mLiveAuthListener = new LiveAuthListener() {
 
         @Override
-        public void onAuthComplete(final LiveStatus status,
-                                   final LiveConnectSession session,
-                                   final Object userState) {
+        public void onAuthComplete(LiveStatus status,
+                                   LiveConnectSession session,
+                                   Object userState) {
             Timber.d("MSA: Auth Complete...");
             if (null != status) {
                 Timber.d(status.toString());
