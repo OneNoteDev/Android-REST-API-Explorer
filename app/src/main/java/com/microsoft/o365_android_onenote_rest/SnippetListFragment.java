@@ -125,6 +125,4 @@ public class SnippetListFragment extends ListFragment {
 
         mActivatedPosition = position;
     }
-
-
 }

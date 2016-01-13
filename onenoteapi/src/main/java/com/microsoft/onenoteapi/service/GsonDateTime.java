@@ -16,5 +16,4 @@ public class GsonDateTime {
         gsonBuilder.registerTypeAdapter(DateTime.class, new DateTimeDeserializer());
         return gsonBuilder;
     }
-
 }
