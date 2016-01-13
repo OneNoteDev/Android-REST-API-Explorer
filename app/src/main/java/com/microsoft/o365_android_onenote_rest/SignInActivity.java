@@ -30,7 +30,35 @@ import static com.microsoft.o365_android_onenote_rest.R.id.o365_signin;
 
 public class SignInActivity
         extends BaseActivity
-        implements AuthenticationCallback<AuthenticationResult>, LiveAuthListener {
+        implements AuthenticationCallback<AuthenticationResult> {
+
+    protected final LiveAuthListener mLiveAuthListener = new LiveAuthListener() {
+
+        @Override
+        public void onAuthComplete(final LiveStatus status,
+                                   final LiveConnectSession session,
+                                   final Object userState) {
+            Timber.d("MSA: Auth Complete...");
+            if (null != status) {
+                Timber.d(status.toString());
+            }
+            if (null != session) {
+                Timber.d(session.toString());
+                SharedPrefsUtil.persistAuthToken(session);
+            }
+            if (null != userState) {
+                Timber.d(userState.toString());
+            }
+            if (status == LiveStatus.CONNECTED) {
+                start();
+            }
+        }
+
+        @Override
+        public void onAuthError(LiveAuthException exception, Object userState) {
+            exception.printStackTrace();
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +66,11 @@ public class SignInActivity
         setContentView(R.layout.activity_signin);
         if (User.isOrg()) {
             mAuthenticationManager.connect(this);
+        } else if (User.isMsa()
+                // this check has side effects: see mLiveAuthListener implementation
+                && mLiveAuthClient.loginSilent(mLiveAuthListener)) {
+            // callback will be fired, do not inject ButterKnife
+            return;
         }
         ButterKnife.inject(this);
     }
@@ -92,7 +125,7 @@ public class SignInActivity
     private void authenticateMsa() {
         try {
             validateMsaArgs();
-            mLiveAuthClient.login(this, sSCOPES, this);
+            mLiveAuthClient.login(this, sSCOPES, mLiveAuthListener);
         } catch (IllegalArgumentException e) {
             warnBadClient();
         }
@@ -106,12 +139,12 @@ public class SignInActivity
 
     @Override
     public void onSuccess(AuthenticationResult authenticationResult) {
-        finish();
         SharedPrefsUtil.persistAuthToken(authenticationResult);
         start();
     }
 
     private void start() {
+        finish();
         Intent appLaunch = new Intent(this, SnippetListActivity.class);
         startActivity(appLaunch);
     }
@@ -124,30 +157,5 @@ public class SignInActivity
             msg = getString(R.string.signin_err);
         }
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onAuthComplete(final LiveStatus status,
-                               final LiveConnectSession session,
-                               final Object userState) {
-        Timber.d("MSA: Auth Complete...");
-        if (null != status) {
-            Timber.d(status.toString());
-        }
-        if (null != session) {
-            Timber.d(session.toString());
-            SharedPrefsUtil.persistAuthToken(session);
-        }
-        if (null != userState) {
-            Timber.d(userState.toString());
-        }
-        if (status == LiveStatus.CONNECTED) {
-            start();
-        }
-    }
-
-    @Override
-    public void onAuthError(LiveAuthException exception, Object userState) {
-        exception.printStackTrace();
     }
 }

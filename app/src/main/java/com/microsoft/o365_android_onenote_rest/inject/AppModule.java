@@ -7,6 +7,7 @@ package com.microsoft.o365_android_onenote_rest.inject;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.microsoft.o365_android_onenote_rest.BaseActivity;
 import com.microsoft.o365_android_onenote_rest.application.SnippetApp;
 import com.microsoft.o365_android_onenote_rest.conf.ServiceConstants;
 import com.microsoft.o365_android_onenote_rest.util.SharedPrefsUtil;
@@ -67,6 +68,10 @@ public class AppModule {
     @Provides
     @Singleton
     public LiveAuthClient providesLiveAuthClient() {
-        return new LiveAuthClient(SnippetApp.getApp(), ServiceConstants.MSA_CLIENT_ID);
+        return new LiveAuthClient(
+                SnippetApp.getApp(),
+                ServiceConstants.MSA_CLIENT_ID,
+                BaseActivity.sSCOPES
+        );
     }
 }
