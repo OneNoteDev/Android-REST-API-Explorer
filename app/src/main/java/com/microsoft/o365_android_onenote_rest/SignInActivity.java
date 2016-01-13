@@ -64,15 +64,19 @@ public class SignInActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signin);
+        boolean authSuccess = false;
         if (User.isOrg()) {
             mAuthenticationManager.connect(this);
-        } else if (User.isMsa()
+        } else if (authSuccess = (User.isMsa()
                 // this check has side effects: see mLiveAuthListener implementation
-                && mLiveAuthClient.loginSilent(mLiveAuthListener)) {
+                && mLiveAuthClient.loginSilent(mLiveAuthListener))) {
             // callback will be fired, do not inject ButterKnife
             return;
         }
-        ButterKnife.inject(this);
+
+        if (!authSuccess) {
+            ButterKnife.inject(this);
+        }
     }
 
     @OnClick(o365_signin)

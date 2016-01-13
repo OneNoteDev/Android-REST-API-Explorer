@@ -459,15 +459,8 @@ public class SnippetDetailFragment<T, Result>
 
     @Override
     public void onSuccess(final AuthenticationResult authenticationResult) {
-        if (null != getActivity()) {
-            getActivity().runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    SharedPrefsUtil.persistAuthToken(authenticationResult);
-                    ready();
-                }
-            });
-        }
+        SharedPrefsUtil.persistAuthToken(authenticationResult);
+        ready();
     }
 
     private void ready() {
