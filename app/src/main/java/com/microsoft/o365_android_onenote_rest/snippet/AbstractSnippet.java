@@ -105,7 +105,6 @@ public abstract class AbstractSnippet<Service, Result> {
             mDesc = mUrl = null;
             mO365Version = null;
             mMSAVersion = null;
-
         }
         mSection = category.mSection;
     }
