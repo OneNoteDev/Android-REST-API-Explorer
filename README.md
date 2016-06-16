@@ -106,12 +106,12 @@ To use the OneNote REST API Explorer for Android, you need the following:
     * View and modify OneNote notebooks in your organization
     * View and modify OneNote notebooks
     * Create pages in OneNote notebooks
-![](/readme-images/OneNotePermissions.jpg)
+![OneNote permission scope dropdown list](/readme-images/OneNotePermissions.jpg)
 
 12. For the **Windows Azure Active Directory** application add or make sure the following permissions are enabled:
 	* Enable sign-on and read users' profiles
     * Access your organization's directory
-![](/readme-images/AADPermissions.jpg)
+![Windows Azure Active Directory permission scope dropdown list](/readme-images/AADPermissions.jpg)
 
 13.	Copy the value specified for **Client ID** on the **Configure** page. Remember this value for the below section **Getting the ClientID and RedirectUri into the project**.
 14.	Click **Save** in the bottom menu.
@@ -208,11 +208,11 @@ Authentication for logging in with a Microsoft Account to a personal version of 
 ### Screenshots
 Login|REST Call List
 :-:|:-:
-![](/readme-images/login.png)|![](/readme-images/list.png)
+![Authentication login page](/readme-images/login.png)|![List of rest apis used in the application](/readme-images/list.png)
 
 REST Call Detail|Create Page
 :-:|:-:
-![](/readme-images/detail.png)|![](/readme-images/create_page.png)
+![Details of GET type api call](/readme-images/detail.png)|![Details of POST type api call](/readme-images/create_page.png)
 
 ## Questions and comments
 We'd love to get your feedback about the OneNote REST API Explorer for Android sample. You can send your feedback to us in the [Issues](https://github.com/OneNoteDev/Android-REST-API-Explorer/issues) section of this repository. <br/>
