@@ -229,6 +229,7 @@ You will need to sign a [Contributor License Agreement](https://cla.microsoft.co
 * [Office Dev Center](http://dev.office.com/)
 * [Office 365 APIs starter projects and code samples](http://msdn.microsoft.com/en-us/office/office365/howto/starter-projects-and-code-samples)
 
+This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
 ## Copyright
 Copyright (c) 2015 Microsoft. All rights reserved.
