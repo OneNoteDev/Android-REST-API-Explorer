@@ -1,6 +1,7 @@
 /*
-*  Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See full license at the bottom of this file.
-*/
+ * Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license.
+ * See LICENSE in the project root for license information.
+ */
 package com.microsoft.o365_android_onenote_rest;
 
 import android.content.Intent;
@@ -9,13 +10,13 @@ import android.widget.Toast;
 
 import com.microsoft.aad.adal.AuthenticationCallback;
 import com.microsoft.aad.adal.AuthenticationResult;
-import com.microsoft.live.LiveAuthException;
-import com.microsoft.live.LiveAuthListener;
-import com.microsoft.live.LiveConnectSession;
-import com.microsoft.live.LiveStatus;
 import com.microsoft.o365_android_onenote_rest.conf.ServiceConstants;
 import com.microsoft.o365_android_onenote_rest.util.SharedPrefsUtil;
 import com.microsoft.o365_android_onenote_rest.util.User;
+import com.microsoft.services.msa.LiveAuthException;
+import com.microsoft.services.msa.LiveAuthListener;
+import com.microsoft.services.msa.LiveConnectSession;
+import com.microsoft.services.msa.LiveStatus;
 
 import java.net.URI;
 import java.util.UUID;
@@ -29,16 +30,53 @@ import static com.microsoft.o365_android_onenote_rest.R.id.o365_signin;
 
 public class SignInActivity
         extends BaseActivity
-        implements AuthenticationCallback<AuthenticationResult>, LiveAuthListener {
+        implements AuthenticationCallback<AuthenticationResult> {
+
+    protected final LiveAuthListener mLiveAuthListener = new LiveAuthListener() {
+
+        @Override
+        public void onAuthComplete(LiveStatus status,
+                                   LiveConnectSession session,
+                                   Object userState) {
+            Timber.d("MSA: Auth Complete...");
+            if (null != status) {
+                Timber.d(status.toString());
+            }
+            if (null != session) {
+                Timber.d(session.toString());
+                SharedPrefsUtil.persistAuthToken(session);
+            }
+            if (null != userState) {
+                Timber.d(userState.toString());
+            }
+            if (status == LiveStatus.CONNECTED) {
+                start();
+            }
+        }
+
+        @Override
+        public void onAuthError(LiveAuthException exception, Object userState) {
+            exception.printStackTrace();
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signin);
+        boolean authSuccess = false;
         if (User.isOrg()) {
             mAuthenticationManager.connect(this);
+        } else if (authSuccess = (User.isMsa()
+                // this check has side effects: see mLiveAuthListener implementation
+                && mLiveAuthClient.loginSilent(mLiveAuthListener))) {
+            // callback will be fired, do not inject ButterKnife
+            return;
         }
-        ButterKnife.inject(this);
+
+        if (!authSuccess) {
+            ButterKnife.inject(this);
+        }
     }
 
     @OnClick(o365_signin)
@@ -91,7 +129,7 @@ public class SignInActivity
     private void authenticateMsa() {
         try {
             validateMsaArgs();
-            mLiveAuthClient.login(this, sSCOPES, this);
+            mLiveAuthClient.login(this, sSCOPES, mLiveAuthListener);
         } catch (IllegalArgumentException e) {
             warnBadClient();
         }
@@ -105,12 +143,12 @@ public class SignInActivity
 
     @Override
     public void onSuccess(AuthenticationResult authenticationResult) {
-        finish();
         SharedPrefsUtil.persistAuthToken(authenticationResult);
         start();
     }
 
     private void start() {
+        finish();
         Intent appLaunch = new Intent(this, SnippetListActivity.class);
         startActivity(appLaunch);
     }
@@ -124,55 +162,4 @@ public class SignInActivity
         }
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
-
-    @Override
-    public void onAuthComplete(LiveStatus status,
-                               LiveConnectSession session,
-                               Object userState) {
-        Timber.d("MSA: Auth Complete...");
-        if (null != status) {
-            Timber.d(status.toString());
-        }
-        if (null != session) {
-            Timber.d(session.toString());
-            SharedPrefsUtil.persistAuthToken(session);
-        }
-        if (null != userState) {
-            Timber.d(userState.toString());
-        }
-        start();
-    }
-
-    @Override
-    public void onAuthError(LiveAuthException exception, Object userState) {
-        exception.printStackTrace();
-    }
 }
-// *********************************************************
-//
-// Android-REST-API-Explorer, https://github.com/OneNoteDev/Android-REST-API-Explorer
-//
-// Copyright (c) Microsoft Corporation
-// All rights reserved.
-//
-// MIT License:
-// Permission is hereby granted, free of charge, to any person obtaining
-// a copy of this software and associated documentation files (the
-// "Software"), to deal in the Software without restriction, including
-// without limitation the rights to use, copy, modify, merge, publish,
-// distribute, sublicense, and/or sell copies of the Software, and to
-// permit persons to whom the Software is furnished to do so, subject to
-// the following conditions:
-//
-// The above copyright notice and this permission notice shall be
-// included in all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//
-// *********************************************************
