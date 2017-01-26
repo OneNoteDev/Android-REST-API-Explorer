@@ -106,12 +106,12 @@ To use the OneNote REST API Explorer for Android, you need the following:
     * View and modify OneNote notebooks in your organization
     * View and modify OneNote notebooks
     * Create pages in OneNote notebooks
-![](/readme-images/OneNotePermissions.jpg)
+![Choose OneNote permissions required for your application.](/readme-images/OneNotePermissions.jpg)
 
 12. For the **Windows Azure Active Directory** application add or make sure the following permissions are enabled:
 	* Enable sign-on and read users' profiles
     * Access your organization's directory
-![](/readme-images/AADPermissions.jpg)
+![Choose Azure Active Directory permissions required for your application.](/readme-images/AADPermissions.jpg)
 
 13.	Copy the value specified for **Client ID** on the **Configure** page. Remember this value for the below section **Getting the ClientID and RedirectUri into the project**.
 14.	Click **Save** in the bottom menu.
@@ -208,11 +208,11 @@ Authentication for logging in with a Microsoft Account to a personal version of 
 ### Screenshots
 Login|REST Call List
 :-:|:-:
-![](/readme-images/login.png)|![](/readme-images/list.png)
+![Login screen](/readme-images/login.png)|![REST call list page](/readme-images/list.png)
 
 REST Call Detail|Create Page
 :-:|:-:
-![](/readme-images/detail.png)|![](/readme-images/create_page.png)
+![REST call detail page](/readme-images/detail.png)|![Create Page](/readme-images/create_page.png)
 
 ## Questions and comments
 We'd love to get your feedback about the OneNote REST API Explorer for Android sample. You can send your feedback to us in the [Issues](https://github.com/OneNoteDev/Android-REST-API-Explorer/issues) section of this repository. <br/>
@@ -229,6 +229,7 @@ You will need to sign a [Contributor License Agreement](https://cla.microsoft.co
 * [Office Dev Center](http://dev.office.com/)
 * [Office 365 APIs starter projects and code samples](http://msdn.microsoft.com/en-us/office/office365/howto/starter-projects-and-code-samples)
 
+This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
 ## Copyright
 Copyright (c) 2015 Microsoft. All rights reserved.
